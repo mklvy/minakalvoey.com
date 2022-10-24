@@ -156,7 +156,7 @@ body { min-height: 100vh; overflow: hidden; margin: 0; }
   text-align: center;
   position: relative;
   margin: 0 auto;
-  background-image: url("/public/img/startGame.png");
+  background-image: url("../img/startGame.png");
 }
 
 
@@ -174,7 +174,7 @@ body { min-height: 100vh; overflow: hidden; margin: 0; }
   border: 1px solid white;
   width: 468px;
   height: 468px;
-  background-image: url("/public/img/Room2.jpg");
+  background-image: url("../img/Room2.jpg");
   background-size: contain;
   text-align: center;
   position: relative;
@@ -185,7 +185,7 @@ body { min-height: 100vh; overflow: hidden; margin: 0; }
   border: 1px solid white;
   width: 468px;
   height: 468px;
-  background-image: url("/public/img/Room3.jpg");
+  background-image: url("../img/Room3.jpg");
   background-size: contain;
   text-align: center;
   position: relative;
@@ -196,7 +196,7 @@ body { min-height: 100vh; overflow: hidden; margin: 0; }
   border: 1px solid white;
   width: 468px;
   height: 468px;
-  background-image: url("/public/img/Room4.jpg");
+  background-image: url("../img/Room4.jpg");
   background-size: contain;
   text-align: center;
   position: relative;
@@ -207,7 +207,7 @@ body { min-height: 100vh; overflow: hidden; margin: 0; }
   border: 1px solid white;
   width: 468px;
   height: 468px;
-  background-image: url("/public/img/Room5.jpg");
+  background-image: url("../img/Room5.jpg");
   background-size: contain;
   text-align: center;
   position: relative;
@@ -429,7 +429,7 @@ div.line{
   text-align: center;
   position: relative;
   margin: 0 auto;
-  background-image: url("/public/img/end-image.png");  
+  background-image: url("../img/end-image.png");  
 }
 
 .endGameOptionsContainer {
