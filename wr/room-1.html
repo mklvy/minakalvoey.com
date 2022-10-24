@@ -17,20 +17,20 @@ Your browser does not support the audio element.
     </div>
   </div>
   <div class='doorsContainer'>
-    <div class='doorExit' style='display: flex; position: absolute; left: 10%; display: none; background-image: url("/public/img/door.jpg");' onclick='exitToRoom(2, 0)' onmouseenter="showExitText(1)"
+    <div class='doorExit' style='display: flex; position: absolute; left: 10%; display: none; background-image: url("./img/door.jpg");' onclick='exitToRoom(2, 0)' onmouseenter="showExitText(1)"
     onmouseleave="hideExitText(1)"></div>
     <div id='exitText1' class='hide exitText' style='position: absolute; left: 0%; text-align: left; bottom: 0%; width: 100%;'>You follow the wizard through door 111</div>
-    <div class='doorExit' style='left: 0; right: 0; margin-left: auto; margin-right: auto; display: none; background-image: url("/public/img/door.jpg");' onclick='exitToRoom(3, 1)' onmouseenter="showExitText(2)"
+    <div class='doorExit' style='left: 0; right: 0; margin-left: auto; margin-right: auto; display: none; background-image: url("./img/door.jpg");' onclick='exitToRoom(3, 1)' onmouseenter="showExitText(2)"
     onmouseleave="hideExitText(2)"></div>
     <div id='exitText2' class='hide exitText' style='position: absolute; bottom: 0%; width: 100%;'>You walk through door 222</div>
-    <div class='doorExit' style='right: 10%; position: absolute; display: none; background-image: url("/public/img/door.jpg");' onclick='exitToRoom(4, 2)' onmouseenter="showExitText(3)" onmouseleave="hideExitText(3)"></div>
+    <div class='doorExit' style='right: 10%; position: absolute; display: none; background-image: url("./img/door.jpg");' onclick='exitToRoom(4, 2)' onmouseenter="showExitText(3)" onmouseleave="hideExitText(3)"></div>
     <div id='exitText3' class='hide exitText' style='position: absolute; right: 7%; text-align: right; bottom: 0%; width: 100%;'>You open door 333</div>
   </div>
   <div id='idleScreen' class='idleScreen hide'>
     <div class='idleQuestion'>Are you still playing "The Waiting Room"?</div>
-    <div class='doorExit' style='background-image: url("/public/img/start.jpg"); position: relative;top: 152px;left: 228px;' onclick='hideIdleScreen()'></div>
+    <div class='doorExit' style='background-image: url("./img/start.jpg"); position: relative;top: 152px;left: 228px;' onclick='hideIdleScreen()'></div>
     <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue playing</div>
-    <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("/public/img/exit-game.jpg");' onclick='window.location.href="index.html"'></div>
+    <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("./img/exit-game.jpg");' onclick='window.location.href="index.html"'></div>
     <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit game</div>
   </div>
 </body>
