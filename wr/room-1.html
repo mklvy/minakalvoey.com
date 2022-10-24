@@ -1,0 +1,196 @@
+<html>
+<head>
+  <link rel='stylesheet' href='./css/styles.css' />
+</head>
+<audio id='backgroundPlayer' autoplay loop>
+  <source src='/public/audio/subliminal.mp3' type="audio/mpeg">
+Your browser does not support the audio element.
+</audio> 
+<body id="page" style='background-color: black;'>
+  <div class='roomTitleContainer'>
+    <div class='roomTitle' title='Back to the start page' onclick='window.location.href="start.html"'>The Waiting Room</div>
+  </div>
+  <div class='room1ImageContainer' onclick='getSituation()'>
+    <div id='roomImage' class='room1Image'></div>
+    <div class='storyParagraphRoom1' onclick='getSituation()'>
+      <p id='textParagraph'>You wake up, and feel your cheek pressed against a cold concrete floor. Keyboard tapping and mouse clicking is echoing.</p>
+    </div>
+  </div>
+  <div class='doorsContainer'>
+    <div class='doorExit' style='display: flex; position: absolute; left: 10%; display: none; background-image: url("/public/img/door.jpg");' onclick='exitToRoom(2, 0)' onmouseenter="showExitText(1)"
+    onmouseleave="hideExitText(1)"></div>
+    <div id='exitText1' class='hide exitText' style='position: absolute; left: 0%; text-align: left; bottom: 0%; width: 100%;'>You follow the wizard through door 111</div>
+    <div class='doorExit' style='left: 0; right: 0; margin-left: auto; margin-right: auto; display: none; background-image: url("/public/img/door.jpg");' onclick='exitToRoom(3, 1)' onmouseenter="showExitText(2)"
+    onmouseleave="hideExitText(2)"></div>
+    <div id='exitText2' class='hide exitText' style='position: absolute; bottom: 0%; width: 100%;'>You walk through door 222</div>
+    <div class='doorExit' style='right: 10%; position: absolute; display: none; background-image: url("/public/img/door.jpg");' onclick='exitToRoom(4, 2)' onmouseenter="showExitText(3)" onmouseleave="hideExitText(3)"></div>
+    <div id='exitText3' class='hide exitText' style='position: absolute; right: 7%; text-align: right; bottom: 0%; width: 100%;'>You open door 333</div>
+  </div>
+  <div id='idleScreen' class='idleScreen hide'>
+    <div class='idleQuestion'>Are you still playing "The Waiting Room"?</div>
+    <div class='doorExit' style='background-image: url("/public/img/start.jpg"); position: relative;top: 152px;left: 228px;' onclick='hideIdleScreen()'></div>
+    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue playing</div>
+    <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("/public/img/exit-game.jpg");' onclick='window.location.href="start.html"'></div>
+    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit game</div>
+  </div>
+</body>
+<script>
+  function randomNumber(min, max) { 
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  function getPos(ele){
+    var x=0;
+    var y=0;
+    while(true){
+        x += ele.offsetLeft;
+        y += ele.offsetTop;
+        if(ele.offsetParent === null){
+            break;
+        }
+        ele = ele.offsetParent;
+    }
+    return [x, y];
+  }
+
+  function setImageRoom(elem, imageId) {
+    var url = '/public/img/room1-' + imageId + '.png'
+    elem.style.backgroundImage = 'url(' + url + ')';
+  }
+
+  function createLine(x1,y1, x2,y2) {
+    var length = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+    var angle  = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+    var transform = 'rotate('+angle+'deg)';
+
+    var line = document.createElement('div');
+    line.className = 'line';
+    line.style.position = 'absolute';
+    line.style.transform = transform;
+    line.style.width = length.toString() + 'px';
+    line.style.left = x1.toString() + 'px';
+    line.style.top = y1.toString() + 'px';
+    line.style.zIndex = - 1;
+    document.getElementById('page').appendChild(line);
+  }
+
+  var roomImage = document.getElementById('roomImage');
+  setImageRoom(roomImage, randomNumber(1, 5));
+  var page = document.getElementById('page')
+  var leftImageCorner = getPos(roomImage);
+  var leftBodyCorner = getPos(page);
+
+  if (sessionStorage.audioTimestamp != undefined) {
+    document.getElementById('backgroundPlayer').currentTime = sessionStorage.audioTimestamp;
+  }
+  
+  createLine(leftBodyCorner[0], leftBodyCorner[1], leftImageCorner[0], leftImageCorner[1]);
+  createLine(leftImageCorner[0] + roomImage.offsetWidth, leftImageCorner[1], leftBodyCorner[0] + page.offsetWidth, leftBodyCorner[1]);
+  createLine(leftBodyCorner[0], leftBodyCorner[1] + page.offsetHeight - 84, leftImageCorner[0], leftImageCorner[1] + roomImage.offsetHeight - 1);
+  createLine(
+    leftImageCorner[0] + roomImage.offsetWidth, 
+    leftImageCorner[1] + roomImage.offsetHeight - 1,
+    leftBodyCorner[0] + page.offsetWidth, 
+    leftBodyCorner[1] + page.offsetHeight - 84
+  );
+
+  var roomWelcomeText = 'You wake up, and feel your cheek pressed against a cold concrete floor. There is a sound from keyboard tapping and mouse clicking coming from somewhere.';
+
+  var situations = [
+    'As you blink your eyes, you can see a blurry outline of yourself lying there reflected on the shiny metallic walls opposite you. They look thin, as if they would make that weird, wobbly sound metal sheets make if you shake them.',
+    'You sit up to get a view of the room. A long corridor lit up by fluorescent lamps in the ceiling, kind of vibrating, making it hard to focus and take in where you are. The room is cold, matching the sterile metallic look.',
+    '*Tap tap tap, click click*',
+    'Keyboard tapping and mouse clicking is echoing from the end of the corridor, blending together with the Harry Potter theme song.',
+    'There seems to be an open space around the corner, and you start walking. On both sides of the corridor are rows of chairs, these too metallic, but with thin pillows on the seats.',
+    'You walk past a wizard sitting in one of the chairs, staring straight ahead as if waiting to be called. Further down three doors appear, each with a number on them; 111, 222, 333.',
+    'As you stop in front of a door, you hear a high-pitched sound of a chair being dragged on the concrete floor.',
+    '*Screeeech*',
+    'While tapping on the keyboard with long, fluorescent green nails, the person behind the desk asks how she may help you. "Hello?" She\'s looking at you now. You zone out, hypnotised by the sparkling gems that are dangling down from the tip of the long nails.',
+    '"Welcome to the Waiting Room, you must be new here," she sighs. You look up and see her forcing a smile. "This is the room of your inner imaginations, please don\'t touch anything or go anywhere unsupervised. I\'m here to answer any questions you may have," she says all in one breath.',
+    '"I don\'t really understand where this is-" you start, but get interrupted by the person behind the desk. “Someone will see you shortly,” she says, pointing towards one of the chairs. On the finger she is pointing with, one of the green acrylic nails is missing.'
+  ];
+
+  var playerActions = {
+    text: 'One of the doors you saw walking down the corridor swings open, and a bright light shines out of it. The wizard gets up, walks over to the door and gestures for you to follow him. Do you go after?',
+    choices: [
+      {
+        text: 'You follow the wizard through door 111',
+        exit: 2
+      }, 
+      {
+        'text': 'You walk through door 222',
+        exit: 3      
+      },
+      {
+        text: 'You open door 333',
+        exit: 4     
+      }
+    ]
+  };
+
+  var MIN_SITUATIONS = 3;
+  var MAX_SITUATIONS = 7;
+  var nSituations = randomNumber(MIN_SITUATIONS, MAX_SITUATIONS);
+  sessionStorage.script = sessionStorage.script + '</br></br>' + roomWelcomeText;
+  var situationsHappened = 0;
+  
+  function getSituation() {
+    if (situationsHappened >= nSituations || situations.length == 0) {
+      document.getElementById('textParagraph').innerHTML = playerActions.text;
+      var exits = document.getElementsByClassName('doorExit');
+      for (var i = 0; i < exits.length; i++) {
+        exits[i].style.display = 'flex';
+      }
+      return;
+    }
+    situationsHappened++;
+    var situationIndex = randomNumber(0, situations.length - 1);
+    document.getElementById('textParagraph').innerHTML = situations[situationIndex];
+    sessionStorage.script = sessionStorage.script + '\n' + situations[situationIndex];
+    situations.splice(situationIndex, 1)
+
+  }
+
+  function exitToRoom(roomNumber, choice) {
+    var audioTimestamp = document.getElementById('backgroundPlayer').currentTime;
+    sessionStorage.audioTimestamp = audioTimestamp;
+    sessionStorage.script = sessionStorage.script + '\n' + playerActions.text;
+    sessionStorage.script = sessionStorage.script + '</br></br>'+ playerActions.choices[choice].text;
+    if (sessionStorage.storyMode == 'true') {
+      sessionStorage.nextRoom = roomNumber;
+      sessionStorage.roomsVisited++;
+      window.location.href = 'story-' + sessionStorage.roomsVisited + '.html';
+    } else {
+      window.location.href = 'room-' + roomNumber + '.html';
+    }
+  }
+
+  function showExitText(id) {
+    document.getElementById('exitText' + id).classList.remove('hide');
+  }
+
+  function hideExitText(id) {
+    document.getElementById('exitText' + id).classList.add('hide');
+  }
+
+  function hideIdleScreen () {
+    document.getElementById('idleScreen').classList.add('hide');    
+  }
+
+  function inactivityTime() {
+    var time;
+    window.onload = resetTimer;
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
+    function showIdleScreen() {
+      document.getElementById('idleScreen').classList.remove('hide');
+    }
+    function resetTimer() {
+      clearTimeout(time);
+      time = setTimeout(showIdleScreen, 60000)
+    }
+  };
+
+  inactivityTime();
+</script>
+</html>

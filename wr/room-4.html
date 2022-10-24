@@ -1,0 +1,177 @@
+<html>
+<head>
+  <link rel='stylesheet' href='./css/styles.css' />
+</head>
+<audio id='backgroundPlayer' autoplay loop>
+  <source src='/public/audio/subliminal.mp3' type="audio/mpeg">
+Your browser does not support the audio element.
+</audio> 
+<body id='page' style='background-color: black;'>
+  <div class='roomTitleContainer'>
+    <div class='roomTitle' title='Back to the start page' onclick='window.location.href="start.html"'>The Waiting Room</div>
+  </div>
+  <div class='room4ImageContainer' onclick='getSituation()'>
+    <div id='roomImage' class='room4Image'></div>
+    <div class='storyParagraphRoom1' onclick='getSituation()'>
+      <p id='textParagraph'>You wake up staring at the ceiling, or lack thereof. Big, white, fluffy clouds are slowly drifting by in a blue sky.</p>
+    </div>
+  </div>
+  <div class='jumpContainer'>
+    <div class='doorExit' style='left: 0; right: 0; margin-left: auto; margin-right: auto; display: none; position: absolute; background-image: url("/public/img/jump.jpg");' onclick='exitToRoom(1 , 0)' onmouseenter='showExitText(1)' onmouseleave='hideExitText(1)'></div>
+    <div id='exitText1' class='hide exitText' style='position: absolute; bottom: 0%; width: 100%;'>You jump after</div>
+  </div>
+  <div id='idleScreen' class='idleScreen hide'>
+    <div class='idleQuestion'>Are you still playing "The Waiting Room"?</div>
+    <div class='doorExit' style='background-image: url("/public/img/start.jpg"); position: relative;top: 152px;left: 228px;' onclick='hideIdleScreen()'></div>
+    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue playing</div>
+    <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("/public/img/exit-game.jpg");' onclick='window.location.href="start.html"'></div>
+    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit game</div>
+  </div>
+</body>
+<script>
+  function randomNumber(min, max) { 
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  function getPos(ele){
+    var x=0;
+    var y=0;
+    while(true){
+        x += ele.offsetLeft;
+        y += ele.offsetTop;
+        if(ele.offsetParent === null){
+            break;
+        }
+        ele = ele.offsetParent;
+    }
+    return [x, y];
+  }
+
+  function setImageRoom(elem, imageId) {
+    var url = '/public/img/room4-' + imageId + '.png'
+    elem.style.backgroundImage = 'url(' + url + ')';
+  }
+
+  function createLine(x1,y1, x2,y2) {
+    var length = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+    var angle  = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+    var transform = 'rotate('+angle+'deg)';
+
+    var line = document.createElement('div');
+    line.className = 'line';
+    line.style.position = 'absolute';
+    line.style.transform = transform;
+    line.style.width = length.toString() + 'px';
+    line.style.left = x1.toString() + 'px';
+    line.style.top = y1.toString() + 'px';
+    document.getElementById('page').appendChild(line);
+  }
+
+  var roomImage = document.getElementById('roomImage');
+  setImageRoom(roomImage, randomNumber(1, 5));
+  var page = document.getElementById('page')
+  var leftImageCorner = getPos(roomImage);
+  var leftBodyCorner = getPos(page);
+
+  document.getElementById('backgroundPlayer').currentTime = sessionStorage.audioTimestamp;
+  
+  createLine(leftBodyCorner[0], leftBodyCorner[1], leftImageCorner[0], leftImageCorner[1]);
+  createLine(leftImageCorner[0] + roomImage.offsetWidth, leftImageCorner[1], leftBodyCorner[0] + page.offsetWidth, leftBodyCorner[1]);
+  createLine(leftBodyCorner[0], leftBodyCorner[1] + page.offsetHeight - 84, leftImageCorner[0], leftImageCorner[1] + roomImage.offsetHeight - 1);
+  createLine(
+    leftImageCorner[0] + roomImage.offsetWidth, 
+    leftImageCorner[1] + roomImage.offsetHeight - 1,
+    leftBodyCorner[0] + page.offsetWidth, 
+    leftBodyCorner[1] + page.offsetHeight - 84
+  );
+
+  var roomWelcomeText = 'You wake up staring at the ceiling, or lack thereof. Big, white, fluffy clouds are slowly drifting by in a blue sky.'
+
+  var situations = [
+    'There is a gentle breeze in the space, not cold, but like on a nice summer evening. The sky is bright, and you squint your eyes before sitting up. ',
+    'You realise there are no walls, and get a shiver from thinking about how high up you might be. The urge to go towards the edge and look over is strong.',
+    'Along the edges of the platform are chairs, and at the end of it, an empty desk. Your feet are wobbly as you get up. It feels like just one small gust of wind could make you fly away.',
+    'You walk carefully towards the desk, taking your time and looking straight ahead to overcome the fear of falling down.',
+    'The desk seems to zoom further and further away. The chairs are spawning as you go past, low, Eames-like chairs with brown leather seats and metal legs. Pop, pop, popping up for each step.',
+    '*Pop pop, pop*',
+    'The heat from the sun forms heat waves on the beige tiled floor, and you squint your eyes.',
+    'There is someone by the desk, you can\'t tell if they are walking towards you or standing still. They are wearing a white robe and brown leather sandals, matching the chairs on the sides of the platform. Their brown, shoulder-long hair is flowing even though there is no wind.',
+    '“You are in a Waiting Room. This is a place you have imagined in your mind. See it as somewhere between your current and desired reality. It is not a dream, but it is not the reality you are used to. Sit down on one of those chairs, someone will see you to tell you more.” They get up from the big office chair, close the laptop and walk towards the edge of the platform.'
+  ];
+
+  var playerActions = {
+    text: '"Wait, where did you say this was?" You run after trying to catch up with them. They seem to be disappearing further away the closer you get. When you think you\'re close enough to reach out your arm and touch them, they jump off the platform. You balance on the edge. Do you jump?',
+    choices: [
+      {
+        text: 'You jump after',
+        exit: 1   
+      }
+    ]
+  };
+
+  var MIN_SITUATIONS = 3;
+  var MAX_SITUATIONS = 7;
+  var nSituations = randomNumber(MIN_SITUATIONS, MAX_SITUATIONS);
+  sessionStorage.script = sessionStorage.script + '</br></br>' + roomWelcomeText;
+  var situationsHappened = 0;
+  
+  function getSituation() {
+    if (situationsHappened >= nSituations || situations.length == 0) {
+      document.getElementById('textParagraph').innerHTML = playerActions.text;
+      var exits = document.getElementsByClassName('doorExit');
+      for (var i = 0; i < exits.length; i++) {
+        exits[i].style.display = 'flex';
+      }
+      return;
+    }
+    situationsHappened++;
+    var situationIndex = randomNumber(0, situations.length - 1);
+    document.getElementById('textParagraph').innerHTML = situations[situationIndex];
+    sessionStorage.script = sessionStorage.script + '\n' + situations[situationIndex];
+    situations.splice(situationIndex, 1)
+
+  }
+
+  function exitToRoom(roomNumber, choice) {
+    var audioTimestamp = document.getElementById('backgroundPlayer').currentTime;
+    sessionStorage.audioTimestamp = audioTimestamp;
+    sessionStorage.script = sessionStorage.script + '\n' + playerActions.text;
+    sessionStorage.script = sessionStorage.script + '</br></br>'+ playerActions.choices[choice].text;
+    if (sessionStorage.storyMode == 'true') {
+      sessionStorage.nextRoom = roomNumber;
+      sessionStorage.roomsVisited++;
+      window.location.href = 'story-' + sessionStorage.roomsVisited + '.html';
+    } else {
+      window.location.href = 'room-' + roomNumber + '.html';
+    }
+  }
+
+  function showExitText(id) {
+    document.getElementById('exitText' + id).classList.remove('hide');
+  }
+
+  function hideExitText(id) {
+    document.getElementById('exitText' + id).classList.add('hide');
+  }
+
+  function hideIdleScreen () {
+    document.getElementById('idleScreen').classList.add('hide');    
+  }
+
+  function inactivityTime() {
+    var time;
+    window.onload = resetTimer;
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
+    function showIdleScreen() {
+      document.getElementById('idleScreen').classList.remove('hide');
+    }
+    function resetTimer() {
+      clearTimeout(time);
+      time = setTimeout(showIdleScreen, 60000)
+    }
+  };
+
+  inactivityTime();
+</script>
+</html>

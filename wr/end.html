@@ -1,0 +1,105 @@
+<html>
+<head>
+  <link rel='stylesheet' href='./css/styles.css' />
+  <style type="text/css">
+    @media print {
+      #noPrint {
+        display: none;
+      }
+    }
+    @media screen {
+      #onlyPrint {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<audio id='backgroundPlayer' autoplay loop>
+  <source src='/public/audio/subliminal.mp3' type='audio/mpeg'>
+Your browser does not support the audio element.
+</audio> 
+<body id='page' style='background-color: black;'>
+  <div id='noPrint'>
+    <div class='roomTitleContainer' onclick='window.location.href="start.html"''>
+      <div class='roomTitle'>The Waiting Room</div>
+    </div>
+      <div class='startContentContainer'>
+        <div class='image align endContainer'>
+          <div class='endImageContainer'>
+            <div id='roomImage' class='endImage'></div>
+            <div class='endGameOptionsContainer'>
+              <div class='doorExit' style='display: flex; position: absolute; left: 13%; display: flex; background-image: url("/public/img/explore.jpg");' onclick='goToRoom()'></div>
+              <div id='exitText1' class='exitText' style='position: absolute; left: 8%; text-align: left; bottom: 0%; width: 100%;'>Continue exploring</div>
+              <div class='doorExit' style='display: flex; background-image: url("/public/img/wiki-2.jpg");margin: 0 auto;position: relative;' onclick='goToWiki()'></div>
+              <div id='exitText2' class='exitText' style='position: absolute; bottom: 0%; width: 100%;'>Go to wiki</div>
+              <div class='doorExit' style='right: 13%; position: absolute; display: flex; background-image: url("/public/img/script-1.jpg");top: 0;' onclick='printScript()'></div>
+              <div id='exitText3' class='exitText' style='position: absolute; right: 9%; text-align: right; bottom: 0%; width: 100%;'>Print your story</div>
+            </div>
+          </div>
+        </div>
+        <div class='text align endContainer'>
+          <div class="endParagraph">Thank you for playing. You have reached the end of the story-mode of The Waiting Room. If you want to know more about the rooms you visited and the characters you met, go to the Wiki. You can also continue exploring the rooms, or print your script.</div>
+        </div>
+    </div>
+    <div id='idleScreen' class='idleScreen hide'>
+      <div class='idleQuestion'>Are you still playing "The Waiting Room"?</div>
+      <div class='doorExit' style='background-image: url("/public/img/start.jpg"); position: relative;top: 152px;left: 228px;' onclick='hideIdleScreen()'></div>
+      <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue playing</div>
+      <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("/public/img/exit-game.jpg");' onclick='window.location.href="start.html"'></div>
+      <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit game</div>
+    </div>
+  </div>
+</div>
+  <div id='onlyPrint' class='printedScript'>
+    Print
+  </div>
+</div>
+</body>
+<script>
+  document.getElementById('backgroundPlayer').currentTime = sessionStorage.audioTimestamp;
+  sessionStorage.storyMode = 'false';
+
+  function goToRoom() {
+    var audioTimestamp = document.getElementById('backgroundPlayer').currentTime;
+    sessionStorage.audioTimestamp = audioTimestamp;
+    window.location.href = 'room-' + sessionStorage.nextRoom + '.html';
+  }
+
+  function goToWiki() {
+    window.open('https://hail-lilac-324.notion.site/The-Waiting-Room-Wiki-0c946efe860240e89dd2c26d6aae8df7', '_blank');
+  }
+
+  function printScript() {
+    document.getElementById('onlyPrint').innerHTML = sessionStorage.script;
+    window.print();
+  }
+
+  function showExitText(id) {
+    document.getElementById('exitText' + id).classList.remove('hide');
+  }
+
+  function hideExitText(id) {
+    document.getElementById('exitText' + id).classList.add('hide');
+  }
+
+  function hideIdleScreen () {
+    document.getElementById('idleScreen').classList.add('hide');    
+  }
+
+  function inactivityTime() {
+    var time;
+    window.onload = resetTimer;
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
+    function showIdleScreen() {
+      document.getElementById('idleScreen').classList.remove('hide');
+    }
+    function resetTimer() {
+      clearTimeout(time);
+      time = setTimeout(showIdleScreen, 60000)
+    }
+  };
+
+  inactivityTime();
+</script>
+</html> 

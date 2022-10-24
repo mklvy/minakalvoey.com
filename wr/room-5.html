@@ -1,0 +1,178 @@
+<html>
+<head>
+  <link rel='stylesheet' href='./css/styles.css' />
+</head>
+<audio id='backgroundPlayer' autoplay loop>
+  <source src='/public/audio/subliminal.mp3' type="audio/mpeg">
+Your browser does not support the audio element.
+</audio> 
+<body id='page' style='background-color: black;'>
+  <div class='roomTitleContainer'>
+    <div class='roomTitle' title='Back to the start page' onclick='window.location.href="start.html"'>The Waiting Room</div>
+  </div>
+  <div class='room5ImageContainer' onclick='getSituation()'>
+    <div id='roomImage' class='room5Image'></div>
+    <div class='storyParagraphRoom1' onclick='getSituation()'>
+      <p id='textParagraph'>You wake up with your chin pressed against a cold stone floor. Is someone there?</p>
+    </div>
+  </div>
+  <div class='holeContainer'>
+    <div class='doorExit' style='left: 0; right: 0; margin-left: auto; margin-right: auto; display: none; position: absolute; background-image: url("/public/img/hole.jpg");' onclick='exitToRoom(1, 0)' onmouseenter='showExitText(1)' onmouseleave='hideExitText(1)'></div>
+    <div id='exitText1' class='hide exitText' style='position: absolute; bottom: 0%; width: 100%;'>You follow down the hole</div>
+  </div>
+  <div id='idleScreen' class='idleScreen hide'>
+    <div class='idleQuestion'>Are you still playing "The Waiting Room"?</div>
+    <div class='doorExit' style='background-image: url("/public/img/start.jpg"); position: relative;top: 152px;left: 228px;' onclick='hideIdleScreen()'></div>
+    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue playing</div>
+    <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("/public/img/exit-game.jpg");' onclick='window.location.href="start.html"'></div>
+    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit game</div>
+  </div>
+</body>
+<script>
+  function randomNumber(min, max) { 
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  function getPos(ele){
+    var x=0;
+    var y=0;
+    while(true){
+        x += ele.offsetLeft;
+        y += ele.offsetTop;
+        if(ele.offsetParent === null){
+            break;
+        }
+        ele = ele.offsetParent;
+    }
+    return [x, y];
+  }
+
+  function createLine(x1,y1, x2,y2) {
+    var length = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+    var angle  = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+    var transform = 'rotate('+angle+'deg)';
+
+    var line = document.createElement('div');
+    line.className = 'line';
+    line.style.position = 'absolute';
+    line.style.transform = transform;
+    line.style.width = length.toString() + 'px';
+    line.style.left = x1.toString() + 'px';
+    line.style.top = y1.toString() + 'px';
+    document.getElementById('page').appendChild(line);
+  }
+
+  function setImageRoom(elem, imageId) {
+    var url = '/public/img/room5-' + imageId + '.png'
+    elem.style.backgroundImage = 'url(' + url + ')';
+  }
+
+  var roomImage = document.getElementById('roomImage');
+  setImageRoom(roomImage, randomNumber(1, 5));
+  var page = document.getElementById('page')
+  var leftImageCorner = getPos(roomImage);
+  var leftBodyCorner = getPos(page);
+  
+  createLine(leftBodyCorner[0], leftBodyCorner[1], leftImageCorner[0], leftImageCorner[1]);
+  createLine(leftImageCorner[0] + roomImage.offsetWidth, leftImageCorner[1], leftBodyCorner[0] + page.offsetWidth, leftBodyCorner[1]);
+  createLine(leftBodyCorner[0], leftBodyCorner[1] + page.offsetHeight - 84, leftImageCorner[0], leftImageCorner[1] + roomImage.offsetHeight - 1);
+  createLine(
+    leftImageCorner[0] + roomImage.offsetWidth, 
+    leftImageCorner[1] + roomImage.offsetHeight - 1,
+    leftBodyCorner[0] + page.offsetWidth, 
+    leftBodyCorner[1] + page.offsetHeight - 84
+  );
+
+  var roomWelcomeText = 'You wake up with your chin pressed against a cold stone floor. Is someone there?';
+
+  var situations = [
+    'The sound of a crackling fire mixes with something else...',
+    '*Ding ding ding*',
+    '*Ding ding... Ka ching!*',
+    'You sit up leaning against the wall, this cold and of stone, and you see the rest of the room. Looks like the basement of some Italian restaurant... Or a grotta under water. The sounds echoing from somewhere makes it all even more confusing. There are rows of benches made of stone against the walls.',
+    'You walk down the corridor.',
+    'At the end of the corridor there is a fireplace on the right side. The fire looks strange, smooth like water but flickering somehow. You\'re about to walk over to have a closer look, when you hear someone clearing their throat.',
+    '"Hrrmmm. Room welcome to the waiting, the space of your inner imagination," says the incredibly wrinkly, bald man, looking at a spot just above your head. He is by a desk with an old computer on it, blasting out what must be sounds from an online casino.',
+    '"Where did you say this was?" you ask, trying to catch his eyes. "Your waiting room this is, down until someone will see you please sit.. Hrmmm."',
+    'You try to hold your laugh in as you wait to see if he has anything to say. He stares at the spot over your head. "You define your own life. Let other people write your script do not," he says with his eyes closed, slowly turning around. He walks over to the desk and proceeds to play whichever online game he\'s got up.',
+    'There\'s not much help to get from him.',
+    'You walk towards one of the benches.'
+  ];
+
+  var playerActions = {
+    text: 'You notice the sound of the fire stopped. Now also the casino sounds. The man walks across his desk towards the extinguished fireplace, and turns towards you. Finally he meets your eyes. "Final success is not, fatal: it is the courage to continue that counts failure is not. Yes, hrrmmm," he says, before disappearing down a hole in the fireplace. Do you follow?',
+    choices: [
+      {
+        text: 'You follow down the hole',
+        exit: 1    
+      }
+    ]
+  };
+
+  var MIN_SITUATIONS = 3;
+  var MAX_SITUATIONS = 7;
+  var nSituations = randomNumber(MIN_SITUATIONS, MAX_SITUATIONS);
+  sessionStorage.script = sessionStorage.script + '</br></br>' + roomWelcomeText;
+  var situationsHappened = 0;
+
+  document.getElementById('backgroundPlayer').currentTime = sessionStorage.audioTimestamp;
+  
+  function getSituation() {
+    if (situationsHappened >= nSituations || situations.length == 0) {
+      document.getElementById('textParagraph').innerHTML = playerActions.text;
+      var exits = document.getElementsByClassName('doorExit');
+      for (var i = 0; i < exits.length; i++) {
+        exits[i].style.display = 'flex';
+      }
+      return;
+    }
+    situationsHappened++;
+    var situationIndex = randomNumber(0, situations.length - 1);
+    document.getElementById('textParagraph').innerHTML = situations[situationIndex];
+    sessionStorage.script = sessionStorage.script + '\n' + situations[situationIndex];
+    situations.splice(situationIndex, 1)
+  }
+
+  function exitToRoom(roomNumber, choice) {
+    var audioTimestamp = document.getElementById('backgroundPlayer').currentTime;
+    sessionStorage.audioTimestamp = audioTimestamp;
+    sessionStorage.script = sessionStorage.script + '\n' + playerActions.text;
+    sessionStorage.script = sessionStorage.script + '</br></br>'+ playerActions.choices[choice].text;
+    if (sessionStorage.storyMode == 'true') {
+      sessionStorage.nextRoom = roomNumber;
+      sessionStorage.roomsVisited++;
+      window.location.href = 'story-' + sessionStorage.roomsVisited + '.html';
+    } else {
+      window.location.href = 'room-' + roomNumber + '.html';
+    }
+  }
+
+  function showExitText(id) {
+    document.getElementById('exitText' + id).classList.remove('hide');
+  }
+
+  function hideExitText(id) {
+    document.getElementById('exitText' + id).classList.add('hide');
+  }
+
+  function hideIdleScreen () {
+    document.getElementById('idleScreen').classList.add('hide');    
+  }
+
+  function inactivityTime() {
+    var time;
+    window.onload = resetTimer;
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
+    function showIdleScreen() {
+      document.getElementById('idleScreen').classList.remove('hide');
+    }
+    function resetTimer() {
+      clearTimeout(time);
+      time = setTimeout(showIdleScreen, 60000)
+    }
+  };
+
+  inactivityTime();
+</script>
+</html>

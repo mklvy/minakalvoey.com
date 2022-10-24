@@ -1,0 +1,55 @@
+<html>
+<head>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<audio id='backgroundPlayer' autoplay loop>
+  <source src='/public/audio/subliminal.mp3' type="audio/mpeg">
+Your browser does not support the audio element.
+</audio> 
+<body>
+  <div class="roomTitleContainer">
+    <div class='roomTitle' title='Back to the start page' style='color:black;' onclick='window.location.href="start.html"'>The Waiting Room</div>
+  </div>
+  <div class="storyText" onClick="goToRoom()">It had been 7 minutes since everything dropped, and the silence was loud. You tried reloading the pages only to see the dumb buffering wheel still stuck at 99%, tried swiping your finger down refreshing the pages only to get the dumb error message. Your gaze switched between the two screens, panicking, but happy that the only thoughts in your mind was an inner monologue about what the hell was going on, and what you were supposed to do now without anywhere to escape. Suddenly your locked phone screen lit up, and a notification popped up. 'space_se7en would like to share a note'. It was an Airdrop. You stared at it before pressing 'Accept': <br /><br /></div>
+  <div class="storyText mono" onClick="goToRoom()">hey, just sending this out to whomever opens it since the wifi's dropped. i know a way to be entertained. it basically lets you travel wherever you want from inside your mind, kind of like to parallel universes, just with no limit to where you can go. i've met people i've read about in books, and gone places i've only seen on tv. if you want to know how send me back a note via airdrop, you'll find me on the list</div>
+  <div id='idleScreen' class='idleScreenWhite hide'>
+    <div class='idleQuestion' style='color:black'>Are you still playing "The Waiting Room"?</div>
+    <div class='doorExit' style='background-image: url("/public/img/continue-white.jpg"); position: relative;top: 152px;left: 228px; background-color: white;' onclick='hideIdleScreen()'></div>
+    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left; color: black;'>Continue playing</div>
+    <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("/public/img/exit-game-white.jpg"); background-color: white;' onclick='window.location.href="start.html"'></div>
+    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right; color: black;'>Exit game</div>
+  </div>
+</body>
+<script>
+  document.getElementById('backgroundPlayer').currentTime = sessionStorage.audioTimestamp;
+
+  function goToRoom() {
+    var audioTimestamp = document.getElementById('backgroundPlayer').currentTime;
+    sessionStorage.audioTimestamp = audioTimestamp;
+    window.location.href = 'room-' + sessionStorage.nextRoom + '.html';
+  }
+
+  sessionStorage.script = sessionStorage.script + '</br></br>' + 'It had been 7 minutes since everything dropped, and the silence was loud. You tried reloading the pages only to see the dumb buffering wheel still stuck at 99%, tried swiping your finger down refreshing the pages only to get the dumb error message. Your gaze switched between the two screens, panicking, but happy that the only thoughts in your mind was an inner monologue about what the hell was going on, and what you were supposed to do now without anywhere to escape. Suddenly your locked phone screen lit up, and a notification popped up. \'space_se7en would like to share a note\'. It was an Airdrop. You stared at it before pressing \'Accept\'. <br /><br /> <i>hey, just sending this out to whomever opens it since the wifi dropped. i know a way to be entertained. it basically lets you travel wherever you want from inside your mind, kind of like to parallel universes, just with no limit to where you can go. i\'ve met people i\'ve read about in books, and gone places i\'ve only seen on tv. if you want to know how send me back a note via airdrop, you\'ll find me on the list</i>';
+
+  function hideIdleScreen () {
+    document.getElementById('idleScreen').classList.add('hide');    
+  }
+
+  function inactivityTime() {
+    var time;
+    window.onload = resetTimer;
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
+    function showIdleScreen() {
+      document.getElementById('idleScreen').classList.remove('hide');
+    }
+    function resetTimer() {
+      clearTimeout(time);
+      time = setTimeout(showIdleScreen, 60000)
+    }
+  };
+
+  inactivityTime();
+
+</script>
+</html> 
