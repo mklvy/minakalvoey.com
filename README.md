@@ -6,9 +6,9 @@ Accessible at [minakalvoey.com](https://minakalvoey.com).
 
 ## Structure
 
-Main website is in ./index.html, and Waiting Room game is in subfolder ./wr.
+Main website is in `./index.html`, and Waiting Room game is in subfolder `./wr`.
 
-All references within Waiting Room (and the whole repository) need to be relative (ie. instead of linking image by '/wr/img/img-01.jpg', use './img/img-01.jpg').
+All references within Waiting Room (and the whole repository) need to be relative (ie. instead of linking image by `'/wr/img/img-01.jpg'`, use `'./img/img-01.jpg').
 
 ## Updating
 
