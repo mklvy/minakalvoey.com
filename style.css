@@ -2,12 +2,12 @@ img {
   
   height: auto;
   display: block;
-  margin-left: 4vw;
+  margin-left: 3vw;
   margin-right: auto;
 }
 
 body {
-  background-color: black;
+  background-color: rgb(25, 25, 25);
   color: silver;
   margin: 0px;
 }
@@ -30,7 +30,7 @@ a{
 .maintext {
     text-align: left;
     margin-top: 2vw;
-    margin-left: 4vw; 
+    margin-left: 3vw; 
     width: 70%;
     display: inherit;
     font-size: 1vw;
