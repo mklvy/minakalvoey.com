@@ -2,7 +2,7 @@ img {
   
   height: auto;
   display: block;
-  margin-left: auto;
+  margin-left: 4vw;
   margin-right: auto;
 }
 
@@ -14,7 +14,7 @@ body {
 
 a{
   text-decoration: underline;
-  color: rgb(0,255,255);
+  color: white;
 }
 
 .minatitle {
@@ -28,13 +28,14 @@ a{
 }
 
 .maintext {
-    text-align: center;
-    margin: auto; 
-    width: 45%;
+    text-align: left;
+    margin-top: 2vw;
+    margin-left: 4vw; 
+    width: 70%;
     display: inherit;
-    font-size: 14px;
-    font-family: serif;
-    color: silver;
+    font-size: 1vw;
+    font-family: sans-serif;
+    color: white;
 }
 
 hr {
@@ -42,14 +43,7 @@ hr {
   width: 100%;
   border: none;
   margin: auto; 
-  box-shadow: 0 40px 45px -40px rgb(0,255,255) inset;
+  box-shadow: 0 40px 45px -40px inset;
+  color: white;
 
-}
-
-::-webkit-scrollbar {
-  width: 2px;
-}
- 
-::-webkit-scrollbar-thumb {
-  background: rgb(0,255,255); 
 }
