@@ -159,7 +159,7 @@ Your browser does not support the audio element.
     if (sessionStorage.storyMode == 'true') {
       sessionStorage.nextRoom = roomNumber;
       sessionStorage.roomsVisited++;
-      window.location.href = 'story-' + sessionStorage.roomsVisited + '.html';
+      window.location.href = 'story-' + sessionStorage.nextRoom + '.html';
     } else {
       window.location.href = 'room-' + roomNumber + '.html';
     }
