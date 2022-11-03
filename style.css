@@ -21,7 +21,7 @@ a{
     margin: auto;
     width: 45%;
     display: block;
-    font-size: 1vw;
+    font-size: 1.1vw;
     font-family: monospace;
     white-space: pre;
     color: silver;
@@ -33,7 +33,7 @@ a{
     margin-left: 3vw; 
     width: 70%;
     display: inherit;
-    font-size: 1vw;
+    font-size: 1.1vw;
     font-family: sans-serif;
     color: white;
 }
