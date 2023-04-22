@@ -245,8 +245,8 @@ body { min-height: 100vh; overflow: hidden; margin: 0; }
   font-family: 'Times';
   font-weight: 400;
   color: white;
-  font-size: 18px;
-  position: relative;
+  font-size: 50px;
+  position: center;
   width: 52%;
   text-align: center;
 }
