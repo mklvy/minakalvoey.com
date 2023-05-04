@@ -1,0 +1,42 @@
+titles only index.html
+
+<html>
+<head>
+  <link rel='stylesheet' href='./css/styles.css' />
+</head>
+<body id="page" style='background-color: black;'>
+  <div class='roomTitleContainer'>
+  </div>
+    <div class="startContentContainer">
+      <div class="text align">
+        <div class="startParagraph">The Waiting Room
+      </div>
+      <div class='startButtonContainer'>
+        <div class='startButton' style='margin: 0 auto;position: relative;top: 60%; background-image: url("./img/start.jpg");' onclick='startGame()'></div>
+        <div id="exitText" class='exitText' style='position: relative;top: 120;'>Click to start</div>
+    </div>
+    </div>
+  </div>
+</body>
+<script>
+  function randomNumber(min, max) { 
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  function startGame() {
+    sessionStorage.clear();
+    sessionStorage.storyMode = "true";
+    sessionStorage.roomsVisited = 0;
+    sessionStorage.script = '<div style="text-align:center">The Waiting Room </br>Mina Amiri Kalv&#248y</div>';
+    window.location.href = 'room-' + randomNumber(1, 1) + '.html';
+  }
+
+  function showExitText() {
+    document.getElementById('exitText').classList.remove('hide');
+  }
+
+  function hideExitText() {
+    document.getElementById('exitText').classList.add('hide');
+  }
+</script>
+</html> 

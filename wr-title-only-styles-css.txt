@@ -1,0 +1,495 @@
+title only styles.css
+
+html {
+  font-size: 18px;
+}
+
+body { min-height: 100vh; overflow: hidden; margin: 0; }
+
+.roomBackground {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.roomContainer {
+  width: 1280px;
+  height: 800px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.roomBackground1 {
+  background-image: url("../img/background1.jpg");
+}
+
+.roomTitleContainer {
+  display: flex;
+  justify-content: center;
+  top: 25px;
+  width: auto;
+  position: relative;
+}
+
+.roomTitle {  
+  font-family: 'Times';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.1rem;
+  text-align: center;
+  
+  color: #FFFFFF; 
+}
+
+.roomTitle:hover {  
+  cursor: pointer;
+}
+
+.room1ImageContainer {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 700px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 84px;
+}
+
+.room1ImageContainer:hover {
+  cursor: pointer;
+}
+
+.room2ImageContainer:hover {
+  cursor: pointer;
+}
+
+.room3ImageContainer:hover {
+  cursor: pointer;
+}
+
+.room4ImageContainer:hover {
+  cursor: pointer;
+}
+
+.room5ImageContainer:hover {
+  cursor: pointer;
+}
+
+.room2ImageContainer {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 700px;
+  position: fixed;
+  left: 176px;
+  bottom: 0;
+  top: 89px;
+}
+
+.room3ImageContainer {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 700px;
+  position: fixed;
+  right: 256px;
+  bottom: 0;
+  top: 120px;
+}
+
+.room4ImageContainer {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 700px;
+  position: fixed;
+  left: 510px;
+  bottom: 0;
+  top: 66px;
+}
+
+.room5ImageContainer {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 700px;
+  position: fixed;
+  right: 400px;
+  bottom: 0;
+  top: 98px;
+}
+
+.startImageContainer {
+  display: table-cell;
+}
+
+.startContentContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: auto;
+  top: 183px;
+}
+
+.align {
+  vertical-align: top;
+  display: inline-block;
+  position: relative;
+}
+
+.image {
+  max-width: 50%;
+}
+
+.text {
+  max-width: 50%;
+}
+
+.startImage {
+  border: 1px solid white;
+  width: 468px;
+  height: 468px;
+  background-size: contain;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  background-image: url("../img/startGame.png");
+}
+
+
+.room1Image {
+  border: 1px solid white;
+  width: 468px;
+  height: 468px;
+  background-size: contain;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;  
+}
+
+.room2Image {
+  border: 1px solid white;
+  width: 468px;
+  height: 468px;
+  background-image: url("../img/Room2.jpg");
+  background-size: contain;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;  
+}
+
+.room3Image {
+  border: 1px solid white;
+  width: 468px;
+  height: 468px;
+  background-image: url("../img/Room3.jpg");
+  background-size: contain;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;  
+}
+
+.room4Image {
+  border: 1px solid white;
+  width: 468px;
+  height: 468px;
+  background-image: url("../img/Room4.jpg");
+  background-size: contain;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;  
+}
+
+.room5Image {
+  border: 1px solid white;
+  width: 468px;
+  height: 468px;
+  background-image: url("../img/Room5.jpg");
+  background-size: contain;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;  
+}
+
+.roomBackground2 {
+  background-image: url("../img/background2.jpg");
+}
+
+.roomBackground3 {
+  background-image: url("../img/background3.jpg");
+}
+
+.roomBackground4 {
+  background-image: url("../img/background4.jpg");
+}
+
+.roomBackground5 {
+  background-image: url("../img/background5.jpg");
+}
+
+.storyParagraph {
+  font-family: 'Times';
+  font-weight: 400;
+  color: white;
+  font-size: 18px;
+  position: relative;
+  top: 90%;
+  width: 40%;
+  text-align: center;
+}
+
+.startParagraph {
+  font-family: 'Times';
+  font-weight: 90;
+  color: white;
+  font-size: 80px;
+  position: center;
+  width: 100%;
+  text-align: center;
+}
+
+.creditsParagraph {
+  font-family: 'Times';
+  font-weight: 400;
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  text-align: center;
+  width: 52%;
+  bottom: 0;
+}
+
+.storyParagraphRoom1 {
+  font-family: 'Times';
+  font-weight: 400;
+  color: white;
+  font-size: 18px;
+  position: relative;
+  text-align: center;
+  top: 96px;
+}
+
+.storyParagraphRoom1:hover {
+  cursor: pointer;
+}
+
+.doorsContainer {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 651px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 509px;
+  height: 146px;
+}
+
+.elevatorsContainer {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 650px;
+  position: fixed;
+  bottom: 0;
+  top: 509px;
+  height: 146px;
+  left: 209px;
+}
+
+.stairsContainer {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 548px;
+  position: fixed;
+  bottom: 0;
+  top: 541px;
+  height: 146px;
+  right: 332px;
+}
+
+.jumpContainer {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 186px;
+  position: fixed;
+  bottom: 0;
+  top: 490px;
+  height: 146px;
+  left: 770px;
+}
+
+.holeContainer {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 186px;
+  position: fixed;
+  bottom: 0;
+  top: 519px;
+  height: 146px;
+  right: 653px;
+}
+
+.doorExit {
+  height: 89px;
+  width: 54px;
+  border-radius: 0px;  
+  background-color: black;
+  position: fixed;
+  background-size: contain;
+}
+
+.startButtonContainer {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 470px;
+  position: center;
+  height: 146px;
+}
+
+.startButton {
+  height: 89px;
+  width: 54px;
+  border-radius: 0px;  
+  background-color: black;
+  position: relative;
+  background-size: contain;
+
+}
+
+.hide {
+  display: none;
+}
+
+.doorExit:hover {
+  display: block;
+  color: white;
+  cursor: pointer;
+}
+
+.startButton:hover {
+  display: block;
+  color: white;
+  cursor: pointer;
+}
+
+.storyText {
+  font-size: 18px;
+  font-family: 'Times';
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 22px;
+  text-align: center;
+  top: 200px;
+  position: relative;
+  font-style: italic;
+}
+
+.mono {
+  font-family: monospace;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.storyText:hover {
+  cursor: pointer;
+}
+
+div.line{
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  height: 1px;
+  background: #FFFFFF;
+}
+
+.exitText {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+
+.endParagraph {
+  font-family: 'Times';
+  font-weight: 400;
+  color: white;
+  font-size: 18px;
+  position: relative;
+  width: 52%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.endImage {
+  border: 1px solid white;
+  width: 468px;
+  height: 468px;
+  background-size: contain;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  background-image: url("../img/end-image.png");  
+}
+
+.endGameOptionsContainer {
+  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 420px;
+  height: 146px;
+  margin: 0 auto;
+}
+
+.idleScreen {
+  width: 721px;
+  height: 393px;
+  z-index: 1;
+  background-color: black;
+  border: 1px solid white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.idleScreenWhite {
+  width: 721px;
+  height: 393px;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid black;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.idleQuestion {
+  color: white;
+  text-align: center;
+  font-family: 'Times';
+  font-size: 18px;
+  top: 15%;
+  position: absolute;
+  width: 100%;
+}
+
+.printedScript {
+  font-family: sans-serif;
+}
+
+.endContainer {
+  width: 700px;
+}
+
+.endImageContainer {
+  width: 700px;
+}
