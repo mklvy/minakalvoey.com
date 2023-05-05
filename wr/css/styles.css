@@ -243,11 +243,11 @@ body { min-height: 100vh; overflow: hidden; margin: 0; }
 
 .startParagraph {
   font-family: 'Times';
-  font-weight: 400;
+  font-weight: 90;
   color: white;
-  font-size: 18px;
-  position: relative;
-  width: 52%;
+  font-size: 80px;
+  position: center;
+  width: 100%;
   text-align: center;
 }
 
@@ -345,7 +345,7 @@ body { min-height: 100vh; overflow: hidden; margin: 0; }
   width: 100%;
   margin: 0 auto;
   max-width: 470px;
-  position: relative;
+  position: center;
   height: 146px;
 }
 
