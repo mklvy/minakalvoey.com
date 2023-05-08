@@ -1,5 +1,7 @@
 <html>
 <head>
+<title>The Waiting Room</title>
+  <link rel="icon" type="image/x-icon" href="./img/wr-favicon.ico">
   <link rel='stylesheet' href='./css/styles.css' />
 </head>
 <audio id='backgroundPlayer' autoplay loop>
@@ -13,7 +15,7 @@ Your browser does not support the audio element.
   <div class='room1ImageContainer' onclick='getSituation()'>
     <div id='roomImage' class='room1Image'></div>
     <div class='storyParagraphRoom1' onclick='getSituation()'>
-      <p id='textParagraph'>You wake up, and feel your cheek pressed against a cold concrete floor. Keyboard tapping and mouse clicking is echoing.</p>
+      <p id='textParagraph'>You wake up. The world is about to be created.</p>
     </div>
   </div>
   <div class='doorsContainer'>
@@ -94,14 +96,14 @@ Your browser does not support the audio element.
     leftBodyCorner[1] + page.offsetHeight - 84
   );
 
-  var roomWelcomeText = 'You wake up, and feel your cheek pressed against a cold concrete floor. There is a sound from keyboard tapping and mouse clicking coming from somewhere.';
+  var roomWelcomeText = 'You wake up. The world is about to be created.';
 
   var situations = [
     'As you blink your eyes, you can see a blurry outline of yourself lying there reflected on the shiny metallic walls opposite you. They look thin, as if they would make that weird, wobbly sound metal sheets make if you shake them.',
-    'You sit up to get a view of the room. A long corridor lit up by fluorescent lamps in the ceiling, kind of vibrating, making it hard to focus and take in where you are. The room is cold, matching the sterile metallic look.',
+    'You sit up to get a view of the room. A long corridor lit up by fluorescent lamps in the ceiling, vibrating and flickering, making it hard to focus and take in where you are. The room is cold, matching the sterile metallic look.',
     '*Tap tap tap, click click*',
     'Keyboard tapping and mouse clicking is echoing from the end of the corridor, blending together with the Harry Potter theme song.',
-    'There seems to be an open space around the corner, and you start walking. On both sides of the corridor are rows of chairs, these too metallic, but with thin pillows on the seats.',
+    'There seems to be an open space around the corner, and you start walking. On both sides of the corridor are rows of chairs, metallic with thin, worn out pillows on the seats.',
     'You walk past a wizard sitting in one of the chairs, staring straight ahead as if waiting to be called. Further down three doors appear, each with a number on them; 111, 222, 333.',
     'As you stop in front of a door, you hear a high-pitched sound of a chair being dragged on the concrete floor.',
     '*Screeeech*',

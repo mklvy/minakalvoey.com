@@ -390,7 +390,7 @@ body { min-height: 100vh; overflow: hidden; margin: 0; }
 .mono {
   font-family: monospace;
   font-style: normal;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .storyText:hover {

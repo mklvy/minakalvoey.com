@@ -1,5 +1,7 @@
 <html>
 <head>
+<title>The Waiting Room</title>
+  <link rel="icon" type="image/x-icon" href="./img/wr-favicon.ico">
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <audio id='backgroundPlayer' autoplay loop>
@@ -10,7 +12,7 @@ Your browser does not support the audio element.
   <div class="roomTitleContainer">
     <div class='roomTitle' title='Back to the start page' style='color:black;' onclick='window.location.href="index.html"'>The Waiting Room</div>
   </div>
-  <div class="storyText" onClick="goToRoom()">Only when the game you were playing didn't restart once you failed the level, you noticed that it had been quiet and the episode had stopped as well. You looked up expecting to see the 'Are you still watching' screen on Netflix, only to discover that the buffering wheel was stuck at 99%. You tried reloading the page to no avail. The wifi icon had turned light grey, you toggled it off, waited a short while, and toggled it back on. The icon had the line going across it, indicating that there is no signal at all. You unlocked your phone again to check social media, but they didn't refresh. You turned off the wifi, but data roaming didn't work either. 'Unable to refresh feed'. The anxiety slowly rose in your body, and you slid yourself out of the dent to sit up on the couch.</div>
+  <div class="storyText" onClick="goToRoom()">Only when the game you were playing didn't restart once you failed the level, you noticed that it had been quiet and the episode had stopped as well. You looked up expecting to see the <span class="mono">Are you still watching</span> screen on Netflix, only to discover that the buffering wheel was stuck at 99%. You tried reloading the page to no avail. The wifi icon had turned light grey, you toggled it off, waited a short while, and toggled it back on. The icon had the line going across it, indicating that there is no signal at all. You unlocked your phone again to check social media, but they didn't refresh. You turned off the wifi, but data roaming didn't work either. <span class="mono">Unable to refresh feed</span> The anxiety slowly rose in your body, and you slid yourself out of the dent to sit up on the couch.</div>
   <div id='idleScreen' class='idleScreenWhite hide'>
     <div class='idleQuestion' style='color:black'>Are you still playing "The Waiting Room"?</div>
     <div class='doorExit' style='background-image: url("./img/continue-white.jpg"); position: relative;top: 152px;left: 228px; background-color: white;' onclick='hideIdleScreen()'></div>
