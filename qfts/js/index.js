@@ -467,7 +467,7 @@ function addMessage() {
         setInterval(function () {
           flashImagesInterval = flashImage();
         }, 3000);
-      }, 45000)
+      }, 40000)
 
       addGuideMessage(finalQuestions.introMessages[currentIndex]);
       
