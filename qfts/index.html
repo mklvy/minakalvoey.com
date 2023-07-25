@@ -1,0 +1,54 @@
+<html>
+<head>
+  <link rel='stylesheet' href='./css/styles.css' />
+</head>
+<audio id='backgroundPlayer' autoplay loop></audio> 
+<body id="page" class="noselect">
+    <div class="startParagraph startPage">
+        <p class="textBig">"Once upon a time, I dreamt that I was someone else, somewhere else, to all intents and purposes another fraction of myself. I was conscious only of my happiness as that fraction of myself, unaware that I was my original self. Soon I awakened, and there I was, veritably myself again. Now I do not know whether I was then dreaming 
+            I was a fraction of myself, or whether I am now that fraction, dreaming I am my original self."</p>
+    </div>
+    <div id="startButton" class="startButton enterText startPage">Enter</div>
+    <div id="welcome" class="chatBox hide welcomePage">
+        <div class="chatBoxTitleContainer"></div>
+        <div class="chatBoxMessagesContainer">
+            <div class="welcomePageContainer">
+                <img src="/public/img/start/startimg.png" class="circleImageContainer"></img>
+                <div class="title">Quest For the Self</div>
+            </div>
+        </div>
+        <div class="chatBoxFooterContainer">
+            <div class="chatBoxInputMessageContainer">
+                <div class="textBox"></div>
+                <div class="sendButton">SEND</div>
+            </div>
+        </div>
+    </div>
+    <div class="chatBox hide chat">
+        <div class="chatBoxTitleContainer">
+            <div class="headerContainer">
+                <img src="/public/img/start/startimg.png" class="circleImageContainerSmall"></img>
+                <div class="titleSmall">Quest For the Self</div>
+            </div>
+        </div>
+        <div id="chatBox" class="chatBoxMessagesContainer"></div>
+        <div id="bigMessage" class="chatBoxBigMessageContainer hide"></div>
+        <div class="chatBoxFooterContainer">
+            <div class="chatBoxInputMessageContainer">
+                <div id="textInput" class="textBox"></div>
+                <div class="sendButton">SEND</div>
+            </div>
+        </div>
+    </div>
+    <div id="end" class="finalPage hide">
+        <div id="finalText" class="yellowParagraphs"></div>
+    </div>
+    <div id="credits" class="creditsPage pointer hide"></div>
+    <div id='idleScreen' class='idleScreen hide'>
+        <p class="chatBoxMessageContainer">Are you still reading?</p>
+        <p id="hideIdleScreen" class="chatBoxMessageContainer rightAligned pointer">Continue reading</p>
+        <p class="chatBoxMessageContainer rightAligned pointer" onclick='window.location.href="index.html"'>Back to start</p>
+    </div>
+</body>
+<script type="module" src="./js/index.js"></script>
+</html>

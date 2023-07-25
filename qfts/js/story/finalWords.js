@@ -1,0 +1,25 @@
+'use strict';
+
+export var finalWords = [
+	'Let me tell you the whole story...',
+	'Some time ago, someone decided to shift realities, to transcend their consciousness to a desired reality.',
+	'In doing so, they left behind a piece of consciousness in their current reality, a so-called clone.',
+	'Unbeknownst to the first shifter, their clone decided to reality shift, leaving behind another piece of consciousness in their reality, and unbeknownst to <i>that</i> shifter, <i>their</i> clone decided to reality shift, and another one, and so it went on.',
+	'Somewhere along the line, one of the clones had started to feel lost, had started to see things we can\'t see.',
+	'As if something was missing, they went through their days feeling drawn to unknown places, having dreams so real that they would live the following day as if they really had been in those places all along.',
+	'An ad for an online chat service came at the right time.',
+	'Desperate to end the long lasting feeling of passivity and forever searching, they began the <i>Quest for the Self.</i>',
+	'...',
+	'After being interrupted during the questionnaire, the clone found themself in an undefined space,',
+	'seemingly with no borders and no boundaries.',
+	'It felt familiar.',
+	'After some time, the sound of a voice from the other side filled the space.',
+	'It explained how there were all these pieces of consciousness everywhere, that that was the reason the clone had been feeling lost,',
+	'that the pieces of consciousness were other clones feeling the same way, that the images they had been seeing were the other clones\' realities,',
+	'the realities where they too had been seeing images from other places, as if they were dreams but must have been real.',
+	'The voice, also a clone, maybe the first one of them all, had spent all this time trying to collect themself, slowly, piece by piece.',
+	'Once connected, they would finally have a sense of balance, their real and cloned selves would be the same.',
+	'“I have come to deliver something you have lost.”',
+	'“Follow me to find what you are searching for.”',
+	'Can they be trusted?',
+];
