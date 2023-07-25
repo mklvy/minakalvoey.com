@@ -46,7 +46,7 @@ function showElements(className) {
 }
 
 function setQuizImage(parent, imageId) {
-  var url = '/public/img/yellow/quiz' + quizImageIds[imageId] + '.png';
+  var url = '/qfts/img/yellow/quiz' + quizImageIds[imageId] + '.png';
   var imageElem = document.createElement('img');
   imageElem.classList.add('quizImg');
   imageElem.onload = function() { parent.scrollIntoView(); };
@@ -65,7 +65,7 @@ function flashImage() {
     clearInterval(flashImagesInterval);
 
     setTimeout(function() {
-      document.getElementById('backgroundPlayer').src = '/public/audio/end-sound.mp3';
+      document.getElementById('backgroundPlayer').src = '/qfts/audio/end-sound.mp3';
       document.getElementById('backgroundPlayer').play();
       hideElements('chatBox');
       showElements('finalPage');
@@ -78,7 +78,7 @@ function flashImage() {
     var index = randomNumber(0, 4);
     var imageName = imageNames[index];
     var number = randomNumber(1, 5);
-    var url = '/public/img/red/' + imageName + '-' + number + '.png';
+    var url = '/qfts/img/red/' + imageName + '-' + number + '.png';
     var imageElem = document.createElement('img');
     imageElem.classList.add('flashImg');
     imageElem.style.top = randomNumber(3, 54) + '%';
@@ -99,7 +99,7 @@ function flashImage() {
 function startGame() {
   hideElements('startPage');
   showElements('welcomePage');
-  document.getElementById('backgroundPlayer').src = '/public/audio/chat-sound.mp3';
+  document.getElementById('backgroundPlayer').src = '/qfts/audio/chat-sound.mp3';
   document.getElementById('backgroundPlayer').play();
 }
 
@@ -139,7 +139,7 @@ function addMessageImage() {
 
   var imageName = messages[step1CurrentIndex][0].image;
   var number = randomNumber(1, 5);
-  var url = '/public/img/red/' + imageName + '-' + number + '.png';
+  var url = '/qfts/img/red/' + imageName + '-' + number + '.png';
   var imageElem = document.createElement('img');
   imageElem.classList.add('flashImg');
   imageElem.classList.add('centerImage');
