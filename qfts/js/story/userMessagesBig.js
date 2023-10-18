@@ -2,7 +2,7 @@
 
 export var userMessagesBig = [
   [{
-    text: "i woke up today in that red landscape i've always dreamt of, only now it's not a dream and i'm here. the forest is red, the lake, the hillside, the sky is red. at least i can rest assured that noting bad will happen. it feels familiar, i do know it after all",
+    text: "i woke up today in that red landscape i've always dreamt of, only now it's not a dream and i'm here. the forest is red, the lake, the hillside, the sky is red. at least i can rest assured that nothing bad will happen. it feels familiar, i do know it after all",
     time: "06:32",
     image: "red-landscape"
   }],

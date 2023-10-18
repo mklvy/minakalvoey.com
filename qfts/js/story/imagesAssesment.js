@@ -2,7 +2,7 @@
 
 export var imagesAssesment = {
   guideMessages: [
-    'Thank you for sharing. Based on the recordings you shared, Quest for the Self is the right service for you.',
+    'Thank you for sharing. Based on the recordings you have sent, Quest for the Self is the right service for you.',
     'We will certainly do our best to make your quest as fruitful as possible. Please wait a moment.',
     '...',
     'We have prepared an image assessment test for you, it will help us deliver the best results. We will send a series of photos, and you pick the word you relate it to the most.',
@@ -14,8 +14,8 @@ export var imagesAssesment = {
   quizOptions: [
     {
       option1: 'Totality',
-      option2: 'Suspense',
-      option3: 'Balance'
+      option2: 'Readiness',
+      option3: 'Stability'
     },
     {
       option1: 'Existence',
@@ -50,12 +50,12 @@ export var imagesAssesment = {
     {
       option1: 'Reflection',
       option2: 'Suspense',
-      option3: 'Tranquility'
+      option3: 'Curiosity'
     },
     {
       option1: 'Certainty',
-      option2: 'Totality',
-      option3: 'Absorption'
+      option2: 'Excitement',
+      option3: 'Darkness'
     },
   ]
 };
