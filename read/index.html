@@ -1,42 +1,18 @@
-<html>
-<head>
-  <title>The Waiting Room</title>
-  <link rel="icon" type="image/x-icon" href="./img/wr-favicon.ico">
-  <link rel='stylesheet' href='./css/styles.css' />
-</head>
-<body id="page" style='background-color: black;'>
-  <div class='roomTitleContainer'>
-  </div>
-    <div class="startContentContainer">
-      <div class="text align">
-        <div class="startParagraph">The Waiting Room
-      </div>
-      <div class='startButtonContainer'>
-        <div class='startButton' style='margin: 0 auto;position: relative;top: 180%; background-image: url("./img/start.jpg");' onclick='startGame()'></div>
-        <div id="exitText" class='exitText' style='position: relative;top: 280;'>Click to start</div>
-    </div>
-    </div>
-  </div>
-</body>
-<script>
-  function randomNumber(min, max) { 
-    return Math.floor(Math.random() * (max - min) + min);
-  }
-
-  function startGame() {
-    sessionStorage.clear();
-    sessionStorage.storyMode = "true";
-    sessionStorage.roomsVisited = 0;
-    sessionStorage.script = '<div style="text-align:center">The Waiting Room </br>Mina Amiri Kalv&#248y</div>';
-    window.location.href = 'room-' + randomNumber(1, 1) + '.html';
-  }
-
-  function showExitText() {
-    document.getElementById('exitText').classList.remove('hide');
-  }
-
-  function hideExitText() {
-    document.getElementById('exitText').classList.add('hide');
-  }
-</script>
-</html> 
+<!doctype html>
+  <head>
+    <meta charset="utf-8">
+    <title>Let me tell you the whole story…</title>
+    <link rel="icon" type="image/x-icon" href="./pics/favicon.png">
+    <meta name="description" content="Mina Amiri Kalvøy">
+          <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+<div class="maintext">
+<p><i>Let me tell you the whole story…</i></p>
+<br>
+<br>
+<p><i>The Waiting Room (2021–)</i> is an ongoing web-based work of interactive fiction inspired by reality shifting – a phenomenon described as "transcending" one's consciousness to a desired reality. The work is written and designed by <a href="https://minakalvoey.com/" target="blank"> Mina Amiri Kalvøy.</a> Read both chapters below (desktop only).<br><br>Web development by David Barriga Ruano.<br>Technical support by Julian Netzer and Nikola Marić.</a></p>
+<br>
+<br>
+<p><a href="https://minakalvoey.com/wr/" target="blank"> Chapter 1: The Waiting Room</a></p>
+<p><a href="https://minakalvoey.com/qfts/" target="blank"> Chapter 2: Quest for the Self</a></p>
