@@ -491,3 +491,8 @@ div.line{
 .endImageContainer {
   width: 700px;
 }
+
+a{
+  text-decoration: underline;
+  color: white;
+}

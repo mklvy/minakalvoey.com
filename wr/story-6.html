@@ -12,13 +12,13 @@ Your browser does not support the audio element.
   <div class="roomTitleContainer">
     <div class='roomTitle' title='Back to the start page' style='color:black;' onclick='window.location.href="index.html"'>The Waiting Room</div>
   </div>
-  <div class="storyText" onClick="goToRoom()">A strange sense that the person who sent you the note already knew who you were, made your stomach knot, but you pushed it away and walked over to your bed. You read the instructions once more, locked your phone and laid down in a starfish position. No limbs touching, counting to 100. Your tired and swollen eyes felt heavy, and you began imagining a far away place. 77, 78, 79, 80... Slowly you dozed off.</div>
+  <div class="storyText" onClick="goToRoom()">A strange sense that you knew this person, and that they knew you, made your stomach knot. You pushed it away and walked over to your bed. After reading the instructions once more, you locked your phone and laid down in a starfish position. No limbs touching, counting to 100. What place should you think of? Your tired and swollen eyes felt heavy. 77, 78, 79… Slowly you dozed off.</div>
   <div id='idleScreen' class='idleScreenWhite hide'>
-    <div class='idleQuestion' style='color:black'>Are you still playing "The Waiting Room"?</div>
+    <div class='idleQuestion' style='color:black'>Are you still reading "The Waiting Room"?</div>
     <div class='doorExit' style='background-image: url("./img/continue-white.jpg"); position: relative;top: 152px;left: 228px; background-color: white;' onclick='hideIdleScreen()'></div>
-    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left; color: black;'>Continue playing</div>
+    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left; color: black;'>Continue reading</div>
     <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("./img/exit-game-white.jpg"); background-color: white;' onclick='window.location.href="index.html"'></div>
-    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right; color: black;'>Exit game</div>
+    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right; color: black;'>Exit</div>
   </div>
 </body>
 <script>
@@ -28,7 +28,7 @@ Your browser does not support the audio element.
     var audioTimestamp = document.getElementById('backgroundPlayer').currentTime;
     sessionStorage.audioTimestamp = audioTimestamp;
     sessionStorage.storyMode = 'false';
-    sessionStorage.script = sessionStorage.script + '</br></br>' + 'A strange sense that the person who sent you the note already knew who you were, made your stomach knot, but you pushed it away and walked over to your bed. You read the instructions once more, locked your phone and laid down in a starfish position. No limbs touching, counting to 100. Your tired and swollen eyes felt heavy, and you began imagining a far away place. 77, 78, 79, 80... Slowly you dozed off.';
+    sessionStorage.script = sessionStorage.script + '</br></br>' + 'A strange sense that you knew this person, and that they knew you, made your stomach knot. You pushed it away and walked over to your bed. After reading the instructions once more, you locked your phone and laid down in a starfish position. No limbs touching, counting to 100. What place should you think of? Your tired and swollen eyes felt heavy. 77, 78, 79… Slowly you dozed off.';
     window.location.href = 'end.html';
   }
 

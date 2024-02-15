@@ -15,7 +15,7 @@ Your browser does not support the audio element.
   <div class='room2ImageContainer' onclick='getSituation()'>
     <div id='roomImage' class='room2Image'></div>
     <div class='storyParagraphRoom1' onclick='getSituation()'>
-      <p id='textParagraph'>You wake up, your cheek itching from the wall-to-wall carpet. A faint sound of snoring is coming from somewhere.</p>
+      <p id='textParagraph'>You wake up... The world is about to be created.</p>
     </div>
   </div>
   <div class='elevatorsContainer'>
@@ -26,11 +26,11 @@ Your browser does not support the audio element.
     <div id='exitText2' class='hide exitText' style='position: absolute; bottom: 0%; width: 100%; right: 24%; text-align: right'>You take the elevator down</div>
   </div>
   <div id='idleScreen' class='idleScreen hide'>
-    <div class='idleQuestion'>Are you still playing "The Waiting Room"?</div>
+    <div class='idleQuestion'>Are you still reading "The Waiting Room"?</div>
     <div class='doorExit' style='background-image: url("./img/start.jpg"); position: relative;top: 152px;left: 228px;' onclick='hideIdleScreen()'></div>
-    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue playing</div>
+    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue reading</div>
     <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("./img/exit-game.jpg");' onclick='window.location.href="index.html"'></div>
-    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit game</div>
+    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit</div>
   </div>
 </body>
 <script>
@@ -90,22 +90,22 @@ Your browser does not support the audio element.
     leftBodyCorner[1] + page.offsetHeight - 84
   );
 
-  var roomWelcomeText = 'You wake up, your cheek itching from the wall-to-wall carpet. A faint sound of snoring is coming from somewhere.';
+  var roomWelcomeText = 'You wake up... The world is about to be created.';
 
   var situations = [
-    'The walls are painted white, and the green carpet is full of fur balls and dust. Along the left wall is a row of chairs, covered in the same fabric as the carpet, only brown. The overhead lighting is so bright all shadows have disappeared.',
+    'The walls are painted white, and the green carpet is full of fur balls and dust. Along the left wall is a row of chairs, covered in the same fabric as the carpet. The overhead lighting is so bright and harsh, all shadows disappear.',
     '*Snooooooore*',
-    'You make your way down the hall. At the end of the hallway there is a small window in the wall, behind it a separate room with a desk, a water cooler and someone sleeping with their head resting on the keyboard. A grey fluffy cat jumps up on the desk.',
+    'You make your way down the hall. At the end of the hallway is a small window in the wall, behind it a separate room with a desk, a water cooler, and someone sleeping on a chair resting their head against the wall. A grey fluffy cat jumps up on the desk.',
     '*Meeow*',
-    'The cat walks over the person\'s head, waking him up.',
-    '"Oh goodness, hello!" he shouts, the sound muffled from behind the glass. You watch him try to open the door. Finally he manages',
-    '"I never intend on falling asleep, it is just so hard to stay awake sometimes... Anyways, this is your Waiting Room. I am not supposed to tell you this, but you can travel from here to somewhere else. Someone should call you to give more information, but honestly they are not of much help. See if you can find a way out!"',
-    'You want to ask the person by the desk what he means about getting out, but he falls asleep. You turn around, trying to look for any exits.',
-    'Something brushes your legs, and as you look down the grey fluffy cat looks up at you with big, yellow eyes. It walks over to the wall, pushing its body against it.'
+    'You silently open the door to the small room, and sneak over to the desk. The monitor is dark. As you reach over to touch the mouse the person wakes up, and you only get a glance of a login screen. Account name: space_se777en.',
+    '"Oh goodness, don\'t touch that please!" he almost shouts.',
+    '"I shouldn\'t be falling asleep here, I just can\'t keep my eyes open… Anyways, you will have heard what this place is by now. You can travel from here to somewhere else, and someone should call you to give you more information. They are not of much help though, and you seem to be curious enough to figure this all out. See if you can find a way!"',
+    'You want to ask the person by the desk what he means by finding a way, but he falls asleep. You turn around, trying to look for any exits.',
+    'Something brushes against your leg, as you look down the grey fluffy cat looks back up at you with big, yellow eyes. It walks over to the wall, leaning its body against it.'
   ];
 
   var playerActions = {
-    text: 'Unsure of what exactly you are supposed to do, you take a seat on a chair facing two elevator doors. The snoring has started again.\n\n*Ding*\n\nThe doors of the elevator open. Inside, there are no buttons for any floors, only two buttons showing an arrow up or down. Do you enter the elevator?',
+    text: 'You take a seat on a chair facing two elevator doors. The snoring has started again. *Ding* The doors of the elevator open, and you enter. Inside, there are no floor numbers, only two buttons indicating up or down. Do you take the elevator?',
     choices: [
       {
         'text': 'You take the elevator up',

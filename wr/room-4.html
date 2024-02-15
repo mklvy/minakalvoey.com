@@ -15,7 +15,7 @@ Your browser does not support the audio element.
   <div class='room4ImageContainer' onclick='getSituation()'>
     <div id='roomImage' class='room4Image'></div>
     <div class='storyParagraphRoom1' onclick='getSituation()'>
-      <p id='textParagraph'>You wake up staring at the ceiling, or lack thereof. Big, white, fluffy clouds are slowly drifting by in a blue sky.</p>
+      <p id='textParagraph'>You wake up... The world is about to be created.</p>
     </div>
   </div>
   <div class='jumpContainer'>
@@ -23,11 +23,11 @@ Your browser does not support the audio element.
     <div id='exitText1' class='hide exitText' style='position: absolute; bottom: 0%; width: 100%;'>You jump after</div>
   </div>
   <div id='idleScreen' class='idleScreen hide'>
-    <div class='idleQuestion'>Are you still playing "The Waiting Room"?</div>
+    <div class='idleQuestion'>Are you still reading "The Waiting Room"?</div>
     <div class='doorExit' style='background-image: url("./img/start.jpg"); position: relative;top: 152px;left: 228px;' onclick='hideIdleScreen()'></div>
-    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue playing</div>
+    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue reading</div>
     <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("./img/exit-game.jpg");' onclick='window.location.href="index.html"'></div>
-    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit game</div>
+    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit</div>
   </div>
 </body>
 <script>
@@ -87,22 +87,22 @@ Your browser does not support the audio element.
     leftBodyCorner[1] + page.offsetHeight - 84
   );
 
-  var roomWelcomeText = 'You wake up staring at the ceiling, or lack thereof. Big, white, fluffy clouds are slowly drifting by in a blue sky.'
+  var roomWelcomeText = 'You wake up… The world is about to be created.'
 
   var situations = [
-    'There is a gentle breeze in the space, not cold, but like on a nice summer evening. The sky is bright, and you squint your eyes before sitting up. ',
-    'You realise there are no walls, and get a shiver from thinking about how high up you might be. The urge to go towards the edge and look over is strong.',
-    'Along the edges of the platform are chairs, and at the end of it, an empty desk. Your feet are wobbly as you get up. It feels like just one small gust of wind could make you fly away.',
-    'You walk carefully towards the desk, taking your time and looking straight ahead to overcome the fear of falling down.',
-    'The desk seems to zoom further and further away. The chairs are spawning as you go past, low, Eames-like chairs with brown leather seats and metal legs. Pop, pop, popping up for each step.',
+    'There are no walls, a gentle breeze, and a bright sky. You must be high up and you are outside, maybe on top of a building?',
+    'You squint your eyes, and get a shiver from thinking of how high up you might be. The urge to go towards the edge and have a look over is strong.',
+    'At the end of the platform there is a desk with an open laptop on it.',
+    'You start walking towards the desk, your feet wobbly as you take the first step. It feels like just one small gust of wind can make you fly away. You are trying to look straight ahead.',
+    'The desk seems to zoom further and further away. The chairs along the sides are spawning as you go past. Pop, pop, popping up for each step. It all makes it feel as if you are walking in the same spot.',
     '*Pop pop, pop*',
-    'The heat from the sun forms heat waves on the beige tiled floor, and you squint your eyes.',
-    'There is someone by the desk, you can\'t tell if they are walking towards you or standing still. They are wearing a white robe and brown leather sandals, matching the chairs on the sides of the platform. Their brown, shoulder-long hair is flowing even though there is no wind.',
-    '“You are in a Waiting Room. This is a place you have imagined in your mind. See it as somewhere between your current and desired reality. It is not a dream, but it is not the reality you are used to. Sit down on one of those chairs, someone will see you to tell you more.” They get up from the big office chair, close the laptop and walk towards the edge of the platform.'
+    'The heat from the sun creates waves dancing on top of the beige tiled floor, and you squint your eyes.',
+    'Someone seems to be by the desk, you can’t tell if they are walking towards you, away from you, or standing still. The light from the sky and the heat waves makes them look angelic.',
+    '"There you are," a voice sounding as if being played from a speaker says. "This is a place you have imagined in your mind. See it as somewhere between your current reality and the reality you desire. It is not a dream, but it is not the world you are used to." Is that them speaking? Do they know you?'
   ];
 
   var playerActions = {
-    text: '"Wait, where did you say this was?" You run after trying to catch up with them. They seem to be disappearing further away the closer you get. When you think you\'re close enough to reach out your arm and touch them, they jump off the platform. You balance on the edge. Do you jump?',
+    text: '"Wait, don’t leave!" They turn around, you run after trying to catch up with them. They seem to disappear further away the closer you get. When you think you’re close enough to reach out your arm and touch them, they jump off the platform. Confused, you balance on the edge. Do you jump?',
     choices: [
       {
         text: 'You jump after',

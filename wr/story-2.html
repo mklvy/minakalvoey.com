@@ -12,13 +12,13 @@ Your browser does not support the audio element.
   <div class="roomTitleContainer">
     <div class='roomTitle' title='Back to the start page' style='color:black;' onclick='window.location.href="index.html"'>The Waiting Room</div>
   </div>
-  <div class="storyText"onClick="goToRoom()">It was hard to remember how it felt to sit and just be, something you always thought you should be able to do, but at the same time found incredibly boring and unnecessary. It's so easy to sit and just watch, let the screen fill your mind with different worlds and characters. The times you paid attention to a show or a movie, you even felt genuinely connected to the universes. Sometimes more than you did your own. The episode you were half-watching ended, and the next one started automatically.</div>
+  <div class="storyText"onClick="goToRoom()">At the time you still felt like you should be able to sit and just be, listen to music or work on something inspiring. Still, that seemed harder than to sit and just watch. The screen filled your mind with different worlds, different to the one you had created in your room. It had allowed you to travel, to be someone else, see something else, and it had eased your mind. The episode you were half watching ended, and the next one started automatically, as it always did.</div>
   <div id='idleScreen' class='idleScreenWhite hide'>
     <div class='idleQuestion' style='color:black'>Are you still playing "The Waiting Room"?</div>
     <div class='doorExit' style='background-image: url("./img/continue-white.jpg"); position: relative;top: 152px;left: 228px; background-color: white;' onclick='hideIdleScreen()'></div>
-    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left; color: black;'>Continue playing</div>
+    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left; color: black;'>Continue reading</div>
     <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("./img/exit-game-white.jpg"); background-color: white;' onclick='window.location.href="index.html"'></div>
-    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right; color: black;'>Exit game</div>
+    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right; color: black;'>Exit</div>
   </div>
 </body>
 <script>
@@ -30,7 +30,7 @@ Your browser does not support the audio element.
     window.location.href = 'room-' + sessionStorage.nextRoom + '.html';
   }
 
-  sessionStorage.script = sessionStorage.script + '</br></br>' + 'It was hard to remember how it felt to sit and just be, something you always thought you should be able to do, but at the same time found incredibly boring and unnecessary. It\'s so easy to sit and just watch, let the screen fill your mind with different worlds and characters. The times you paid attention to a show or a movie, you even felt genuinely connected to the universes. Sometimes more than you did your own. The episode you were half-watching ended, and the next one started automatically.';
+  sessionStorage.script = sessionStorage.script + '</br></br>' + 'At the time you still felt like you should be able to sit and just be, listen to music or work on something inspiring. Still, that seemed harder than to sit and just watch. The screen filled your mind with different worlds, different to the one you had created in your room. It had allowed you to travel, to be someone else, see something else, and it had eased your mind. The episode you were half watching ended, and the next one started automatically, as it always did.';
 
   function hideIdleScreen () {
     document.getElementById('idleScreen').classList.add('hide');    

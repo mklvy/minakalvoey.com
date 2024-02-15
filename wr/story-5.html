@@ -12,14 +12,14 @@ Your browser does not support the audio element.
   <div class="roomTitleContainer">
     <div class='roomTitle' title='Back to the start page' style='color:black;' onclick='window.location.href="index.html"'>The Waiting Room</div>
   </div>
-  <div class="storyText" onClick="goToRoom()">The wifi seemed to have dropped everywhere, not just at yours. Someone knew more than you, were they the reason for the drop? Desperate to get out of your own head, you wrote them back and waited on your couch for a reply. It came quickly. </br></br></div>
-  <div class="storyText mono" onClick="goToRoom()">nice, i thought you might want to try. it can take a while to master, but the method i've found most helpful is one where you lay on your back in a starfish position, make sure your limbs aren't touching. start counting to 100 while visualising the place you want to go. you can even say affirmations, but i usually skip this. once you go to sleep you should wake up where you want. careful though, it's not dangerous or anything but you could get stuck in this kind of in-between space if you're not completely sure where you're going. good luck and enjoy, see you around maybe</div>
+  <div class="storyText" onClick="goToRoom()">The wifi had seemed to have dropped everywhere, not just at yours. Someone knew more than you. Knew you? Desperate to get out, you wrote them back and waited on your couch for a reply. It came quickly. </br></br></div>
+  <div class="storyText mono" onClick="goToRoom()">nice, i thought you might want to try. it can take a while to get right, but the method i’ve found most helpful is one where you lay on your back in a starfish position, make sure your limbs aren’t touching. start counting to 100 while visualising the place you want to go. you can even use affirmations, but i usually skip those. once you go to sleep you should wake up where you want. careful though, it’s not dangerous or anything but you could get stuck in this kind of in-between space. good luck and enjoy, see you around maybe</div>
   <div id='idleScreen' class='idleScreenWhite hide'>
-    <div class='idleQuestion' style='color:black'>Are you still playing "The Waiting Room"?</div>
+    <div class='idleQuestion' style='color:black'>Are you still reading "The Waiting Room"?</div>
     <div class='doorExit' style='background-image: url("./img/continue-white.jpg"); position: relative;top: 152px;left: 228px; background-color: white;' onclick='hideIdleScreen()'></div>
-    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left; color: black;'>Continue playing</div>
+    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left; color: black;'>Continue reading</div>
     <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("./img/exit-game-white.jpg"); background-color: white;' onclick='window.location.href="index.html"'></div>
-    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right; color: black;'>Exit game</div>
+    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right; color: black;'>Exit</div>
   </div>
 </body>
 <script>
@@ -31,7 +31,7 @@ Your browser does not support the audio element.
     window.location.href = 'room-' + sessionStorage.nextRoom + '.html';
   }
 
-  sessionStorage.script = sessionStorage.script + '</br></br>' + 'The wifi seemed to have dropped everywhere, not just at yours. Someone knew more than you, were they the reason for the drop? Desperate to get out of your own head, you wrote them back and waited on your couch for a reply. It came quickly. </br></br><i>nice, i thought you might want to try. it can take a while to master, but the method i\'ve found most helpful is one where you lay on your back in a starfish position, make sure your limbs aren\'t touching. start counting to 100 while visualising the place you want to go. you can even say affirmations, but i usually skip this. once you go to sleep you should wake up where you want. careful though, it\'s not dangerous or anything but you could get stuck in this kind of in-between space if you\'re not completely sure where you\'re going. good luck and enjoy, see you around maybe</i>';
+  sessionStorage.script = sessionStorage.script + '</br></br>' + 'The wifi had seemed to have dropped everywhere, not just at yours. Someone knew more than you. Knew you? Desperate to get out, you wrote them back and waited on your couch for a reply. It came quickly. </br></br><i>nice, i thought you might want to try. it can take a while to get right, but the method i\'ve found most helpful is one where you lay on your back in a starfish position, make sure your limbs aren’t touching. start counting to 100 while visualising the place you want to go. you can even use affirmations, but i usually skip those. once you go to sleep you should wake up where you want. careful though, it\'s not dangerous or anything but you could get stuck in this kind of in-between space. good luck and enjoy, see you around maybe</i>';
 
   function hideIdleScreen () {
     document.getElementById('idleScreen').classList.add('hide');    

@@ -15,7 +15,7 @@ Your browser does not support the audio element.
   <div class='room1ImageContainer' onclick='getSituation()'>
     <div id='roomImage' class='room1Image'></div>
     <div class='storyParagraphRoom1' onclick='getSituation()'>
-      <p id='textParagraph'>You wake up. The world is about to be created.</p>
+      <p id='textParagraph'>You wake up... The world is about to be created.</p>
     </div>
   </div>
   <div class='doorsContainer'>
@@ -29,11 +29,11 @@ Your browser does not support the audio element.
     <div id='exitText3' class='hide exitText' style='position: absolute; right: 7%; text-align: right; bottom: 0%; width: 100%;'>You open door 333</div>
   </div>
   <div id='idleScreen' class='idleScreen hide'>
-    <div class='idleQuestion'>Are you still playing "The Waiting Room"?</div>
+    <div class='idleQuestion'>Are you still reading "The Waiting Room"?</div>
     <div class='doorExit' style='background-image: url("./img/start.jpg"); position: relative;top: 152px;left: 228px;' onclick='hideIdleScreen()'></div>
-    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue playing</div>
+    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue reading</div>
     <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("./img/exit-game.jpg");' onclick='window.location.href="index.html"'></div>
-    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit game</div>
+    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit</div>
   </div>
 </body>
 <script>
@@ -96,20 +96,20 @@ Your browser does not support the audio element.
     leftBodyCorner[1] + page.offsetHeight - 84
   );
 
-  var roomWelcomeText = 'You wake up. The world is about to be created.';
+  var roomWelcomeText = 'You wake up... The world is about to be created.';
 
   var situations = [
-    'As you blink your eyes, you can see a blurry outline of yourself lying there reflected on the shiny metallic walls opposite you. They look thin, as if they would make that weird, wobbly sound metal sheets make if you shake them.',
-    'You sit up to get a view of the room. A long corridor lit up by fluorescent lamps in the ceiling, vibrating and flickering, making it hard to focus and take in where you are. The room is cold, matching the sterile metallic look.',
+    'Blinking your eyes open, you see a blurry outline of yourself reflected on the shiny metallic walls opposite you. They look thin, as if they would make a weird, wobbly sound if you were to touch them.',
+    'You look around to get a view of the room. A long corridor lit up by fluorescent lamps in the ceiling, vibrating and flickering, making it hard to focus and take in where you are. The room is cold.',
     '*Tap tap tap, click click*',
-    'Keyboard tapping and mouse clicking is echoing from the end of the corridor, blending together with the Harry Potter theme song.',
+    'Keyboard tapping and mouse clicking is echoing from the end of the corridor.',
     'There seems to be an open space around the corner, and you start walking. On both sides of the corridor are rows of chairs, metallic with thin, worn out pillows on the seats.',
-    'You walk past a wizard sitting in one of the chairs, staring straight ahead as if waiting to be called. Further down three doors appear, each with a number on them; 111, 222, 333.',
-    'As you stop in front of a door, you hear a high-pitched sound of a chair being dragged on the concrete floor.',
+    'You walk past a wizard sitting in a chair, staring straight ahead as if waiting for his turn to be called. Further down the hall three doors appear, each with a number written on them; 111, 222, 333.',
+    'As you stop in front of a door, your arm reaching out ready to turn the knob, you are interrupted by the high-pitched sound of a chair being dragged on the concrete floor.',
     '*Screeeech*',
-    'While tapping on the keyboard with long, fluorescent green nails, the person behind the desk asks how she may help you. "Hello?" She\'s looking at you now. You zone out, hypnotised by the sparkling gems that are dangling down from the tip of the long nails.',
-    '"Welcome to the Waiting Room, you must be new here," she sighs. You look up and see her forcing a smile. "This is the room of your inner imaginations, please don\'t touch anything or go anywhere unsupervised. I\'m here to answer any questions you may have," she says all in one breath.',
-    '"I don\'t really understand where this is-" you start, but get interrupted by the person behind the desk. “Someone will see you shortly,” she says, pointing towards one of the chairs. On the finger she is pointing with, one of the green acrylic nails is missing.'
+    'While tapping on the keyboard with long, fluorescent green nails, the person behind the desk asks how she may help you. "Hello?" She\'s looking at you now. You were zoning out, hypnotised by the sparkling gems that are dangling down from the tip of the long nails.',
+    '"Welcome to the Waiting Room, you must be new here," she sighs. You look up and see her forcing a smile. "Please don\'t touch anything or go anywhere unsupervised, I\'m here to answer any questions you may have," she says all in one breath.',
+    '"I don\'t really understand where this is–" you start, but get interrupted. Still typing with one hand and with her eyes back on the screen, she points demonstratively towards one of the chairs. "Someone will see you shortly." On the hand she is pointing with, one finger is missing a green acrylic nail.'
   ];
 
   var playerActions = {

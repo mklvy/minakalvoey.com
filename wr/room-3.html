@@ -15,7 +15,7 @@ Your browser does not support the audio element.
   <div class='room3ImageContainer' onclick='getSituation()'>
     <div id='roomImage' class='room3Image' onclick='getSituation()'></div>
     <div class='storyParagraphRoom1'>
-      <p id='textParagraph'>You wake up in a pink recliner, your cheek sticking to the leathery armrest. The room is thick with cigarette smoke.</p>
+      <p id='textParagraph'>You wake up... The world is about to be created.</p>
     </div>
   </div>
   <div class='stairsContainer'>
@@ -26,11 +26,11 @@ Your browser does not support the audio element.
     <div id='exitText2' class='hide exitText' style='position: absolute; bottom: 0%; width: 100%; right: 24%; text-align: right'>You go down the stairs</div>
   </div>
   <div id='idleScreen' class='idleScreen hide'>
-    <div class='idleQuestion'>Are you still playing "The Waiting Room"?</div>
+    <div class='idleQuestion'>Are you still reading "The Waiting Room"?</div>
     <div class='doorExit' style='background-image: url("./img/start.jpg"); position: relative;top: 152px;left: 228px;' onclick='hideIdleScreen()'></div>
-    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue playing</div>
+    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue reading</div>
     <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("./img/exit-game.jpg");' onclick='window.location.href="index.html"'></div>
-    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit game</div>
+    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit</div>
   </div>
 </body>
 <script>
@@ -88,23 +88,23 @@ Your browser does not support the audio element.
     leftBodyCorner[1] + page.offsetHeight - 84
   );
 
-  var roomWelcomeText = 'You wake up in a pink recliner, your cheek sticking to the leathery armrest. The room is thick with cigarette smoke.'
+  var roomWelcomeText = 'You wake up… The world is about to be created.'
 
   var situations = [
-    'Rubbing your eyes, you focus on the pink, flowery wallpaper next to you.',
+    'Rubbing your eyes, you focus on the pink, flowery wallpaper in front of you.',
     'You slide yourself up, leaning your elbows on the armrests of the pink recliner. The room is small, barely holding space for four chairs. It\'s hard to see clearly through the smoke and dim lighting.',
-    'The floor under the chairs are laminated. You hear a wheezy, long cough coming from somewhere inside the smoke cloud.',
+    'The floors are laminated, and look sticky. You hear a wheezy long cough coming from somewhere inside the smoke cloud.',
     '*Cough cough, hack hack*',
-    'The smoke lifts by the help of a ceiling fan suddenly turning on, and a girl sitting by a desk appears. She is smashing a half-smoked cigarette into an overfilled ashtray. The last cigarette she adds to the mountain of ashy buds rolls down on the desk.',
-    'You walk towards the desk. There is a dim light from an old desk lamp shining down on the floor.',
-    'Your eye catches something sparkling in the light from the desk lamp. Once you get closer, you see it is a green acrylic nail, decorated with gems.',
-    '"Oh, you\'re here," the girl says unbothered, while chewing her gum with her mouth open. She looks at you up and down. "First of all, ew. Second of all, ew... Welcome to the Waiting Room, I guess," she says without looking at you.',
-    'The girl takes a bag of tobacco, filters and papers out of her pocket, and starts rolling a cigarette. Once she\'s done she puts it behind her ear. A lock of her split, dry hair falls out in front of her face in the process.',
-    '"What do you mean, what is this place?" you ask her. "I mean, you just have to like sit down until you\'re ready, or, yeah. Oh, right, this isn\'t like a dream or anything, you\'ve thought about this place and it\'s supposed to come from like your inner imaginations or whatever. The universe is just out here giving like, zero fucks and so should you," she continues.'
+    'The smoke lifts as a ceiling fan suddenly turns on, and a girl sitting by a desk appears. She smashes a half smoked cigarette into an overfilled ashtray. As she adds the last cigarette to the mountain of ashy buds, it rolls down on the desk.',
+    'You walk towards the desk. An old desk lamp has been turned to face the floor.',
+    'Something sparkly on the floor catches your eye. Once you get closer, you see it is a green acrylic nail, sparkling with gems.',
+    '“Oh, you\'re here,” the girl says unbothered while chewing gum with her mouth open. She looks at you up and down, takes a deep breath and sighs. “I mean… Whatever, welcome to the Waiting Room, I guess,” she says rolling her eyes so far back you get worried she might tip over on her chair.',
+    'The girl takes a bag of tobacco, filters and papers out of her pocket, and starts rolling a cigarette. Once finished she sticks it behind her ear. A lock of her split, dry hair falls out in front of her smokey, made up eyes.',
+    '“I still don\'t know what this place is, and no one is actually telling me,” you half ask her. “Just sit down or continue moving, it doesn’t matter to me. You seem confused, so just to say this isn\'t a dream or anything. You’ve thought about this or a different place, that\'s why you\'re here.”'
   ];
 
   var playerActions = {
-    text: 'She puts the "Back soon" sign on the desk, and walks out the same door she entered from. As it opens she takes a left and disappears, and you can see a set of stairs on the right. Do you go up or down the stairs?',
+    text: 'She puts the “Back soon” sign on the desk, and walks towards a door at one end of the room. As it opens she takes a left and disappears. When you follow, you see a set of stairs on the right. Do you go up or down the stairs?',
     choices: [
       {
         text: 'You go up the stairs',

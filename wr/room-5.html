@@ -15,7 +15,7 @@ Your browser does not support the audio element.
   <div class='room5ImageContainer' onclick='getSituation()'>
     <div id='roomImage' class='room5Image'></div>
     <div class='storyParagraphRoom1' onclick='getSituation()'>
-      <p id='textParagraph'>You wake up with your chin pressed against a cold stone floor. Is someone there?</p>
+      <p id='textParagraph'>You wake up... The world is about to be created.</p>
     </div>
   </div>
   <div class='holeContainer'>
@@ -23,11 +23,11 @@ Your browser does not support the audio element.
     <div id='exitText1' class='hide exitText' style='position: absolute; bottom: 0%; width: 100%;'>You follow down the hole</div>
   </div>
   <div id='idleScreen' class='idleScreen hide'>
-    <div class='idleQuestion'>Are you still playing "The Waiting Room"?</div>
+    <div class='idleQuestion'>Are you still reading "The Waiting Room"?</div>
     <div class='doorExit' style='background-image: url("./img/start.jpg"); position: relative;top: 152px;left: 228px;' onclick='hideIdleScreen()'></div>
-    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue playing</div>
+    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left;'>Continue reading</div>
     <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("./img/exit-game.jpg");' onclick='window.location.href="index.html"'></div>
-    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit game</div>
+    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right;'>Exit</div>
   </div>
 </body>
 <script>
@@ -85,24 +85,23 @@ Your browser does not support the audio element.
     leftBodyCorner[1] + page.offsetHeight - 84
   );
 
-  var roomWelcomeText = 'You wake up with your chin pressed against a cold stone floor. Is someone there?';
+  var roomWelcomeText = 'You wake up… The world is about to be created.';
 
   var situations = [
-    'The sound of a crackling fire mixes with something else...',
+    'The sound of a crackling fire mixes with something else… Is someone there?',
     '*Ding ding ding*',
     '*Ding ding... Ka ching!*',
-    'You sit up leaning against the wall, this cold and of stone, and you see the rest of the room. Looks like the basement of some Italian restaurant... Or a grotta under water. The sounds echoing from somewhere makes it all even more confusing. There are rows of benches made of stone against the walls.',
-    'You walk down the corridor.',
-    'At the end of the corridor there is a fireplace on the right side. The fire looks strange, smooth like water but flickering somehow. You\'re about to walk over to have a closer look, when you hear someone clearing their throat.',
-    '"Hrrmmm. Room welcome to the waiting, the space of your inner imagination," says the incredibly wrinkly, bald man, looking at a spot just above your head. He is by a desk with an old computer on it, blasting out what must be sounds from an online casino.',
-    '"Where did you say this was?" you ask, trying to catch his eyes. "Your waiting room this is, down until someone will see you please sit.. Hrmmm."',
-    'You try to hold your laugh in as you wait to see if he has anything to say. He stares at the spot over your head. "You define your own life. Let other people write your script do not," he says, smiling so big his eyes closes. He walks over to the desk and proceeds to play whichever online game he\'s got up.',
-    'There\'s not much help to get from him.',
-    'You walk towards one of the benches.'
+    'You lean against the wall. Everything is made of stone, like the basement of some Italian restaurant. Or a dark grotto. The sounds echoing, bouncing off the cold walls, makes it all even more confusing.',
+    'You walk across the room.',
+    'At the end of the room there is a fireplace. The fire looks strange, smooth like water but flickering. You are about to walk over to have a closer look, when you hear someone clearing their throat.',
+    '"Hrrmmm. Room welcome to the Waiting, the space of your inner imagination," says the incredibly, wrinkly, bald man standing in front of you. He is by a desk with an old computer on it. He smiles and nods as you look back at him, as to confirm that he is indeed in the middle of an online slot machine game.',
+    '"Can you tell me more?" you ask, trying to catch his eyes. "Your Waiting Room this is, down until someone will see you please sit… Hrmmm."',
+    'You try to hold a laugh in as you wait to see if he has anything to say. He stares at a spot above your head. "Final success is not, fatal: it is the courage to continue that counts failure is not," he says, smiling so big his eyes close. He walks over to the desk to continue the game he had open.',
+    'He is not of much help.',
   ];
 
   var playerActions = {
-    text: 'You notice the sound of the fire stopped. Now also the casino sounds. The man walks across his desk towards the extinguished fireplace, and turns towards you. Finally he meets your eyes. "Final success is not, fatal: it is the courage to continue that counts failure is not. Yes, hrrmmm," he says, before disappearing down a hole in the fireplace. Do you follow?',
+    text: 'The sound of the crackling fire has stopped. Now also the casino sounds. The man has left the desk and is walking towards the extinguished fireplace, and turns towards you. Finally he meets your eyes. "You define your own world. Let other people write your script do not. Yes, hrrmm," he says, before disappearing down a hole in the fireplace. Do you follow?',
     choices: [
       {
         text: 'You follow down the hole',

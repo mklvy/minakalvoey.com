@@ -12,13 +12,13 @@ Your browser does not support the audio element.
   <div class="roomTitleContainer">
     <div class='roomTitle' title='Back to the start page' style='color:black;' onclick='window.location.href="index.html"'>The Waiting Room</div>
   </div>
-  <div class="storyText" onClick="goToRoom()">You think back to your dark room being illuminated by your glowing laptop screen...</br></br>The time showed 2:22 am. You were on the sixth episode of a mid Netflix series you found earlier, having scoured the Internet for something to watch after finishing the previous series. You weren’t paying attention anymore, shifting your glance between a time-consuming game on your phone, and the laptop in front of you. Your eyes felt tired and swollen. It was completely dark outside, and you hadn’t turned on any lights in your room. You could feel the slight dent your body had made on the couch from sitting in the same exact spot so many days and nights before.</div>
+  <div class="storyText" onClick="goToRoom()">You think back to your dark room being illuminated by your laptop screen…</br></br>It was 2:22 am. You were on the sixth episode of a random Netflix series you had found earlier, having scoured the Internet for something to watch after finishing the previous series. You hadn’t been paying attention to it, and were shifting your glance between a time-sensitive game on your phone, and the laptop playing the series in the background. Your eyes felt tired and swollen. It had gone dark outside, and you hadn’t turned on any lights in your room. You could feel the slight dent your body had made on the couch from sitting in the exact same spot so many days and nights before.</div>
   <div id='idleScreen' class='idleScreenWhite hide'>
     <div class='idleQuestion' style='color:black'>Are you still playing "The Waiting Room"?</div>
     <div class='doorExit' style='background-image: url("./img/continue-white.jpg"); position: relative;top: 152px;left: 228px; background-color: white;' onclick='hideIdleScreen()'></div>
-    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left; color: black;'>Continue playing</div>
+    <div id='exitText1' class='exitText' style='position: absolute; top: 70%; left: 200px;text-align: left; color: black;'>Continue reading</div>
     <div class='doorExit' style='position: absolute; top: 152px; right: 227px;background-image: url("./img/exit-game-white.jpg"); background-color: white;' onclick='window.location.href="index.html"'></div>
-    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right; color: black;'>Exit game</div>
+    <div id='exitText2' class='exitText' style='position: absolute; top: 70%; right: 220px; text-align: right; color: black;'>Exit</div>
   </div>
 </body>
 <script>
@@ -30,7 +30,7 @@ Your browser does not support the audio element.
     window.location.href = 'room-' + sessionStorage.nextRoom + '.html';
   }
 
-  sessionStorage.script = sessionStorage.script + '</br></br>' + 'You think back to your dark room being illuminated by your glowing laptop screen...</br></br>The time showed 2:22 am. You were on the sixth episode of a mid Netflix series you found earlier, having scoured the Internet for something to watch after finishing the previous series. You weren’t paying attention anymore, shifting your glance between a time-consuming game on your phone, and the laptop in front of you. Your eyes felt tired and swollen. It was completely dark outside, and you hadn’t turned on any lights in your room. You could feel the slight dent your body had made on the couch from sitting in the same exact spot so many days and nights before.';
+  sessionStorage.script = sessionStorage.script + '</br></br>' + 'You think back to your dark room being illuminated by your laptop screen…</br></br>It had been 2:22 am. You were on the sixth episode of a random Netflix series you had found earlier, having scoured the Internet for something to watch after finishing the previous series. You hadn’t been paying attention to it, and were shifting your glance between a time-sensitive game on your phone, and the laptop playing the series in the background. Your eyes felt tired and swollen. It had gone dark outside, and you hadn’t turned on any lights in your room. You could feel the slight dent your body had made on the couch from sitting in the exact same spot so many days and nights before.';
   
   function hideIdleScreen () {
     document.getElementById('idleScreen').classList.add('hide');    
