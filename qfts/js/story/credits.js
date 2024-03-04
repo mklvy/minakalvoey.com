@@ -6,5 +6,5 @@ export var credits = [
   'Written and designed by Mina Amiri Kalvøy.',
   'Web development by David Barriga Ruano.',
   'Technical support by Nikola Marić.',
-  'The third chapter of the series will be released this winter.'
+  'The third chapter of the series will be released this spring.'
 ];
