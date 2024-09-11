@@ -1,9 +1,9 @@
 img {
-  
+  display: inline-block;
   height: auto;
   display: block;
-  margin-left: 3vw;
-  margin-right: auto;
+  margin-left: 0vw;
+  margin-right: 1px;
 }
 
 body {
@@ -14,7 +14,7 @@ body {
 
 a{
   text-decoration: underline;
-  color: #FDEB37;
+  color: #fcbe11;
 }
 
 .minatitle {
@@ -28,14 +28,15 @@ a{
 }
 
 .maintext {
+    display: inline-block;
     text-align: left;
     margin-top: 2vw;
     margin-left: 3vw; 
     width: 70%;
     display: inherit;
-    font-size: 1.5vw;
+    font-size: 1.1vw;
     font-family: sans-serif;
-    color: #FDEB37;
+    color: #fcbe11;
 }
 
 hr {

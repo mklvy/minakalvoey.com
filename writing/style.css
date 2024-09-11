@@ -1,0 +1,98 @@
+img {
+  
+  height: auto;
+  display: block;
+  margin-left: 3vw;
+  margin-right: auto;
+}
+
+body {
+  background-color: #f0f0f0;
+  color: rgb(38,38,38);
+  margin: 0px;
+}
+
+a{
+  text-decoration: none;
+  color: rgb(38,38,38);
+}
+
+.minatitle {
+    margin: auto;
+    width: 45%;
+    display: block;
+    font-size: 1.1vw;
+    font-family: monospace;
+    white-space: pre;
+    color: rgb(38,38,38);
+}
+
+.maintext {
+    text-align: left;
+    margin-top: 2vw;
+    margin-left: 3vw; 
+    width: 70%;
+    display: inherit;
+    font-size: 1.1vw;
+    font-family: sans-serif;
+    color: rgb(38,38,38);
+}
+
+hr {
+  height: 30px;
+  width: 100%;
+  border: none;
+  margin: auto; 
+  box-shadow: 0 12px 17px -12px inset;
+  color: silver;
+
+}
+
+.text-container {
+  display: inline-block;
+  background-color: #fcfcfc; /* Light grey background color */
+  padding: 20px; /* Space inside the rectangle */
+  margin: 20px; /* Space outside the rectangle */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for a 3D effect */
+  max-width: 750px; /* Maximum width of the rectangle */
+  margin-left: 3vw; /* Center the rectangle */
+  margin-right: auto; /* Center the rectangle */
+  font-family: Arial, sans-serif; /* Font style */
+  color: #333333; /* Text color */
+  font-size: 16px; /* Text size */
+  text-align: left; /* Left-align text */
+}
+
+.text-container p {
+  margin: 0; /* Remove default margin from paragraph */
+}
+
+.centered-text {
+  text-align: center; /* Center-align text */
+  margin: 25px 0; /* Add some margin for spacing */
+  padding-top: 0px;
+}
+
+.note-container {
+  display: inline-block;
+  background-color: #fcfcfc; /* Slightly darker grey background color */
+  padding: 9px; /* Space inside the rectangle */
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: 12px;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for a 3D effect */
+  max-width: 220px; /* Maximum width of the note */
+  font-family: Arial, sans-serif; /* Font style */
+  color: #333333; /* Text color */
+  font-size: 12px; /* Slightly smaller text size */
+
+}
+
+@media (max-width: 600px) {
+  .text-container {
+    padding: 10px;
+    margin: 10px;
+  }
+}
