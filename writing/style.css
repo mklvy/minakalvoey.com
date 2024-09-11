@@ -90,6 +90,22 @@ hr {
 
 }
 
+.monospace-text {
+  font-family: monospace; /* Use the monospace font here */
+  font-size: 14px; /* Adjust font size if needed */
+  color: #333333; /* Text color for monospace text */
+  background-color: #fcfcfc; /* Optional: background color for better readability */
+  padding: 5px; /* Optional: add some padding */
+  border-radius: 5px; /* Optional: rounded corners */
+
+}
+
+.indent {
+  padding-left: 70px; /* Adjust the padding to your desired indent size */
+  /* Alternatively, you can use margin-left: 30px; for margin-based indent */
+}
+
+
 @media (max-width: 600px) {
   .text-container {
     padding: 10px;
