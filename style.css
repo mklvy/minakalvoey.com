@@ -40,6 +40,15 @@ a{
     color: #525252;
 }
 
+.back-home-link {
+  margin-left: 2em;
+  display: inline-block;
+  text-decoration: underline dotted;
+  text-decoration-thickness:  1px;
+  text-underline-offset: 4px;
+  color: #525252;
+}
+
 hr {
   height: 30px;
   width: 100%;
