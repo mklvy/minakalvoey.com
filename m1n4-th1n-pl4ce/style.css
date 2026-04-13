@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #1a1a2e;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+/* ── Narration text at top ── */
+.narration {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  text-align: center;
+  font-size: 1.3em;
+  line-height: 1.6;
+  color: white;
+  text-shadow: 3px 3px 6px rgba(255,255,255,1);
+}
+
+/* ── Clickable bubbles ── */
+.bubble {
+  position: absolute;
+  background: rgba(100, 100, 180, 0.5);
+  border: 3px solid white;
+  border-radius: 50%;
+  color: white;
+  font-size: 0.95em;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.bubble:active {
+  background: rgba(150, 150, 220, 0.75);
+}
+
+/* ── Bottom choices ── */
+.choices {
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  text-align: center;
+}
+
+.choice {
+  display: inline-block;
+  margin: 6px auto;
+  padding: 10px 28px;
+  background: rgba(100, 100, 180, 0.55);
+  border: 2px solid white;
+  border-radius: 30px;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.choice:active {
+  background: rgba(150, 150, 220, 0.8);
+}
+
+/* ── Continue button (single choice) ── */
+.continue-btn {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 36px;
+  background: rgba(100, 100, 180, 0.55);
+  border: 2px solid white;
+  border-radius: 30px;
+  color: white;
+  font-family: arial, sans-serif;
+  font-size: 1em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.continue-btn:active {
+  background: rgba(150, 150, 220, 0.8);
+}
