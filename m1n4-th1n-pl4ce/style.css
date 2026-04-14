@@ -25,7 +25,7 @@ html {
 /* ── Narration text at top ── */
 .narration {
   position: absolute;
-  top: 5%;
+  top: 15%;
   left: 0;
   right: 0;
   width: 75%;
@@ -39,10 +39,10 @@ html {
 /* ── Clickable bubbles ── */
 .bubble {
   position: absolute;
-  background: rgba(100, 100, 180, 0.5);
+  background: rgba(255, 255, 255, 1);
   border: 3px solid white;
   border-radius: 50%;
-  color: white;
+  color: black;
   font-size: 0.95em;
   line-height: 1.4;
   text-align: center;
@@ -126,4 +126,25 @@ html {
   line-height: 1.9;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+}
+
+.abilities {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 170px;
+}
+
+.ability {
+  width: 50px;
+  height: 50px;
+  opacity: 0.6;
+  filter: invert(1);
+}
+
+.ability.active {
+  opacity: 1;
 }
