@@ -33,8 +33,7 @@ html {
   text-align: center;
   font-size: 1.1em;
   line-height: 1.6;
-  color: white;
-  text-shadow: 3px 3px 6px rgba(255,255,255,1);
+  color: black;
 }
 
 /* ── Clickable bubbles ── */
@@ -89,17 +88,18 @@ html {
 .continue-btn {
   position: absolute;
   bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 12px 36px;
-  background: rgba(100, 100, 180, 0.55);
-  border: 2px solid white;
-  border-radius: 30px;
-  color: white;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
+  padding: 2px 8px;
+  background-color: rgba(255, 255, 255, 1);
+  border: none;
+  border-radius: 0;
+  color: black;
   font-family: Arial Narrow, sans-serif;
   font-size: 1em;
   text-decoration: none;
-  cursor: pointer;
 }
 
 .continue-btn:active {
@@ -118,4 +118,12 @@ html {
   font-family: Arial Narrow, serif;
   font-size: 0.75em;
   text-decoration: none;
+}
+
+.highlight {
+  background-color: rgba(255, 255, 255, 1);
+  padding: 2px 8px;
+  line-height: 1.9;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
