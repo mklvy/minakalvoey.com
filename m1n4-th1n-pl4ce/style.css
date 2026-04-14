@@ -88,10 +88,10 @@ html {
 .continue-btn {
   position: absolute;
   bottom: 5%;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: fit-content;
+  left: 50%;
+  margin-left: -60px;
+  width: 120px;
+  text-align: center;
   padding: 2px 8px;
   background-color: rgba(255, 255, 255, 1);
   border: none;
