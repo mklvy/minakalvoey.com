@@ -39,8 +39,9 @@ html {
 /* ── Clickable bubbles ── */
 .bubble {
   position: absolute;
-  background: rgba(255, 255, 255, 1);
-  border: 3px solid white;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px 15px rgba(100, 100, 180, 0.55);
+  border: none;
   border-radius: 50%;
   color: black;
   font-size: 0.95em;
