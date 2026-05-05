@@ -2,44 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=1280, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>again and again and again</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<!--<body style="background-image: url('pics/3.jpg');">-->
-<a href="index.html" class="restart">restart</a>
+<body style="background-image: none; background-color: white;">
 
- <div class="abilities">
-  <img src="pics/icon-sight.svg" class="ability active">
-  <img src="pics/icon-smell.svg" class="ability active">
-  <img src="pics/icon-touch.svg" class="ability active">
-  <img src="pics/icon-hearing.svg" class="ability active">
-  <img src="pics/icon-speech.svg" class="ability active">
+<div class="split">
+  <a href="flash2.html" class="split-left">Yes</a>
+  <a href="scene5.html" class="split-right">No</a>
 </div>
 
-  <!--
-    Bubbles: position with top/left as % so they scale across screen sizes.
-    Adjust these values to match where you want bubbles on your background image.
-    width/height set the oval shape — tweak freely.
-  -->
+<script>
+  var left = document.querySelector('.split-left');
+  var right = document.querySelector('.split-right');
 
-  <a href="scene-void.html" class="bubble" style="
-    width: 220px;
-    height: 180px;
-    top: 22%;
-    left: 4%;
-  ">
-    The crater is not a real place. It's a void, and it holds the darkness from which it was created. You are not to stay here.
-  </a>
+  left.addEventListener('mouseover', function() {
+    left.style.backgroundColor = 'black';
+    left.style.color = 'white';
+    right.style.backgroundColor = 'white';
+    right.style.color = 'black';
+  });
 
-  <a href="scene5.html" class="bubble" style="
-    width: 260px;
-    height: 210px;
-    top: 48%;
-    left: 23%;
-  ">
-    Instead, look for the places that are invisible on the maps. The ones where the ground seems to pull or bend downwards because the force is so strong.
-  </a>
+  right.addEventListener('mouseover', function() {
+    right.style.backgroundColor = 'black';
+    right.style.color = 'white';
+    left.style.backgroundColor = 'white';
+    left.style.color = 'black';
+  });
+</script>
 
 </body>
 </html>

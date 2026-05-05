@@ -4,12 +4,19 @@
   box-sizing: border-box;
 }
 
+img {
+  height: auto;
+  display: block;
+  margin-left: 3vw;
+  margin-right: auto;
+}
+
 body {
   width: 100%;
   height: 100%;
   min-height: 800px;
   overflow: hidden;
-  background-color: #1a1a2e;
+  background-color: black;
   background-size: 1280px 800px;
   background-position: center;
   background-repeat: no-repeat;
@@ -112,6 +119,20 @@ html {
   background: rgba(150, 150, 220, 0.8);
 }
 
+.img-btn {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  text-decoration: none;
+}
+
+.img-btn img {
+  width: 240px;
+  display: block;
+}
+
 .restart {
   position: absolute;
   top: 700px;
@@ -134,51 +155,62 @@ html {
   -webkit-box-decoration-break: clone;
 }
 
-.abilities {
+.split {
+  width: 100%;
+  height: 100%;
   position: absolute;
-  top: 20px;
+  top: 0;
   left: 0;
-  right: 0;
+}
+
+.split-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: black;
+  color: white;
+  font-family: Arial Narrow, sans-serif;
+  font-size: 8em;
+  text-decoration: none;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.ability {
-  width: 30px;
-  height: 30px;
-  opacity: 0.3;
-  margin: 0 90px;
-}
-
-.ability.active {
-  opacity: 1;
-}
-
-.speech-bubble {
+.split-right {
   position: absolute;
-  bottom: 34%;
-  right: 620px;
-  width: 200px;
-  background: rgba(255, 255, 255, 1);
-  border: 2px solid white;
-  border-radius: 5px;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: white;
   color: black;
   font-family: Arial Narrow, sans-serif;
-  font-style: italic;
-  font-size: 0.9em;
-  line-height: 1.5;
-  text-align: center;
+  font-size: 8em;
   text-decoration: none;
-  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* the little tip */
-.speech-bubble::after {
+body::after {
   content: '';
-  position: absolute;
-  bottom: -12px;
-  right: 85px;
-  border-width: 10px 8px 0 8px;
-  border-style: solid;
-  border-color: white transparent transparent transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.2;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+@keyframes flash {
+  0%   { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
 }
