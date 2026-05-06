@@ -7,17 +7,26 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body style="background-image: none; background-color: white;">
-
+<audio id="sound-yes" src="sounds/metal.mp3" preload="auto"></audio>
+<audio id="sound-no" src="sounds/bounce.mp3" preload="auto"></audio>
 <div class="split">
-  <a href="flash2.html" class="split-left">Yes</a>
+  <a href="loop5.html" class="split-left">Yes</a>
   <a href="scene5.html" class="split-right">No</a>
 </div>
-
 <script>
   var left = document.querySelector('.split-left');
   var right = document.querySelector('.split-right');
+  var soundYes = document.getElementById('sound-yes');
+  var soundNo = document.getElementById('sound-no');
+
+  function stopAll() {
+    if (soundYes) { soundYes.pause(); soundYes.currentTime = 0; }
+    if (soundNo) { soundNo.pause(); soundNo.currentTime = 0; }
+  }
 
   left.addEventListener('mouseover', function() {
+    stopAll();
+    soundYes.play();
     left.style.backgroundColor = 'black';
     left.style.color = 'white';
     right.style.backgroundColor = 'white';
@@ -25,12 +34,38 @@
   });
 
   right.addEventListener('mouseover', function() {
+    stopAll();
+    soundNo.play();
     right.style.backgroundColor = 'black';
     right.style.color = 'white';
     left.style.backgroundColor = 'white';
     left.style.color = 'black';
   });
-</script>
 
+  right.addEventListener('click', function(e) {
+    e.preventDefault();
+    stopAll();
+    document.body.style.backgroundColor = 'white';
+    document.querySelector('.split').style.display = 'none';
+    var flashSound = new Audio('sounds/trickster.mp3');
+    flashSound.play();
+    var flashImg = document.createElement('img');
+    flashImg.src = 'pics/trick.svg';
+    flashImg.style.cssText = 'position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:30%; z-index:999; animation: flash 0.4s steps(1) 3;';
+    document.body.appendChild(flashImg);
+    setTimeout(function() {
+      window.location.href = 'loop12.html';
+    }, 1500);
+  });
+
+  left.addEventListener('mouseout', function() { stopAll(); });
+  right.addEventListener('mouseout', function() {
+    stopAll();
+    left.style.backgroundColor = 'black';
+    left.style.color = 'white';
+    right.style.backgroundColor = 'white';
+    right.style.color = 'black';
+  });
+</script>
 </body>
 </html>

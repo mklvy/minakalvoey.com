@@ -6,6 +6,10 @@
   <title>again and again and again</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
+<audio id="sound-yes" src="sounds/window.mp3" preload="auto"></audio>
+<audio id="sound-no" src="sounds/violin.mp3" preload="auto"></audio>
+
 <body style="background-image: none; background-color: white;">
 
 <div class="split">
@@ -16,8 +20,19 @@
 <script>
   var left = document.querySelector('.split-left');
   var right = document.querySelector('.split-right');
+  var soundYes = document.getElementById('sound-yes');
+  var soundNo = document.getElementById('sound-no');
+
+  function stopAll() {
+    soundYes.pause();
+    soundYes.currentTime = 0;
+    soundNo.pause();
+    soundNo.currentTime = 0;
+  }
 
   left.addEventListener('mouseover', function() {
+    stopAll();
+    soundYes.play();
     left.style.backgroundColor = 'black';
     left.style.color = 'white';
     right.style.backgroundColor = 'white';
@@ -25,10 +40,24 @@
   });
 
   right.addEventListener('mouseover', function() {
+    stopAll();
+    soundNo.play();
     right.style.backgroundColor = 'black';
     right.style.color = 'white';
     left.style.backgroundColor = 'white';
     left.style.color = 'black';
+  });
+
+  left.addEventListener('mouseout', function() {
+    stopAll();
+  });
+
+  right.addEventListener('mouseout', function() {
+    stopAll();
+    left.style.backgroundColor = 'black';
+    left.style.color = 'white';
+    right.style.backgroundColor = 'white';
+    right.style.color = 'black';
   });
 </script>
 
