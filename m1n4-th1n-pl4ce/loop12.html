@@ -5,17 +5,93 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>again and again and again</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .floating {
+      position: absolute;
+      margin-top: 20px;
+      left: 2%;
+      width: 120px;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
 </head>
-<body>
-<audio id="bg-sound" src="sounds/loop.mp3" loop></audio>
-<script>
-  document.getElementById('bg-sound').play();
-</script>
-<a href="index.html" class="restart">restart</a>
+<body style="background-image: url('pics/maze12.svg');">
 
-<img src="./pics/maze.svg" style="width:45%">
+  <audio id="bg-sound" src="sounds/loop.mp3" loop></audio>
+  <script>
+    document.getElementById('bg-sound').play();
+  </script>
 
-  <!--<a href="scene2.html" class="continue-btn">Continue differently</a>-->
+  <!--<a href="index.html" class="restart">restart</a>-->
+  <img src="pics/trick2.svg" class="floating">
+  <a href="scene2.html" class="continue-btn">Continue differently</a>
+
+  <img id="sprite" src="pics/crab.svg" style="
+    position: absolute;
+    width: 55px;
+    top: 50%;
+    left: 50%;
+  ">
+
+  <div id="goal" style="
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    bottom: 1%;
+    right: 5%;
+    /*background: red;*/
+  "></div>
+
+  <script>
+    var sprite = document.getElementById('sprite');
+    var goal = document.getElementById('goal');
+    var x = window.innerWidth / 2;
+    var y = window.innerHeight / 2;
+    var speed = 5;
+
+    var keys = {};
+
+    document.addEventListener('keydown', function(e) {
+      keys[e.key] = true;
+    });
+
+    document.addEventListener('keyup', function(e) {
+      keys[e.key] = false;
+    });
+
+    function checkGoal() {
+      var sr = sprite.getBoundingClientRect();
+      var gr = goal.getBoundingClientRect();
+      if (
+        sr.left < gr.right &&
+        sr.right > gr.left &&
+        sr.top < gr.bottom &&
+        sr.bottom > gr.top
+      ) {
+        window.location.href = 'scene2.html';
+      }
+    }
+
+    function move() {
+      if (keys['ArrowUp'])    y -= speed;
+      if (keys['ArrowDown'])  y += speed;
+      if (keys['ArrowLeft'])  x -= speed;
+      if (keys['ArrowRight']) x += speed;
+
+      sprite.style.top = y + 'px';
+      sprite.style.left = x + 'px';
+
+      checkGoal();
+      requestAnimationFrame(move);
+    }
+
+    move();
+  </script>
 
 </body>
 </html>

@@ -192,3 +192,11 @@ body::after {
   50%  { opacity: 0; }
   100% { opacity: 1; }
 }
+
+.floating {
+  position: absolute;
+  margin-top: 12px;
+  left: 2%;
+  width: 120px;
+  animation: float 3s ease-in-out infinite;
+}
