@@ -6,10 +6,57 @@
   <title>again and again and again</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-image: url('pics/title.svg');">
-  <!--<a href="index.html" class="restart">restart</a>-->
-  <a href="scene1.html" class="img-btn">
+
+<body>
+  <a href="scene1.html" class="img-btn" id="center-btn">
     <img src="pics/rocks.svg">
   </a>
+
+  <div id="ring"></div>
+
+  <script>
+    const centerBtn = document.getElementById("center-btn");
+    const ring = document.getElementById("ring");
+
+    let count = 0;
+    const max = 12;
+
+    centerBtn.addEventListener("click", (e) => {
+      // stop immediate navigation so we can animate first
+      e.preventDefault();
+
+      if (count < max) {
+        spawnAgain(count);
+        count++;
+      } else {
+        window.location.href = "scene1.html";
+      }
+    });
+
+  function spawnAgain(i) {
+  const el = document.createElement("div");
+  el.classList.add("again");
+
+  // first click = "again", everything after = "and again"
+  el.textContent = (i === 0) ? "again" : "and again";
+
+  const startX = 340;
+  const startY = 190;
+  const spacing = 80;
+
+  const x = startX + i * spacing;
+  const y = 50 + (Math.random() * 120 - 60);
+
+  el.style.position = "absolute";
+  el.style.left = `${x}px`;
+  el.style.top = `calc(50% + ${y}px)`;
+
+  el.style.transform = "translateY(-50%)";
+  el.style.color = "white";
+  el.style.fontSize = "30px";
+
+  ring.appendChild(el);
+}
+  </script>
 </body>
 </html>

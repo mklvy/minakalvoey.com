@@ -223,6 +223,8 @@ body::after {
 
   opacity: 0;
   transition: opacity 0.2s;
+
+  animation: float 3s ease-in-out infinite;
 }
 
 .trickster-wrap:hover .trickster-bubble {
