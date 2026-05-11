@@ -28,8 +28,8 @@
     stopAll();
     soundYes.play();
     left.style.backgroundColor = 'black';
-    left.style.color = 'white';
-    right.style.backgroundColor = 'white';
+    left.style.color = 'orange';
+    right.style.backgroundColor = 'orange';
     right.style.color = 'black';
   });
 
@@ -37,15 +37,15 @@
     stopAll();
     soundNo.play();
     right.style.backgroundColor = 'black';
-    right.style.color = 'white';
-    left.style.backgroundColor = 'white';
+    right.style.color = 'orange';
+    left.style.backgroundColor = 'orange';
     left.style.color = 'black';
   });
 
-  right.addEventListener('click', function(e) {
+  left.addEventListener('click', function(e) {
     e.preventDefault();
     stopAll();
-    document.body.style.backgroundColor = 'white';
+    document.body.style.backgroundColor = 'orange';
     document.querySelector('.split').style.display = 'none';
     var flashSound = new Audio('sounds/trickster.mp3');
     flashSound.play();
@@ -59,11 +59,12 @@
   });
 
   left.addEventListener('mouseout', function() { stopAll(); });
+
   right.addEventListener('mouseout', function() {
     stopAll();
     left.style.backgroundColor = 'black';
-    left.style.color = 'white';
-    right.style.backgroundColor = 'white';
+    left.style.color = 'orange';
+    right.style.backgroundColor = 'orange';
     right.style.color = 'black';
   });
 </script>

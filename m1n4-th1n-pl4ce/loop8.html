@@ -5,17 +5,122 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>again and again and again</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .floating {
+      position: absolute;
+      margin-top: 20px;
+      left: 2%;
+      width: 120px;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
 </head>
-<body>
-<audio id="bg-sound" src="sounds/loop.mp3" loop></audio>
-<script>
-  document.getElementById('bg-sound').play();
-</script>
-<a href="index.html" class="restart">restart</a>
+<body style="background-image: url('pics/maze8.png');">
 
-<img src="./pics/maze.svg" style="width:45%">
+  <audio id="bg-sound" src="sounds/loop.mp3" loop></audio>
+  <script>
+    document.getElementById('bg-sound').play();
+  </script>
 
+  <!--<a href="index.html" class="restart">restart</a>-->
+  <img src="pics/trick2.svg" class="floating">
   <a href="scene6.html" class="continue-btn">Continue differently</a>
+
+  <img id="sprite" src="pics/frog.svg" style="
+    position: absolute;
+    width: 65px;
+    top: 50%;
+    left: 50%;
+  ">
+
+  <div id="goal" style="
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 1%;
+    left: 30%;
+    /*background: red;*/
+  "></div>
+
+  <script>
+    var sprite = document.getElementById('sprite');
+    var goal = document.getElementById('goal');
+    var x = window.innerWidth / 2;
+    var y = window.innerHeight / 2;
+    var speed = 5;
+    var keys = {};
+
+    // colour detection setup
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+    var mazeImg = new Image();
+    mazeImg.crossOrigin = 'anonymous';
+    mazeImg.src = 'pics/maze8.png';
+    mazeImg.onload = function() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      ctx.drawImage(mazeImg, 0, 0, canvas.width, canvas.height);
+    };
+
+    function isOnWall(px, py) {
+      var pixel = ctx.getImageData(px, py, 1, 1).data;
+      // black wall = all values close to 0
+      return pixel[0] < 50 && pixel[1] < 50 && pixel[2] < 50;
+    }
+
+    document.addEventListener('keydown', function(e) {
+      keys[e.key] = true;
+    });
+
+    document.addEventListener('keyup', function(e) {
+      keys[e.key] = false;
+    });
+
+    function checkGoal() {
+      var sr = sprite.getBoundingClientRect();
+      var gr = goal.getBoundingClientRect();
+      if (
+        sr.left < gr.right &&
+        sr.right > gr.left &&
+        sr.top < gr.bottom &&
+        sr.bottom > gr.top
+      ) {
+        window.location.href = 'scene6.html';
+      }
+    }
+
+    function move() {
+  var newX = x;
+  var newY = y;
+
+  if (keys['ArrowUp'])    newY -= speed;
+  if (keys['ArrowDown'])  newY += speed;
+  if (keys['ArrowLeft'])  newX -= speed;
+  if (keys['ArrowRight']) newX += speed;
+
+  x = newX;
+  y = newY;
+
+  sprite.style.top = y + 'px';
+  sprite.style.left = x + 'px';
+
+  checkGoal();
+  requestAnimationFrame(move);
+}
+
+    move();
+
+  function isOnWall(px, py) {
+  if (!canvas.width) return false; // canvas not ready, allow movement
+  var pixel = ctx.getImageData(px, py, 1, 1).data;
+  return pixel[0] < 50 && pixel[1] < 50 && pixel[2] < 50;
+}
+  </script>
 
 </body>
 </html>
