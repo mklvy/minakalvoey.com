@@ -42,7 +42,7 @@
     left.style.color = 'black';
   });
 
-  right.addEventListener('click', function(e) {
+  left.addEventListener('click', function(e) {
     e.preventDefault();
     stopAll();
     document.body.style.backgroundColor = 'white';
@@ -59,6 +59,7 @@
   });
 
   left.addEventListener('mouseout', function() { stopAll(); });
+
   right.addEventListener('mouseout', function() {
     stopAll();
     left.style.backgroundColor = 'black';
