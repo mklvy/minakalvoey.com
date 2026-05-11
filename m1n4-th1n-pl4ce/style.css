@@ -99,7 +99,7 @@ html {
 
 .img-btn {
   position: absolute;
-  bottom: 15%;
+  bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
   display: block;
@@ -227,4 +227,27 @@ body::after {
 
 .trickster-wrap:hover .trickster-bubble {
   opacity: 1;
+}
+
+#subtitle-box {
+  position: fixed;
+  bottom: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  max-width: 600px;
+
+  padding: 20px;
+
+  color: white;
+  font-size: 34px;
+  text-align: center;
+  line-height: 1.5;
+
+  font-family: Arial Narrow, sans-serif;
+
+  background: rgba(0,0,0,0);
+
+  cursor: pointer;
+  user-select: none;
 }

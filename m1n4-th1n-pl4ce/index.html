@@ -6,32 +6,52 @@
   <title>again and again and again</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<!--<body style="background-image: url('pics/2.jpg');">-->
-<a href="index.html" class="restart">restart</a>
+<body>
+<!--<a href="index.html" class="restart">restart</a>-->
 
-<!--<div class="abilities">
-  <img src="pics/icon-sight.svg" class="ability active">
-  <img src="pics/icon-smell.svg" class="ability active">
-  <img src="pics/icon-touch.svg" class="ability active">
-  <img src="pics/icon-hearing.svg" class="ability active">
-  <img src="pics/icon-speech.svg" class="ability active">
-</div>-->
+<div id="subtitle-box">
+  Click to start
+</div>
 
-  <p class="narration">
-    <span class="highlight">
-    The light disappeared for 24 hours and when it returned had put us in between, in the middle.<br>
-    In daylight it became clear that a huge crater had appeared while it was dark.<br>
-    The trickster told us to leave behind anything that tied us to the past, throw it in the crater.<br>
-    Time to look ahead!<br>
-    The trickster is not a real ruler, nor is the crater a real place.<br>
-    You are not to seek it out.<br>
-    Instead, look for the places that are invisible on the maps.<br>
-    The ones with a real way in and a real way out, places of real transformation, where all limits are relaxed.<br>
-    Watch out for the trickster.
-    </span>
-  </p>
+<script>
+const lines = [
+  "The light disappeared for 24 hours, and when it returned, had put us in between, in the middle.",
+  "In daylight it became clear that a huge crater had appeared while it was dark.",
+  "The trickster told us to leave behind anything that tied us to the past.",
+  "'Throw it in! Time to look ahead!'",
+  "The trickster is not a real ruler, nor is the crater a real place.",
+  "You are not to seek it out.",
+  "Instead, look for the places that are not visible on the maps.",
+  "The ones with a real way in and a real way out,",
+  "places of <i>real</i> transformation,",
+  "where all limits are relaxed.",
+  "...",
+];
 
-  <a href="intro.html" class="continue-btn">Continue</a>
+let currentLine = 0;
+
+const box = document.getElementById("subtitle-box");
+
+box.addEventListener("click", () => {
+  // show current line first
+  if (currentLine < lines.length) {
+    box.textContent = lines[currentLine];
+    currentLine++;
+    return;
+  }
+
+  // end state → turn into link behavior
+  box.textContent = "Watch out for the trickster.";
+  box.style.cursor = "pointer";
+
+  // replace click behavior safely
+  box.onclick = () => {
+    window.location.href = "intro.html";
+  };
+});
+</script>
+
+  <!--<a href="intro.html" class="continue-btn">Continue</a>-->
 
 </body>
 </html>
