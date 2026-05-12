@@ -66,11 +66,13 @@
 "></div>
 
   <script>
-    var sprite = document.getElementById('sprite');
+ var sprite = document.getElementById('sprite');
     var goal = document.getElementById('goal');
     var startDiv = document.getElementById('start');
     var speed = 5;
     var keys = {};
+    var x = 0;
+    var y = 0;
 
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
@@ -82,57 +84,59 @@
       canvas.height = window.innerHeight;
       ctx.drawImage(mazeImg, 0, 0, canvas.width, canvas.height);
 
-      // set start position from div
       var startRect = startDiv.getBoundingClientRect();
-      var x = startRect.left;
-      var y = startRect.top;
+      x = startRect.left;
+      y = startRect.top;
 
-      function isOnWall(px, py) {
-        try {
-          var spriteSize = 55;
-          var centerX = px + spriteSize / 2;
-          var centerY = py + spriteSize / 2;
-          var pixel = ctx.getImageData(centerX, centerY, 1, 1).data;
-          return pixel[3] > 50;
-        } catch(e) {
-          return false;
-        }
-      }
-
-      function checkGoal() {
-        var sr = sprite.getBoundingClientRect();
-        var gr = goal.getBoundingClientRect();
-        if (
-          sr.left < gr.right &&
-          sr.right > gr.left &&
-          sr.top < gr.bottom &&
-          sr.bottom > gr.top
-        ) {
-          window.location.href = 'scene2.html';
-        }
-      }
-
-      function move() {
-        var newX = x;
-        var newY = y;
-
-        if (keys['ArrowUp'])    newY -= speed;
-        if (keys['ArrowDown'])  newY += speed;
-        if (keys['ArrowLeft'])  newX -= speed;
-        if (keys['ArrowRight']) newX += speed;
-
-        if (!isOnWall(newX, y)) x = newX;
-        if (!isOnWall(x, newY)) y = newY;
-
-        sprite.style.top = y + 'px';
-        sprite.style.left = x + 'px';
-
-        checkGoal();
-        requestAnimationFrame(move);
-      }
+      sprite.style.left = x + 'px';
+      sprite.style.top = y + 'px';
 
       move();
     };
+
+    function isOnWall(px, py) {
+      try {
+        var spriteSize = 55;
+        var centerX = px + spriteSize / 2;
+        var centerY = py + spriteSize / 2;
+        var pixel = ctx.getImageData(centerX, centerY, 1, 1).data;
+        return pixel[3] > 50;
+      } catch(e) {
+        return false;
+      }
+    }
+
+    function checkGoal() {
+      var sr = sprite.getBoundingClientRect();
+      var gr = goal.getBoundingClientRect();
+      if (
+        sr.left < gr.right &&
+        sr.right > gr.left &&
+        sr.top < gr.bottom &&
+        sr.bottom > gr.top
+      ) {
+        window.location.href = 'scene2.html';
+      }
+    }
+
+    function move() {
+      var newX = x;
+      var newY = y;
+
+      if (keys['ArrowUp'])    newY -= speed;
+      if (keys['ArrowDown'])  newY += speed;
+      if (keys['ArrowLeft'])  newX -= speed;
+      if (keys['ArrowRight']) newX += speed;
+
+      if (!isOnWall(newX, y)) x = newX;
+      if (!isOnWall(x, newY)) y = newY;
+
+      sprite.style.top = y + 'px';
+      sprite.style.left = x + 'px';
+
+      checkGoal();
+      requestAnimationFrame(move);
+    }
 
     document.addEventListener('keydown', function(e) {
       keys[e.key] = true;
