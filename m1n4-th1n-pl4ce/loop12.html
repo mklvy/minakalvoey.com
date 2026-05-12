@@ -27,7 +27,6 @@
   background-repeat: no-repeat;
   background-position: center;
 ">
-
   <audio id="bg-sound" src="sounds/loop.mp3" loop></audio>
   <script>
     document.getElementById('bg-sound').play();
@@ -40,12 +39,7 @@
 
   <a href="scene2.html" class="continue-btn">Continue differently</a>
 
-  <img id="sprite" src="pics/crab.svg" style="
-    position: absolute;
-    width: 55px;
-    top: 50%;
-    left: 50%;
-  ">
+  <img id="sprite" src="pics/crab.svg" style="position: absolute; width: 55px;">
 
   <div id="goal" style="
     position: absolute;
@@ -53,99 +47,146 @@
     height: 60px;
     bottom: 1%;
     right: 5%;
-    /* background: red; uncomment to see goal area while testing */
+    /* background: red; */
   "></div>
 
   <div id="start" style="
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 48%;
-  left: 41%;
-  /*background: blue;*/
-"></div>
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 48%;
+    left: 41%;
+    /*background: blue;
+  "></div>
 
-  <script>
- var sprite = document.getElementById('sprite');
-    var goal = document.getElementById('goal');
-    var startDiv = document.getElementById('start');
-    var speed = 5;
-    var keys = {};
-    var x = 0;
-    var y = 0;
+  <canvas id="collisionCanvas" style="display:none;"></canvas>
 
-    var canvas = document.createElement('canvas');
-    var ctx = canvas.getContext('2d');
-    var mazeImg = new Image();
-    mazeImg.crossOrigin = 'anonymous';
-    mazeImg.src = 'pics/maze122.png';
-    mazeImg.onload = function() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      ctx.drawImage(mazeImg, 0, 0, canvas.width, canvas.height);
+<script>
+var sprite = document.getElementById('sprite');
+var goal = document.getElementById('goal');
 
-      var startRect = startDiv.getBoundingClientRect();
-      x = startRect.left;
-      y = startRect.top;
+var speed = 5;
+var keys = {};
 
-      sprite.style.left = x + 'px';
-      sprite.style.top = y + 'px';
+var x = 560;
+var y = 270;
 
-      move();
-    };
+sprite.style.left = x + 'px';
+sprite.style.top = y + 'px';
 
-    function isOnWall(px, py) {
-      try {
-        var spriteSize = 55;
-        var centerX = px + spriteSize / 2;
-        var centerY = py + spriteSize / 2;
-        var pixel = ctx.getImageData(centerX, centerY, 1, 1).data;
-        return pixel[3] > 50;
-      } catch(e) {
-        return false;
-      }
+
+// ---------- COLLISION IMAGE SETUP ----------
+
+const collisionImage = new Image();
+collisionImage.src = 'pics/maze122.png';
+
+const collisionCanvas = document.getElementById('collisionCanvas');
+const collisionCtx = collisionCanvas.getContext('2d');
+
+collisionImage.onload = function () {
+
+  collisionCanvas.width = collisionImage.width;
+  collisionCanvas.height = collisionImage.height;
+
+  collisionCtx.drawImage(collisionImage, 0, 0);
+};
+
+
+// ---------- KEY INPUT ----------
+
+document.addEventListener('keydown', function(e) {
+  keys[e.key] = true;
+});
+
+document.addEventListener('keyup', function(e) {
+  keys[e.key] = false;
+});
+
+
+// ---------- COLLISION CHECK ----------
+
+function canMoveTo(newX, newY) {
+
+  // sample roughly center of sprite
+  var sampleX = newX + 27;
+  var sampleY = newY + 27;
+
+  // convert screen coords to image coords
+  var imgX = Math.floor(
+    sampleX / window.innerWidth * collisionCanvas.width
+  );
+
+  var imgY = Math.floor(
+    sampleY / window.innerHeight * collisionCanvas.height
+  );
+
+  var pixel = collisionCtx.getImageData(imgX, imgY, 1, 1).data;
+
+  // alpha channel
+  var alpha = pixel[3];
+
+  // transparent = walkable
+  return alpha === 0;
+}
+
+
+// ---------- GOAL CHECK ----------
+
+function checkGoal() {
+
+  var sr = sprite.getBoundingClientRect();
+  var gr = goal.getBoundingClientRect();
+
+  if (
+    sr.left < gr.right &&
+    sr.right > gr.left &&
+    sr.top < gr.bottom &&
+    sr.bottom > gr.top
+  ) {
+    window.location.href = 'scene2.html';
+  }
+}
+
+
+// ---------- MOVEMENT ----------
+
+function move() {
+
+  if (keys['ArrowUp']) {
+    if (canMoveTo(x, y - speed)) {
+      y -= speed;
     }
+  }
 
-    function checkGoal() {
-      var sr = sprite.getBoundingClientRect();
-      var gr = goal.getBoundingClientRect();
-      if (
-        sr.left < gr.right &&
-        sr.right > gr.left &&
-        sr.top < gr.bottom &&
-        sr.bottom > gr.top
-      ) {
-        window.location.href = 'scene2.html';
-      }
+  if (keys['ArrowDown']) {
+    if (canMoveTo(x, y + speed)) {
+      y += speed;
     }
+  }
 
-    function move() {
-      var newX = x;
-      var newY = y;
-
-      if (keys['ArrowUp'])    newY -= speed;
-      if (keys['ArrowDown'])  newY += speed;
-      if (keys['ArrowLeft'])  newX -= speed;
-      if (keys['ArrowRight']) newX += speed;
-
-      if (!isOnWall(newX, y)) x = newX;
-      if (!isOnWall(x, newY)) y = newY;
-
-      sprite.style.top = y + 'px';
-      sprite.style.left = x + 'px';
-
-      checkGoal();
-      requestAnimationFrame(move);
+  if (keys['ArrowLeft']) {
+    if (canMoveTo(x - speed, y)) {
+      x -= speed;
     }
+  }
 
-    document.addEventListener('keydown', function(e) {
-      keys[e.key] = true;
-    });
+  if (keys['ArrowRight']) {
+    if (canMoveTo(x + speed, y)) {
+      x += speed;
+    }
+  }
 
-    document.addEventListener('keyup', function(e) {
-      keys[e.key] = false;
-    });
-  </script>
+  sprite.style.top = y + 'px';
+  sprite.style.left = x + 'px';
+
+  checkGoal();
+
+  requestAnimationFrame(move);
+}
+
+move();
+
+</script>
 
 </body>
 </html>
