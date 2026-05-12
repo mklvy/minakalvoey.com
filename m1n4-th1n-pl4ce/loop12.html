@@ -20,18 +20,24 @@
     }
   </style>
 </head>
-<body style="background-image: url('pics/maze12.png');">
+<body style="
+  background-color: purple;
+  background-image: url('pics/maze122.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+">
 
   <audio id="bg-sound" src="sounds/loop.mp3" loop></audio>
   <script>
     document.getElementById('bg-sound').play();
   </script>
 
-  <!--<a href="index.html" class="restart">restart</a>-->
   <div class="trickster-wrap">
-  <img src="pics/trick2.svg" class="floating">
-  <img src="pics/speech12.svg" class="trickster-bubble">
-</div>
+    <img src="pics/trick2.svg" class="floating">
+    <img src="pics/speech12.svg" class="trickster-bubble">
+  </div>
+
   <a href="scene2.html" class="continue-btn">Continue differently</a>
 
   <img id="sprite" src="pics/crab.svg" style="
@@ -58,22 +64,25 @@
     var speed = 5;
     var keys = {};
 
-    // colour detection setup
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
     var mazeImg = new Image();
     mazeImg.crossOrigin = 'anonymous';
-    mazeImg.src = 'pics/maze12.png';
+    mazeImg.src = 'pics/maze122.png';
     mazeImg.onload = function() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       ctx.drawImage(mazeImg, 0, 0, canvas.width, canvas.height);
+      move();
     };
 
     function isOnWall(px, py) {
-      var pixel = ctx.getImageData(px, py, 1, 1).data;
-      // black wall = all values close to 0
-      return pixel[0] < 50 && pixel[1] < 50 && pixel[2] < 50;
+      try {
+        var pixel = ctx.getImageData(px, py, 1, 1).data;
+        return pixel[3] > 50; // alpha detection — solid = wall
+      } catch(e) {
+        return false;
+      }
     }
 
     document.addEventListener('keydown', function(e) {
@@ -98,31 +107,26 @@
     }
 
     function move() {
-  var newX = x;
-  var newY = y;
+      var newX = x;
+      var newY = y;
 
-  if (keys['ArrowUp'])    newY -= speed;
-  if (keys['ArrowDown'])  newY += speed;
-  if (keys['ArrowLeft'])  newX -= speed;
-  if (keys['ArrowRight']) newX += speed;
+      if (keys['ArrowUp'])    newY -= speed;
+      if (keys['ArrowDown'])  newY += speed;
+      if (keys['ArrowLeft'])  newX -= speed;
+      if (keys['ArrowRight']) newX += speed;
 
-  x = newX;
-  y = newY;
+      if (!isOnWall(newX, newY)) {
+        x = newX;
+        y = newY;
+      }
 
-  sprite.style.top = y + 'px';
-  sprite.style.left = x + 'px';
+      sprite.style.top = y + 'px';
+      sprite.style.left = x + 'px';
 
-  checkGoal();
-  requestAnimationFrame(move);
-}
+      checkGoal();
+      requestAnimationFrame(move);
+    }
 
-    move();
-
-  function isOnWall(px, py) {
-  if (!canvas.width) return false; // canvas not ready, allow movement
-  var pixel = ctx.getImageData(px, py, 1, 1).data;
-  return pixel[0] < 50 && pixel[1] < 50 && pixel[2] < 50;
-}
   </script>
 
 </body>
