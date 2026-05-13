@@ -30,36 +30,42 @@ html {
   height: 100%;
 }
 
-#subtitle-box {
-  position: fixed;
-  bottom: 45%;
-  left: 50%;
-  transform: translateX(-50%);
-
-  max-width: 600px;
-
-  padding: 20px;
-
-  color: white;
-  font-size: 34px;
+/* ── Narration text at top ── */
+.narration {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  right: 0;
+  width: 75%;
+  margin: 0 auto;
   text-align: center;
-  line-height: 1.5;
-
-  font-family: Arial Narrow, sans-serif;
-
-  background: rgba(0,0,0,0);
-
-  cursor: pointer;
-  user-select: none;
+  font-size: 34px;
+  line-height: 1.6;
+  color: white;
 }
 
-.instructions {
+/* ── Bottom choices ── */
+.choices {
   position: absolute;
-  top: 8%;
-  center: 50%;
+  bottom: 5%;
+  left: 0;
+  right: 0;
   text-align: center;
-  font-size: 24px;
-  max-width: 70%;
+}
+
+.choice {
+  display: inline-block;
+  margin: 6px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.choice:active {
+  background: rgba(150, 150, 220, 0.8);
 }
 
 /* ── Continue button (single choice) ── */
@@ -209,4 +215,27 @@ body::after {
 
 .trickster-wrap:hover .trickster-bubble {
   opacity: 1;
+}
+
+#subtitle-box {
+  position: fixed;
+  bottom: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  max-width: 600px;
+
+  padding: 20px;
+
+  color: white;
+  font-size: 34px;
+  text-align: center;
+  line-height: 1.5;
+
+  font-family: Arial Narrow, sans-serif;
+
+  background: rgba(0,0,0,0);
+
+  cursor: pointer;
+  user-select: none;
 }
