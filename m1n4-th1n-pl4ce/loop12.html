@@ -59,40 +59,16 @@
     /*background: blue;
   "></div>
 
-  <canvas id="collisionCanvas" style="display:none;"></canvas>
-
-<script>
-var sprite = document.getElementById('sprite');
+  <script>
+  var sprite = document.getElementById('sprite');
 var goal = document.getElementById('goal');
-
 var speed = 5;
 var keys = {};
-
 var x = 560;
 var y = 270;
 
 sprite.style.left = x + 'px';
 sprite.style.top = y + 'px';
-
-
-// ---------- COLLISION IMAGE SETUP ----------
-
-const collisionImage = new Image();
-collisionImage.src = 'pics/maze122.png';
-
-const collisionCanvas = document.getElementById('collisionCanvas');
-const collisionCtx = collisionCanvas.getContext('2d');
-
-collisionImage.onload = function () {
-
-  collisionCanvas.width = collisionImage.width;
-  collisionCanvas.height = collisionImage.height;
-
-  collisionCtx.drawImage(collisionImage, 0, 0);
-};
-
-
-// ---------- KEY INPUT ----------
 
 document.addEventListener('keydown', function(e) {
   keys[e.key] = true;
@@ -102,41 +78,9 @@ document.addEventListener('keyup', function(e) {
   keys[e.key] = false;
 });
 
-
-// ---------- COLLISION CHECK ----------
-
-function canMoveTo(newX, newY) {
-
-  // sample roughly center of sprite
-  var sampleX = newX + 27;
-  var sampleY = newY + 27;
-
-  // convert screen coords to image coords
-  var imgX = Math.floor(
-    sampleX / window.innerWidth * collisionCanvas.width
-  );
-
-  var imgY = Math.floor(
-    sampleY / window.innerHeight * collisionCanvas.height
-  );
-
-  var pixel = collisionCtx.getImageData(imgX, imgY, 1, 1).data;
-
-  // alpha channel
-  var alpha = pixel[3];
-
-  // transparent = walkable
-  return alpha === 0;
-}
-
-
-// ---------- GOAL CHECK ----------
-
 function checkGoal() {
-
   var sr = sprite.getBoundingClientRect();
   var gr = goal.getBoundingClientRect();
-
   if (
     sr.left < gr.right &&
     sr.right > gr.left &&
@@ -147,46 +91,21 @@ function checkGoal() {
   }
 }
 
-
-// ---------- MOVEMENT ----------
-
 function move() {
-
-  if (keys['ArrowUp']) {
-    if (canMoveTo(x, y - speed)) {
-      y -= speed;
-    }
-  }
-
-  if (keys['ArrowDown']) {
-    if (canMoveTo(x, y + speed)) {
-      y += speed;
-    }
-  }
-
-  if (keys['ArrowLeft']) {
-    if (canMoveTo(x - speed, y)) {
-      x -= speed;
-    }
-  }
-
-  if (keys['ArrowRight']) {
-    if (canMoveTo(x + speed, y)) {
-      x += speed;
-    }
-  }
+  if (keys['ArrowUp'])    y -= speed;
+  if (keys['ArrowDown'])  y += speed;
+  if (keys['ArrowLeft'])  x -= speed;
+  if (keys['ArrowRight']) x += speed;
 
   sprite.style.top = y + 'px';
   sprite.style.left = x + 'px';
 
   checkGoal();
-
   requestAnimationFrame(move);
 }
 
 move();
-
-</script>
+  </script>
 
 </body>
 </html>

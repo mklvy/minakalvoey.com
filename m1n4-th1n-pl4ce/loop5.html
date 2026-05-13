@@ -20,7 +20,13 @@
     }
   </style>
 </head>
-<body style="background-image: url('pics/maze5.png');">
+<body style="
+  background-color: yellow;
+  background-image: url('pics/maze5.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+">
 
   <audio id="bg-sound" src="sounds/loop.mp3" loop></audio>
   <script>
@@ -31,12 +37,7 @@
   <img src="pics/trick2.svg" class="floating">
   <a href="scene4.html" class="continue-btn">Continue differently</a>
 
-  <img id="sprite" src="pics/dolphin.svg" style="
-    position: absolute;
-    width: 65px;
-    top: 50%;
-    left: 50%;
-  ">
+<img id="sprite" src="pics/dolphin.svg" style="position: absolute; width: 55px;">
 
   <div id="goal" style="
     position: absolute;
@@ -45,6 +46,15 @@
     bottom: 1%;
     left: 5%;
     /*background: red;*/
+  "></div>
+
+  <div id="start" style="
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 53%;
+    background: blue;
   "></div>
 
   <script>
