@@ -44,6 +44,19 @@ html {
   color: white;
 }
 
+.thin-place {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  right: 0;
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 34px;
+  line-height: 1.6;
+  color: black;
+}
+
 /* ── Bottom choices ── */
 .choices {
   position: absolute;
