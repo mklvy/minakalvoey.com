@@ -18,6 +18,14 @@
       50%  { transform: translateY(-20px); }
       100% { transform: translateY(0px); }
     }
+.floating {
+  animation: float 3s ease-in-out infinite, glow 3s ease-in-out 40;
+}
+@keyframes glow {
+  0%   { filter: drop-shadow(0 0 0px purple); }
+  50%  { filter: drop-shadow(0 0 15px purple); }
+  100% { filter: drop-shadow(0 0 0px purple); }
+}    
   </style>
 </head>
 <body style="
@@ -37,7 +45,7 @@
     <img src="pics/speech12.svg" class="trickster-bubble">
   </div>
 
-  <a href="scene2.html" class="continue-btn">Continue differently</a>
+  <!--<a href="scene2.html" class="continue-btn">Continue differently</a>-->
 
   <img id="sprite" src="pics/crab.svg" style="position: absolute; width: 55px;">
 
@@ -56,7 +64,7 @@
     height: 20px;
     top: 48%;
     left: 41%;
-    /*background: blue;
+    /*background: blue;*/
   "></div>
 
   <script>

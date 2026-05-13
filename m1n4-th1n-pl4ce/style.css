@@ -30,48 +30,36 @@ html {
   height: 100%;
 }
 
-/* ── Narration text at top ── */
-.narration {
-  position: absolute;
-  top: 15%;
-  left: 0;
-  right: 0;
-  width: 75%;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 1.1em;
-  line-height: 1.6;
-  color: black;
-}
+#subtitle-box {
+  position: fixed;
+  bottom: 45%;
+  left: 50%;
+  transform: translateX(-50%);
 
-/* ── Bottom choices ── */
-.choices {
-  position: absolute;
-  bottom: 5%;
-  left: 0;
-  right: 0;
-  text-align: center;
-}
+  max-width: 600px;
 
-.choice {
-  display: inline-block;
-  white-space: nowrap;
-  width: auto;
-  max-width: 90%;
-  margin: 6px;
-  padding: 10px 28px;
-  background: rgba(255, 255, 255, 1);
-  border: none;
-  border-radius: 0;
-  color: black;
+  padding: 20px;
+
+  color: white;
+  font-size: 34px;
+  text-align: center;
+  line-height: 1.5;
+
   font-family: Arial Narrow, sans-serif;
-  font-size: 1em;
-  text-decoration: none;
+
+  background: rgba(0,0,0,0);
+
   cursor: pointer;
+  user-select: none;
 }
 
-.choice:active {
-  background: rgba(150, 150, 220, 0.8);
+.instructions {
+  position: absolute;
+  top: 8%;
+  center: 50%;
+  text-align: center;
+  font-size: 24px;
+  max-width: 70%;
 }
 
 /* ── Continue button (single choice) ── */
@@ -123,14 +111,6 @@ html {
   font-family: Arial Narrow, serif;
   font-size: 0.75em;
   text-decoration: none;
-}
-
-.highlight {
-  background-color: rgba(255, 255, 255, 1);
-  padding: 2px 8px;
-  line-height: 1.9;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
 }
 
 .split {
@@ -229,27 +209,4 @@ body::after {
 
 .trickster-wrap:hover .trickster-bubble {
   opacity: 1;
-}
-
-#subtitle-box {
-  position: fixed;
-  bottom: 45%;
-  left: 50%;
-  transform: translateX(-50%);
-
-  max-width: 600px;
-
-  padding: 20px;
-
-  color: white;
-  font-size: 34px;
-  text-align: center;
-  line-height: 1.5;
-
-  font-family: Arial Narrow, sans-serif;
-
-  background: rgba(0,0,0,0);
-
-  cursor: pointer;
-  user-select: none;
 }

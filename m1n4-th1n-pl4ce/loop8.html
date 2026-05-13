@@ -18,18 +18,36 @@
       50%  { transform: translateY(-20px); }
       100% { transform: translateY(0px); }
     }
+.floating {
+  animation: float 3s ease-in-out infinite, glow 3s ease-in-out 40;
+}
+@keyframes glow {
+  0%   { filter: drop-shadow(0 0 0px orange); }
+  50%  { filter: drop-shadow(0 0 15px orange); }
+  100% { filter: drop-shadow(0 0 0px orange); }
+}    
   </style>
 </head>
-<body style="background-image: url('pics/maze8.png');">
+<body style="
+  background-color: orange;
+  background-image: url('pics/maze8.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+">
 
   <audio id="bg-sound" src="sounds/loop.mp3" loop></audio>
   <script>
     document.getElementById('bg-sound').play();
   </script>
 
-  <!--<a href="index.html" class="restart">restart</a>-->
+  <!--<a href="index.html" class="restart">restart</a>
+  <a href="scene6.html" class="continue-btn">Continue differently</a>-->
+
+  <div class="trickster-wrap">
   <img src="pics/trick2.svg" class="floating">
-  <a href="scene6.html" class="continue-btn">Continue differently</a>
+  <img src="pics/speech8.svg" class="trickster-bubble">
+</div>
 
   <img id="sprite" src="pics/frog.svg" style="
     position: absolute;
@@ -43,7 +61,7 @@
     width: 60px;
     height: 60px;
     top: 1%;
-    left: 30%;
+    left: 25%;
     /*background: red;*/
   "></div>
 
@@ -55,23 +73,15 @@
     var speed = 5;
     var keys = {};
 
-    // colour detection setup
-    var canvas = document.createElement('canvas');
-    var ctx = canvas.getContext('2d');
-    var mazeImg = new Image();
-    mazeImg.crossOrigin = 'anonymous';
-    mazeImg.src = 'pics/maze8.png';
-    mazeImg.onload = function() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      ctx.drawImage(mazeImg, 0, 0, canvas.width, canvas.height);
-    };
+    var sprite = document.getElementById('sprite');
+    var goal = document.getElementById('goal');
+    var speed = 5;
+    var keys = {};
+    var x = 620;
+    var y = 280;
 
-    function isOnWall(px, py) {
-      var pixel = ctx.getImageData(px, py, 1, 1).data;
-      // black wall = all values close to 0
-      return pixel[0] < 50 && pixel[1] < 50 && pixel[2] < 50;
-    }
+    sprite.style.left = x + 'px';
+    sprite.style.top = y + 'px';
 
     document.addEventListener('keydown', function(e) {
       keys[e.key] = true;
