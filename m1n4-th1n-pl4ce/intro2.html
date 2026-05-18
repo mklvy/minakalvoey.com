@@ -5,6 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>again and again and again</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .ability-icon {
+      position: absolute;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .ability-icon.dragging {
+      cursor: grabbing;
+      opacity: 0.7;
+      z-index: 999;
+    }
+
+    #drop-zone {
+      position: absolute;
+      top: 65%;
+      left: 80%;
+      transform: translate(-50%, -50%);
+      width: 15%;
+      height: 25%;
+      /*background: rgba(255,0,0,0.3); uncomment to see drop zone*/
+    }
+  </style>
 </head>
 <body style="background-image: none;">
 
@@ -18,22 +41,55 @@
     left: 75%;
     transform: translate(-50%, -50%);
     width: 35%;
+    pointer-events: none;
   ">
 
-  <div class="choices">
-    <a href="scene1.html" class="choice">
-      <img src="pics/icon-sight.svg" style="width: 160px; display: block;">
-    </a>
-    <a href="scene1.html" class="choice">
-      <img src="pics/icon-hearing.svg" style="width: 160px; display: block;">
-    </a>
-    <a href="scene1.html" class="choice">
-      <img src="pics/icon-smell.svg" style="width: 160px; display: block;">
-    </a>
-    <a href="scene1.html" class="choice">
-      <img src="pics/icon-speech.svg" style="width: 160px; display: block;">
-    </a>
-  </div>
+  <div id="drop-zone"></div>
+
+  <img src="pics/icon-sight.svg"   class="ability-icon" style="top: 20%; left: 35%; width: 160px;" data-dest="scene1.html">
+  <img src="pics/icon-hearing.svg" class="ability-icon" style="top: 35%; left: 10%; width: 160px;" data-dest="scene1.html">
+  <img src="pics/icon-smell.svg"   class="ability-icon" style="top: 60%; left: 20%; width: 160px;" data-dest="scene1.html">
+  <img src="pics/icon-speech.svg"  class="ability-icon" style="top: 70%; left: 45%; width: 160px;" data-dest="scene1.html">
+
+  <script>
+    var dropZone = document.getElementById('drop-zone');
+    var icons = document.querySelectorAll('.ability-icon');
+    var dragging = null;
+    var offsetX = 0;
+    var offsetY = 0;
+
+    icons.forEach(function(icon) {
+      icon.addEventListener('mousedown', function(e) {
+        dragging = icon;
+        icon.classList.add('dragging');
+        offsetX = e.clientX - icon.getBoundingClientRect().left;
+        offsetY = e.clientY - icon.getBoundingClientRect().top;
+        e.preventDefault();
+      });
+    });
+
+    document.addEventListener('mousemove', function(e) {
+      if (!dragging) return;
+      dragging.style.left = (e.clientX - offsetX) + 'px';
+      dragging.style.top = (e.clientY - offsetY) + 'px';
+    });
+
+    document.addEventListener('mouseup', function(e) {
+      if (!dragging) return;
+      var dz = dropZone.getBoundingClientRect();
+      if (
+        e.clientX > dz.left &&
+        e.clientX < dz.right &&
+        e.clientY > dz.top &&
+        e.clientY < dz.bottom
+      ) {
+        var dest = dragging.getAttribute('data-dest');
+        window.location.href = dest;
+      }
+      dragging.classList.remove('dragging');
+      dragging = null;
+    });
+  </script>
 
 </body>
 </html>

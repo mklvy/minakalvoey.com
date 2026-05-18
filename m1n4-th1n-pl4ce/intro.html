@@ -38,9 +38,9 @@
   el.classList.add("again");
 
   // first click = "again", everything after = "and again"
-  el.textContent = (i === 0) ? "again" : "and again";
+  el.textContent = (i === 0) ? "again" : (i === max - 1) ? "and again..." : "and again";
 
-  const startX = 340;
+  const startX = 200;
   const startY = 190;
   const spacing = 80;
 
