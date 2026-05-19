@@ -5,34 +5,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>again and again and again</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    #bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+
+    #fade {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: black;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s;
+      z-index: 999;
+    }
+
+    #click-zone {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .hotspot {
+      position: fixed;
+      cursor: pointer;
+      z-index: 10;
+      display: none;
+       background: rgba(255,0,0,0.3); */
+    }
+  </style>
 </head>
-<!--<body style="background-image: url('pics/10.jpg');">-->
+<body>
+  <div id="bg"></div>
+  <div id="fade"></div>
+  <div id="click-zone"></div>
 
-<div class="abilities">
-  <img src="pics/icon-hearing.svg" class="ability">
-  <img src="pics/icon-smell.svg" class="ability">
-  <img src="pics/icon-sight.svg" class="ability active">
-  <img src="pics/icon-touch.svg" class="ability">
-  <img src="pics/icon-speech.svg" class="ability">
-</div>
+  <div class="hotspot" id="h1" style="top: 30%; left: 5%; width: 20%; height: 35%;"></div>
+  <div class="hotspot" id="h2" style="top: 25%; left: 35%; width: 25%; height: 45%;"></div>
+  <div class="hotspot" id="h3" style="top: 30%; left: 67%; width: 20%; height: 35%;"></div>
 
-  <p class="narration">
-    <span class="highlight">
-    An earworm makes its way past your feet.<br>
-    It's sliding on its belly, slowly.
-  </span>
-  </p>
+  <script>
+    const linearSteps = [
+      'pics/9-1.svg',
+      'pics/9-2.svg',
+      'pics/9-3.svg',
+      'pics/9-4.svg',
+      'pics/9-5.svg',
+    ];
+    const finalBg = 'pics/9-6.svg';
 
-<a href="index.html" class="restart">restart</a>
+    const destinations = [
+      { id: 'h1', dest: 'scene10.html' },
+      { id: 'h2', dest: 'scene11.html' },
+      { id: 'h3', dest: 'loop2.html' },
+    ];
 
-<div class="choices">
-    <a href="scene10.html" class="choice">Put an ear to the ground</a><br><br>
-    <a href="scene11.html" class="choice">Touch a nerve</a><br><br><br><br>
-  </div>
+    const fade = document.getElementById('fade');
+    const bg = document.getElementById('bg');
+    const clickZone = document.getElementById('click-zone');
+    let current = 0;
 
-<!--<a href="index.html" class="speech-bubble">
-  It's within reach!<br>It's out of reach!
-</a>-->
+    bg.style.backgroundImage = `url('${linearSteps[0]}')`;
 
+    clickZone.addEventListener('click', function() {
+      current++;
+      fade.style.opacity = '1';
+      setTimeout(function() {
+        if (current < linearSteps.length) {
+          bg.style.backgroundImage = `url('${linearSteps[current]}')`;
+          fade.style.opacity = '0';
+        } else {
+          bg.style.backgroundImage = `url('${finalBg}')`;
+          fade.style.opacity = '0';
+          clickZone.style.display = 'none';
+          showHotspots();
+        }
+      }, 1000);
+    });
+
+    function showHotspots() {
+      destinations.forEach(function(item) {
+        const el = document.getElementById(item.id);
+        el.style.display = 'block';
+        el.addEventListener('click', function() {
+          fade.style.opacity = '1';
+          setTimeout(function() {
+            window.location.href = item.dest;
+          }, 1000);
+        });
+      });
+    }
+  </script>
 </body>
 </html>

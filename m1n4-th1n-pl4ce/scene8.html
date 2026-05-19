@@ -5,24 +5,96 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>again and again and again</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    #fade {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: black;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s;
+      z-index: 999;
+    }
+
+    .hotspot {
+      position: absolute;
+      cursor: pointer;
+      /* background: rgba(255,0,0,0.3); */
+    }
+  </style>
 </head>
-<!--<body style="background-image: url('pics/10.jpg');">-->
+<body>
+  <div id="fade"></div>
 
-<div class="abilities">
-  <img src="pics/icon-hearing.svg" class="ability">
-  <img src="pics/icon-smell.svg" class="ability">
-  <img src="pics/icon-sight.svg" class="ability active">
-  <img src="pics/icon-touch.svg" class="ability">
-  <img src="pics/icon-speech.svg" class="ability">
-</div>
+  <script>
+    const steps = [
+      {
+        bg: 'pics/8-1.png',
+        hotspot: { top: '30%', left: '25%', width: '50%', height: '40%' }
+      },
+      {
+        bg: 'pics/8-2.png',
+        hotspot: { top: '35%', left: '30%', width: '40%', height: '35%' }
+      },
+      {
+        bg: 'pics/8-3.png',
+        hotspot: { top: '25%', left: '20%', width: '60%', height: '45%' }
+      },
+      {
+        bg: 'pics/8-4.png',
+        hotspot: { top: '30%', left: '25%', width: '50%', height: '40%' }
+      },
+      {
+        bg: 'pics/8-5.png',
+        hotspot: { top: '30%', left: '25%', width: '50%', height: '40%' }
+      },
+      {
+        bg: 'pics/8-6.png',
+        hotspot: { top: '30%', left: '25%', width: '50%', height: '40%' }
+      },
+    ];
 
-<a href="index.html" class="restart">restart</a>
+    const dest = 'scene9.html';
+    let current = 0;
+    const fade = document.getElementById('fade');
 
-<a href="scene9.html" class="continue-btn">Walk towards the forest</a>
+    function applyStep(index) {
+      const step = steps[index];
+      document.body.style.backgroundImage = `url('${step.bg}')`;
+      document.body.style.backgroundSize = '100% 100%';
+      document.body.style.filter = step.filter;
 
-<!--<a href="index.html" class="speech-bubble">
-  It's within reach!<br>It's out of reach!
-</a>-->
+      // remove old hotspot
+      const old = document.getElementById('hotspot');
+      if (old) old.remove();
 
+      // create new hotspot
+      const div = document.createElement('div');
+      div.id = 'hotspot';
+      div.classList.add('hotspot');
+      div.style.top = step.hotspot.top;
+      div.style.left = step.hotspot.left;
+      div.style.width = step.hotspot.width;
+      div.style.height = step.hotspot.height;
+
+      div.addEventListener('click', function() {
+        fade.style.opacity = '1';
+        setTimeout(function() {
+          current++;
+          if (current >= steps.length) {
+            window.location.href = dest;
+          } else {
+            applyStep(current);
+            fade.style.opacity = '0';
+          }
+        }, 1000);
+      });
+
+      document.body.appendChild(div);
+    }
+
+    applyStep(0);
+  </script>
 </body>
 </html>
