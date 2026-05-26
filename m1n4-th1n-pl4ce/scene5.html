@@ -7,15 +7,26 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<audio id="sound-yes" src="sounds/window.mp3" preload="auto"></audio>
-<audio id="sound-no" src="sounds/violin.mp3" preload="auto"></audio>
+<audio id="sound-yes" src="sounds/echo.mp3" preload="auto"></audio>
+<audio id="sound-no" src="sounds/crickets.mp3" preload="auto"></audio>
 
 <body style="background-image: none; background-color: white;">
 
 <div class="split">
-  <a href="scene7.html" class="split-left">Yes</a>
-  <a href="scene6.html" class="split-right">No</a>
+  <a href="scene7.html" class="split-left"></a>
+  <a href="scene6.html" class="split-right"></a>
 </div>
+
+<div id="cursor-text" style="
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  font-family: Arial Narrow, sans-serif;
+  font-style: italic;
+  font-size: 0.9em;
+  color: white;
+  white-space: nowrap;
+"></div>
 
 <script>
   var left = document.querySelector('.split-left');
@@ -59,6 +70,45 @@
     right.style.backgroundColor = 'red';
     right.style.color = 'black';
   });
+
+  var text = 'do not turn a deaf ear...which way?';
+  var chars = [];
+  var mouseX = 0;
+  var mouseY = 0;
+
+  // create one span per character
+  text.split('').forEach(function(char, i) {
+    var span = document.createElement('span');
+    span.textContent = char === ' ' ? '\u00A0' : char;
+    span.style.cssText = 'position: fixed; pointer-events: none; z-index: 9999; font-family: Arial Narrow, sans-serif; font-style: italic; font-size: 0.9em; color: white;';
+    document.body.appendChild(span);
+    chars.push({ el: span, x: 0, y: 0 });
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animate() {
+    // first char follows mouse
+    chars[0].x += (mouseX + 20 - chars[0].x) * 0.3;
+    chars[0].y += (mouseY + 20 - chars[0].y) * 0.3;
+    chars[0].el.style.left = chars[0].x + 'px';
+    chars[0].el.style.top = chars[0].y + 'px';
+
+    // each subsequent char follows the one before it
+    for (var i = 1; i < chars.length; i++) {
+      chars[i].x += (chars[i-1].x - chars[i].x) * 0.3;
+      chars[i].y += (chars[i-1].y - chars[i].y) * 0.3;
+      chars[i].el.style.left = (chars[i].x + i * 9) + 'px';
+      chars[i].el.style.top = chars[i].y + 'px';
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
 </script>
 
 </body>
