@@ -252,3 +252,8 @@ body::after {
   cursor: pointer;
   user-select: none;
 }
+
+.sprite-hint {
+  opacity: 0;
+  transition: opacity 1.5s;
+}
