@@ -46,22 +46,27 @@
 
   <div class="trickster-wrap">
   <img src="pics/trick2.svg" class="floating">
-  <img src="pics/speech8.svg" class="trickster-bubble">
+  <img src="pics/speech8.svg" class="trickster-bubble" id="speech-bubble" style="opacity: 1; transition: opacity 2s;">
 </div>
 
-  <img id="sprite" src="pics/frog.png" style="
-    position: absolute;
-    width: 65px;
-    top: 50%;
-    left: 50%;
-  ">
+<img id="sprite" src="pics/you.png" style="position: absolute; width: 30px;">
+
+<img id="hint-char" src="pics/frog.png" class="hint-float" style="
+  position: absolute;
+  width: 60px;
+  top: 15%;
+  right: 2%;
+  opacity: 0;
+  transition: opacity 2s;
+  pointer-events: none;
+">
 
   <div id="goal" style="
     position: absolute;
     width: 60px;
     height: 60px;
-    top: 1%;
-    left: 25%;
+    top: 25%;
+    right: 1%;
     /*background: red;*/
   "></div>
 
@@ -130,6 +135,14 @@
   var pixel = ctx.getImageData(px, py, 1, 1).data;
   return pixel[0] < 50 && pixel[1] < 50 && pixel[2] < 50;
 }
+
+  setTimeout(function() {
+  document.getElementById('hint-char').style.opacity = '1';
+  }, 10000);
+
+  setTimeout(function() {
+  document.getElementById('speech-bubble').style.opacity = '0';
+  }, 10000);
   </script>
 
 </body>

@@ -226,10 +226,6 @@ body::after {
   animation: float 3s ease-in-out infinite;
 }
 
-.trickster-wrap:hover .trickster-bubble {
-  opacity: 1;
-}
-
 #subtitle-box {
   position: fixed;
   bottom: 45%;
@@ -256,4 +252,14 @@ body::after {
 .sprite-hint {
   opacity: 0;
   transition: opacity 1.5s;
+}
+
+.hint-float {
+  animation: sway 2s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%   { transform: translateX(0px); }
+  50%  { transform: translateX(-15px); }
+  100% { transform: translateX(0px); }
 }

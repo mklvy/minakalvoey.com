@@ -42,10 +42,20 @@
 
 <div class="trickster-wrap">
   <img src="pics/trick2.svg" class="floating">
-  <img src="pics/speech5.svg" class="trickster-bubble">
+  <img src="pics/speech5.svg" class="trickster-bubble" id="speech-bubble" style="opacity: 1; transition: opacity 2s;">
 </div>
 
-  <img id="sprite" src="pics/whale.svg" style="position: absolute; width: 60px;">
+  <img id="sprite" src="pics/yous.png" style="position: absolute; width: 30px;">
+
+  <img id="hint-char" src="pics/whale.svg" class="hint-float" style="
+  position: absolute;
+  width: 60px;
+  bottom: 2%;
+  left: 5%;
+  opacity: 0;
+  transition: opacity 2s;
+  pointer-events: none;
+">
 
   <div id="goal" style="
     position: absolute;
@@ -102,6 +112,15 @@
     }
 
     move();
+
+  setTimeout(function() {
+  document.getElementById('hint-char').style.opacity = '1';
+  }, 10000);
+
+  setTimeout(function() {
+  document.getElementById('speech-bubble').style.opacity = '0';
+  }, 10000);
+  </script>
   </script>
 
 </body>
