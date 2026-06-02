@@ -263,3 +263,18 @@ body::after {
   50%  { transform: translateX(-15px); }
   100% { transform: translateX(0px); }
 }
+
+.dir-label {
+  position: fixed;
+  bottom: 3%;
+  font-family: Arial Narrow, sans-serif;
+  font-style: italic;
+  font-size: 0.9em;
+  color: white;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.dir-left { left: 2%; }
+.dir-right { right: 2%; }
