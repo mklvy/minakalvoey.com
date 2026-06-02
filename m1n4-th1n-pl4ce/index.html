@@ -14,6 +14,8 @@
 </div>
 
 <script>
+localStorage.removeItem('maze-visited');
+
 const lines = [
   "The light disappeared for 24 hours, and when it returned, had put us in between, in the middle.",
   "In daylight it became clear that a huge crater had appeared while it was dark.",
@@ -50,8 +52,6 @@ box.addEventListener("click", () => {
   };
 });
 </script>
-
-  <!--<a href="intro.html" class="continue-btn">Continue</a>-->
-
+<script src="popup.js"></script>
 </body>
 </html>

@@ -35,10 +35,7 @@
   background-repeat: no-repeat;
   background-position: center;
 ">
-  <audio id="bg-sound" src="sounds/loop.mp3" loop></audio>
-  <script>
-    document.getElementById('bg-sound').play();
-  </script>
+<audio id="bg-sound" src="sounds/loop.mp3" loop></audio>
 
 <div class="trickster-wrap">
   <img src="pics/trick2.svg" class="floating">
@@ -67,6 +64,9 @@
   "></div>
 
   <script>
+    localStorage.setItem('maze-visited', 'true');
+    document.getElementById('bg-sound').play();
+
     var sprite = document.getElementById('sprite');
     var goal = document.getElementById('goal');
     var speed = 5;
@@ -122,6 +122,6 @@
   }, 10000);
   </script>
   </script>
-
+<script src="popup.js"></script>
 </body>
 </html>
