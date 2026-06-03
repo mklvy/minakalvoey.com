@@ -6,212 +6,312 @@
   <title>again and again and again</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    #rock {
-      position: absolute;
-      bottom: 75%;
-      right: 5%;
-      width: 150px;
-      opacity: 0;
-      transition: opacity 2s;
+    #phase-1 {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: black;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    #sprite7 {
-      position: absolute;
-      width: 55px;
-      opacity: 0;
-      transition: opacity 2s;
-    }
-
-    #path {
-      position: absolute;
-      width: 100%;
-      bottom: 0%;
-      left: 0%;
-      opacity: 0;
-      transition: opacity 2s;
-    }
-
-    #hint {
-      position: absolute;
-      bottom: 90%;
-      right: 5%;
-      width: 160px;
-      background: rgba(255,255,255,0.8);
-      color: black;
-      font-family: Arial Narrow, sans-serif;
-      font-style: italic;
-      font-size: 0.85em;
-      text-align: center;
-      padding: 8px;
-      opacity: 0;
-      transition: opacity 0.5s;
-      pointer-events: none;
-    }
-
-    #subtitle-box {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 60%;
+    #para-box {
+      max-width: 60%;
       text-align: center;
       font-family: Arial Narrow, sans-serif;
       font-style: italic;
-      font-size: 34px;
-      color: black;
+      font-size: 2em;
+      color: white;
+      line-height: 1.6;
       cursor: pointer;
-      display: none;
+      user-select: none;
     }
 
-    #restart-btn {
+    #phase-2 {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+
+    .npc-sprite {
       position: absolute;
-      bottom: 5%;
+      width: 80px;
+      animation: sway 2s ease-in-out infinite;
+    }
+
+    #you-sprite {
+      position: absolute;
+      width: 50px;
+    }
+
+    #goal-rock {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: red;
+      top: 10%;
+      left: 45%;
+    }
+
+    #dialogue-box {
+      position: fixed;
+      bottom: 8%;
       left: 50%;
       transform: translateX(-50%);
+      max-width: 60%;
+      text-align: center;
       font-family: Arial Narrow, sans-serif;
       font-style: italic;
-      font-size: 1em;
-      color: black;
-      text-decoration: none;
+      font-size: 1.4em;
+      color: white;
+      line-height: 1.6;
       display: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .choice-btn {
+      display: block;
+      margin: 10px auto;
+      font-family: Arial Narrow, sans-serif;
+      font-style: italic;
+      font-size: 1.4em;
+      color: white;
+      cursor: pointer;
+      background: none;
+      border: none;
+      text-decoration: none;
     }
 
     #fade {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: white;
+      background: black;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 2s;
-      z-index: 999;
+      transition: opacity 1.5s;
+      z-index: 9998;
     }
   </style>
 </head>
-<body style="background-color: white;">
+<body style="background-color: black;">
 
-  <img id="rock" src="pics/hearing-place.svg">
-  <img id="path" src="pics/path7.svg" style="pointer-events: none;">
-  <img id="sprite7" src="pics/crab.svg">
-  <div id="hint">use arrow keys to reach the rock</div>
   <div id="fade"></div>
-  <div id="subtitle-box"></div>
-  <a href="index.html" id="restart-btn">start over</a>
 
+  <!-- PHASE 1: paragraph click-through -->
+  <div id="phase-1">
+    <div id="para-box">The Not-Arrived, Not-Stranger, Not-Departed, Not-Belonging, Initiate, and … walked away from the crater. The loud voices and clamour surrounding it became fainter each step they took. For far too long they had been in a state of in-between, perpetuated by the self-proclaimed ceremonial master, The Trickster, and his so-called court.</div>
+  </div>
+
+  <!-- PHASE 2: rock formation + sprites + dialogue -->
+  <div id="phase-2">
+
+    <!-- swap 'none' for your rock formation image when ready -->
+    <!-- <img src="pics/rock-formation.jpg" style="position:absolute; width:100%; height:100%; object-fit:cover;"> -->
+
+    <!-- NPC sprites — adjust top/left per character -->
+    <img src="pics/bird.png" class="npc-sprite" style="top:23%; left:29%;" id="npc-not-arrived">
+    <img src="pics/frog.png" class="npc-sprite" style="top:38%; left:32%;" id="npc-not-stranger">
+    <img src="pics/crab.png" class="npc-sprite" style="top:42%; left:43%;" id="npc-not-departed">
+    <img src="pics/dolphin.png" class="npc-sprite" style="top:42%; left:54%;" id="npc-not-belonging">
+    <img src="pics/bat.png" class="npc-sprite" style="top:38%; left:62%;" id="npc-initiate">
+    <img src="pics/whale.svg" class="npc-sprite" style="top:23%; left:64%;" id="npc-ellipsis">
+
+    <!-- moveable you sprite -->
+    <img id="you-sprite" src="pics/you.png">
+
+    <!-- invisible goal zone over the rock -->
+    <div id="goal-rock"></div>
+
+    <!-- dialogue box -->
+    <div id="dialogue-box"></div>
+
+  </div>
+
+  <script src="popup.js"></script>
   <script>
-    var rock = document.getElementById('rock');
-    var path = document.getElementById('path');
-    var sprite7 = document.getElementById('sprite7');
-    var hint = document.getElementById('hint');
-    var fade = document.getElementById('fade');
-    var subtitleBox = document.getElementById('subtitle-box');
-    var restartBtn = document.getElementById('restart-btn');
+    // ── PHASE 1: paragraphs ──
+    const paragraphs = [
+      "The Not-Arrived, Not-Stranger, Not-Departed, Not-Belonging, Initiate, and … walked away from the crater. The loud voices and clamour surrounding it became fainter each step they took. For far too long they had been in a state of in-between, perpetuated by the self-proclaimed ceremonial master, The Trickster, and his so-called court.",
+      "The group had seen it all; everything that had ever happened happened again and again and again. Every sentence spoken, every gesture made, every grain of sand, turn of the earth, it all repeated in an endless cycle. Everything forever too grave, nothing ever grave enough.",
+      "They stopped and huddled together in a circle. Not-Stranger gestured for you to join. Heavy arms landed on each of your shoulders.",
+    ];
 
-    var x = 200;
-    var y = 580;
+    let paraIndex = 0;
+    const paraBox = document.getElementById('para-box');
+    const phase1 = document.getElementById('phase-1');
+    const phase2 = document.getElementById('phase-2');
+    const fade = document.getElementById('fade');
+
+    paraBox.textContent = paragraphs[0];
+
+    paraBox.addEventListener('click', function() {
+      paraIndex++;
+      if (paraIndex < paragraphs.length) {
+        paraBox.textContent = paragraphs[paraIndex];
+      } else {
+        // transition to phase 2
+        fade.style.opacity = '1';
+        setTimeout(function() {
+          phase1.style.display = 'none';
+          phase2.style.display = 'block';
+          fade.style.opacity = '0';
+          startMovement();
+        }, 1500);
+      }
+    });
+
+    // ── PHASE 2: movement ──
+    var youSprite = document.getElementById('you-sprite');
+    var goalRock = document.getElementById('goal-rock');
     var speed = 5;
     var keys = {};
+    var x = 900;
+    var y = 620;
     var moving = false;
+    var dialogueStarted = false;
 
-    // stage 1: rock appears after 5 seconds
-    setTimeout(function() {
-      rock.style.opacity = '1';
-    }, 2000);
-
-    // stage 2: path and sprite appear after 10 seconds
-    setTimeout(function() {
-      path.style.opacity = '1';
-      sprite7.style.opacity = '1';
-      sprite7.style.left = x + 'px';
-      sprite7.style.top = y + 'px';
+    function startMovement() {
+      youSprite.style.left = x + 'px';
+      youSprite.style.top = y + 'px';
       moving = true;
-    }, 8000);
+    }
 
-    // hover on rock shows hint
-    rock.addEventListener('mouseover', function() {
-      hint.style.opacity = '1';
-    });
-    rock.addEventListener('mouseout', function() {
-      hint.style.opacity = '0';
-    });
+    document.addEventListener('keydown', function(e) { keys[e.key] = true; });
+    document.addEventListener('keyup', function(e) { keys[e.key] = false; });
 
-    // arrow key movement
-    document.addEventListener('keydown', function(e) {
-      keys[e.key] = true;
-    });
-    document.addEventListener('keyup', function(e) {
-      keys[e.key] = false;
-    });
-
-    // goal: reach the rock
-    function checkRock() {
-      var sr = sprite7.getBoundingClientRect();
-      var rr = rock.getBoundingClientRect();
+    function checkGoal() {
+      if (dialogueStarted) return;
+      var sr = youSprite.getBoundingClientRect();
+      var gr = goalRock.getBoundingClientRect();
       if (
-        sr.left < rr.right &&
-        sr.right > rr.left &&
-        sr.top < rr.bottom &&
-        sr.bottom > rr.top
+        sr.left < gr.right &&
+        sr.right > gr.left &&
+        sr.top < gr.bottom &&
+        sr.bottom > gr.top
       ) {
         moving = false;
-        fadeToSentences();
+        dialogueStarted = true;
+        startDialogue();
       }
     }
 
-    function fadeToSentences() {
-      fade.style.opacity = '1';
-      setTimeout(function() {
-        rock.style.display = 'none';
-        path.style.display = 'none';
-        sprite7.style.display = 'none';
-        hint.style.display = 'none';
-        fade.style.opacity = '0';
-        subtitleBox.style.display = 'block';
-        startSentences();
-      }, 2000);
-    }
-
-    // clickable sentences
-    const lines = [
-      "You found it.",
-      "A place between places.",
-      "You are changed.",
-      "...",
-    ];
-    let currentLine = 0;
-
-    function startSentences() {
-      subtitleBox.textContent = lines[0];
-      currentLine = 1;
-      subtitleBox.addEventListener('click', nextLine);
-    }
-
-    function nextLine() {
-      if (currentLine < lines.length) {
-        subtitleBox.textContent = lines[currentLine];
-        currentLine++;
-      } else {
-        subtitleBox.removeEventListener('click', nextLine);
-        subtitleBox.textContent = '';
-        restartBtn.style.display = 'block';
-      }
-    }
-
-    function move() {
+    function gameLoop() {
       if (moving) {
         if (keys['ArrowUp'])    y -= speed;
         if (keys['ArrowDown'])  y += speed;
         if (keys['ArrowLeft'])  x -= speed;
         if (keys['ArrowRight']) x += speed;
-        sprite7.style.top = y + 'px';
-        sprite7.style.left = x + 'px';
-        checkRock();
+        x = Math.max(0, Math.min(x, window.innerWidth - 50));
+        y = Math.max(0, Math.min(y, window.innerHeight - 50));
+        youSprite.style.top = y + 'px';
+        youSprite.style.left = x + 'px';
+        checkGoal();
       }
-      requestAnimationFrame(move);
+      requestAnimationFrame(gameLoop);
     }
 
-    move();
+    gameLoop();
+
+    // ── PHASE 3: dialogue ──
+    const dialogueBox = document.getElementById('dialogue-box');
+
+    const dialogue = [
+  { speaker: 'Not-Stranger', line: 'There\'s no mercy in disillusionment' },
+  { speaker: 'Not-Departed', line: 'There sure isn\'t…' },
+  { speaker: 'Not-Departed', line: 'By leaving we\'re doing something' },
+  { speaker: 'You', line: '> Where are you going?', isChoice: true },
+  { speaker: 'Not-Departed', line: 'Nobody knows where they\'re going except you' },
+  { speaker: 'Not-Departed', line: 'Are you coming?' },
+  { speaker: 'You', line: null, isYesNo: true },
+  { speaker: 'Initiate', line: 'You\'re approaching the veil' },
+  { speaker: 'You', line: '> How do you know that?', isChoice: true },
+  { speaker: 'Not-Arrived', line: 'You can feel the pull from the ground, its call' },
+  { speaker: 'You', line: '> You turn left', isFinal: true },
+];
+
+let dialogueIndex = 0;
+let waitingForClick = false;
+
+function startDialogue() {
+  dialogueBox.style.display = 'block';
+  dialogueIndex = 0;
+  showDialogueLine();
+}
+
+function showDialogueLine() {
+  if (dialogueIndex >= dialogue.length) return;
+  const current = dialogue[dialogueIndex];
+
+  // clear everything
+  dialogueBox.innerHTML = '';
+  dialogueBox.onclick = null;
+  waitingForClick = false;
+
+  if (current.isYesNo) {
+    var yes = document.createElement('span');
+    yes.className = 'choice-btn';
+    yes.textContent = '> Yes';
+    var no = document.createElement('span');
+    no.className = 'choice-btn';
+    no.textContent = '> No';
+    dialogueBox.appendChild(yes);
+    dialogueBox.appendChild(no);
+    yes.addEventListener('click', function() {
+      dialogueIndex++;
+      showDialogueLine();
+    });
+    no.addEventListener('click', function() {
+      localStorage.removeItem('maze-visited');
+      window.location.href = 'index.html';
+    });
+
+  } else if (current.isFinal) {
+    var btn = document.createElement('span');
+    btn.className = 'choice-btn';
+    btn.textContent = '> You turn left';
+    dialogueBox.appendChild(btn);
+    btn.addEventListener('click', function() {
+      dialogueBox.innerHTML = '';
+      var restart = document.createElement('span');
+      restart.className = 'choice-btn';
+      restart.textContent = 'start over';
+      dialogueBox.appendChild(restart);
+      restart.addEventListener('click', function() {
+        localStorage.removeItem('maze-visited');
+        window.location.href = 'index.html';
+      });
+    });
+
+  } else if (current.isChoice) {
+    var choice = document.createElement('span');
+    choice.className = 'choice-btn';
+    choice.textContent = current.line;
+    dialogueBox.appendChild(choice);
+    choice.addEventListener('click', function() {
+      dialogueIndex++;
+      setTimeout(showDialogueLine, 50);
+    });
+
+  } else {
+    dialogueBox.innerHTML = '<em>' + current.speaker + ':</em><br>' + current.line;
+    setTimeout(function() {
+      waitingForClick = true;
+      dialogueBox.onclick = function() {
+        if (!waitingForClick) return;
+        waitingForClick = false;
+        dialogueBox.onclick = null;
+        dialogueIndex++;
+        showDialogueLine();
+      };
+    }, 100);
+  }
+}
   </script>
-<script src="popup.js"></script>
+
 </body>
 </html>
