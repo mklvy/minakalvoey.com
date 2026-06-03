@@ -34,6 +34,7 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
+      overflow: hidden;
     }
 
     .npc-sprite {
@@ -51,7 +52,7 @@
       position: absolute;
       width: 80px;
       height: 80px;
-      background: red;
+      /* background: red; */
       top: 10%;
       left: 45%;
     }
@@ -71,6 +72,7 @@
       display: none;
       cursor: pointer;
       user-select: none;
+      z-index: 50;
     }
 
     .choice-btn {
@@ -96,6 +98,12 @@
       transition: opacity 1.5s;
       z-index: 9998;
     }
+
+    @keyframes sway {
+      0%   { transform: translateX(0px); }
+      50%  { transform: translateX(-15px); }
+      100% { transform: translateX(0px); }
+    }
   </style>
 </head>
 <body style="background-color: black;">
@@ -104,16 +112,14 @@
 
   <!-- PHASE 1: paragraph click-through -->
   <div id="phase-1">
-    <div id="para-box">The Not-Arrived, Not-Stranger, Not-Departed, Not-Belonging, Initiate, and … walked away from the crater. The loud voices and clamour surrounding it became fainter each step they took. For far too long they had been in a state of in-between, perpetuated by the self-proclaimed ceremonial master, The Trickster, and his so-called court.</div>
+    <div id="para-box"></div>
   </div>
 
-  <!-- PHASE 2: rock formation + sprites + dialogue -->
+  <!-- PHASE 2: sprites + dialogue -->
   <div id="phase-2">
 
-    <!-- swap 'none' for your rock formation image when ready -->
-    <!-- <img src="pics/rock-formation.jpg" style="position:absolute; width:100%; height:100%; object-fit:cover;"> -->
+    <img id="rock-formation" src="pics/rock-formation.png" style="position:absolute; opacity:0; transition: opacity 3s; pointer-events:none; width:40%; top:-5%; left:30%;">
 
-    <!-- NPC sprites — adjust top/left per character -->
     <img src="pics/bird.png" class="npc-sprite" style="top:23%; left:29%;" id="npc-not-arrived">
     <img src="pics/frog.png" class="npc-sprite" style="top:38%; left:32%;" id="npc-not-stranger">
     <img src="pics/crab.png" class="npc-sprite" style="top:42%; left:43%;" id="npc-not-departed">
@@ -121,13 +127,8 @@
     <img src="pics/bat.png" class="npc-sprite" style="top:38%; left:62%;" id="npc-initiate">
     <img src="pics/whale.svg" class="npc-sprite" style="top:23%; left:64%;" id="npc-ellipsis">
 
-    <!-- moveable you sprite -->
     <img id="you-sprite" src="pics/you.png">
-
-    <!-- invisible goal zone over the rock -->
     <div id="goal-rock"></div>
-
-    <!-- dialogue box -->
     <div id="dialogue-box"></div>
 
   </div>
@@ -154,11 +155,18 @@
       if (paraIndex < paragraphs.length) {
         paraBox.textContent = paragraphs[paraIndex];
       } else {
-        // transition to phase 2
         fade.style.opacity = '1';
         setTimeout(function() {
           phase1.style.display = 'none';
           phase2.style.display = 'block';
+          document.documentElement.style.backgroundImage = "url('pics/path.svg')";
+          document.documentElement.style.backgroundSize = '100% 100%';
+          document.documentElement.style.backgroundRepeat = 'no-repeat';
+          document.documentElement.style.backgroundColor = 'grey';
+          document.body.style.backgroundImage = "url('pics/path.svg')";
+          document.body.style.backgroundSize = '100% 100%';
+          document.body.style.backgroundRepeat = 'no-repeat';
+          document.body.style.backgroundColor = 'grey';
           fade.style.opacity = '0';
           startMovement();
         }, 1500);
@@ -221,96 +229,101 @@
     const dialogueBox = document.getElementById('dialogue-box');
 
     const dialogue = [
-  { speaker: 'Not-Stranger', line: 'There\'s no mercy in disillusionment' },
-  { speaker: 'Not-Departed', line: 'There sure isn\'t…' },
-  { speaker: 'Not-Departed', line: 'By leaving we\'re doing something' },
-  { speaker: 'You', line: '> Where are you going?', isChoice: true },
-  { speaker: 'Not-Departed', line: 'Nobody knows where they\'re going except you' },
-  { speaker: 'Not-Departed', line: 'Are you coming?' },
-  { speaker: 'You', line: null, isYesNo: true },
-  { speaker: 'Initiate', line: 'You\'re approaching the veil' },
-  { speaker: 'You', line: '> How do you know that?', isChoice: true },
-  { speaker: 'Not-Arrived', line: 'You can feel the pull from the ground, its call' },
-  { speaker: 'You', line: '> You turn left', isFinal: true },
-];
+      { speaker: 'Not-Stranger', line: 'There\'s no mercy in disillusionment' },
+      { speaker: 'Not-Departed', line: 'There sure isn\'t…' },
+      { speaker: 'Not-Departed', line: 'By leaving we\'re doing something' },
+      { speaker: 'You', line: '> Where are you going?', isChoice: true },
+      { speaker: 'Not-Departed', line: 'Nobody knows where they\'re going except you' },
+      { speaker: 'Not-Departed', line: 'Are you coming?' },
+      { speaker: 'You', line: null, isYesNo: true },
+      { speaker: 'Initiate', line: 'You\'re approaching the veil' },
+      { speaker: 'You', line: '> How do you know that?', isChoice: true },
+      { speaker: 'Not-Arrived', line: 'You can feel the pull from the ground, its call' },
+      { speaker: 'You', line: '> You turn left', isFinal: true },
+    ];
 
-let dialogueIndex = 0;
-let waitingForClick = false;
+    let dialogueIndex = 0;
+    let waitingForClick = false;
 
-function startDialogue() {
-  dialogueBox.style.display = 'block';
-  dialogueIndex = 0;
-  showDialogueLine();
-}
-
-function showDialogueLine() {
-  if (dialogueIndex >= dialogue.length) return;
-  const current = dialogue[dialogueIndex];
-
-  // clear everything
-  dialogueBox.innerHTML = '';
-  dialogueBox.onclick = null;
-  waitingForClick = false;
-
-  if (current.isYesNo) {
-    var yes = document.createElement('span');
-    yes.className = 'choice-btn';
-    yes.textContent = '> Yes';
-    var no = document.createElement('span');
-    no.className = 'choice-btn';
-    no.textContent = '> No';
-    dialogueBox.appendChild(yes);
-    dialogueBox.appendChild(no);
-    yes.addEventListener('click', function() {
-      dialogueIndex++;
+    function startDialogue() {
+      dialogueBox.style.display = 'block';
+      dialogueIndex = 0;
       showDialogueLine();
-    });
-    no.addEventListener('click', function() {
-      localStorage.removeItem('maze-visited');
-      window.location.href = 'index.html';
-    });
+    }
 
-  } else if (current.isFinal) {
-    var btn = document.createElement('span');
-    btn.className = 'choice-btn';
-    btn.textContent = '> You turn left';
-    dialogueBox.appendChild(btn);
-    btn.addEventListener('click', function() {
+    function showDialogueLine() {
+      if (dialogueIndex >= dialogue.length) return;
+      const current = dialogue[dialogueIndex];
+
       dialogueBox.innerHTML = '';
-      var restart = document.createElement('span');
-      restart.className = 'choice-btn';
-      restart.textContent = 'start over';
-      dialogueBox.appendChild(restart);
-      restart.addEventListener('click', function() {
-        localStorage.removeItem('maze-visited');
-        window.location.href = 'index.html';
-      });
-    });
+      dialogueBox.onclick = null;
+      waitingForClick = false;
 
-  } else if (current.isChoice) {
-    var choice = document.createElement('span');
-    choice.className = 'choice-btn';
-    choice.textContent = current.line;
-    dialogueBox.appendChild(choice);
-    choice.addEventListener('click', function() {
-      dialogueIndex++;
-      setTimeout(showDialogueLine, 50);
-    });
+      var rock = document.getElementById('rock-formation');
+      if (rock) {
+        if (dialogueIndex === 7) rock.style.opacity = '0.5';
+        if (dialogueIndex === 10) rock.style.opacity = '1';
+      }
 
-  } else {
-    dialogueBox.innerHTML = '<em>' + current.speaker + ':</em><br>' + current.line;
-    setTimeout(function() {
-      waitingForClick = true;
-      dialogueBox.onclick = function() {
-        if (!waitingForClick) return;
-        waitingForClick = false;
-        dialogueBox.onclick = null;
-        dialogueIndex++;
-        showDialogueLine();
-      };
-    }, 100);
-  }
-}
+      if (current.isYesNo) {
+        var yes = document.createElement('span');
+        yes.className = 'choice-btn';
+        yes.textContent = '> Yes';
+        var no = document.createElement('span');
+        no.className = 'choice-btn';
+        no.textContent = '> No';
+        dialogueBox.appendChild(yes);
+        dialogueBox.appendChild(no);
+        yes.addEventListener('click', function() {
+          dialogueIndex++;
+          showDialogueLine();
+        });
+        no.addEventListener('click', function() {
+          localStorage.removeItem('maze-visited');
+          window.location.href = 'index.html';
+        });
+
+      } else if (current.isFinal) {
+        var btn = document.createElement('span');
+        btn.className = 'choice-btn';
+        btn.textContent = '> You turn left';
+        dialogueBox.appendChild(btn);
+        btn.addEventListener('click', function() {
+          dialogueBox.innerHTML = '';
+          var restart = document.createElement('span');
+          restart.className = 'choice-btn';
+          restart.textContent = 'start over';
+          dialogueBox.appendChild(restart);
+          restart.addEventListener('click', function() {
+            localStorage.removeItem('maze-visited');
+            window.location.href = 'index.html';
+          });
+        });
+
+      } else if (current.isChoice) {
+        var choice = document.createElement('span');
+        choice.className = 'choice-btn';
+        choice.textContent = current.line;
+        dialogueBox.appendChild(choice);
+        choice.addEventListener('click', function() {
+          dialogueIndex++;
+          setTimeout(showDialogueLine, 50);
+        });
+
+      } else {
+        dialogueBox.innerHTML = '<em>' + current.speaker + ':</em><br>' + current.line;
+        setTimeout(function() {
+          waitingForClick = true;
+          dialogueBox.onclick = function() {
+            if (!waitingForClick) return;
+            waitingForClick = false;
+            dialogueBox.onclick = null;
+            dialogueIndex++;
+            showDialogueLine();
+          };
+        }, 100);
+      }
+    }
   </script>
 
 </body>
