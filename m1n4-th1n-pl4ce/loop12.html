@@ -47,7 +47,7 @@
     <img src="pics/speech12.svg" class="trickster-bubble" id="speech-bubble" style="opacity: 1; transition: opacity 2s;">
   </div>
 
-  <img id="sprite" src="pics/you.png" style="position: absolute; width: 30px;">
+  <img id="sprite" src="pics/you.png" style="position: absolute; width: 45px;">
 
   <img id="hint-char" src="pics/crab.png" class="hint-float" style="
     position: absolute;
@@ -76,8 +76,8 @@
     var goal = document.getElementById('goal');
     var speed = 5;
     var keys = {};
-    var x = 560;
-    var y = 270;
+    var x = window.innerWidth * 0.37;
+    var y = window.innerHeight * 0.35;
 
     sprite.style.left = x + 'px';
     sprite.style.top = y + 'px';

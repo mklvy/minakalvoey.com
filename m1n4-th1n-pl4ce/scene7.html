@@ -164,7 +164,7 @@
           document.documentElement.style.backgroundRepeat = 'no-repeat';
           document.documentElement.style.backgroundColor = 'grey';
           document.body.style.backgroundImage = "url('pics/path.svg')";
-          document.body.style.backgroundSize = '100% 100%';
+          document.body.style.backgroundSize = 'cover';
           document.body.style.backgroundRepeat = 'no-repeat';
           document.body.style.backgroundColor = 'grey';
           fade.style.opacity = '0';
@@ -174,14 +174,14 @@
     });
 
     // ── PHASE 2: movement ──
-    var youSprite = document.getElementById('you-sprite');
-    var goalRock = document.getElementById('goal-rock');
-    var speed = 5;
-    var keys = {};
-    var x = 900;
-    var y = 620;
-    var moving = false;
-    var dialogueStarted = false;
+   var youSprite = document.getElementById('you-sprite');
+  var goalRock = document.getElementById('goal-rock');
+  var speed = 5;
+  var keys = {};
+  var x = window.innerWidth * 0.63;
+  var y = window.innerHeight * 0.85;
+  var moving = false;
+  var dialogueStarted = false;
 
     function startMovement() {
       youSprite.style.left = x + 'px';
