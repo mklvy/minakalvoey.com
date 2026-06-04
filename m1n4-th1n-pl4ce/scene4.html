@@ -87,7 +87,7 @@
   text.split('').forEach(function(char, i) {
     var span = document.createElement('span');
     span.textContent = char === ' ' ? '\u00A0' : char;
-    span.style.cssText = 'position: fixed; pointer-events: none; z-index: 9999; font-family: Arial Narrow, sans-serif; font-style: italic; font-size: 0.9em; color: white;';
+    span.style.cssText = 'position: fixed; pointer-events: none; z-index: 9999; font-family: Arial Narrow, sans-serif; font-style: italic; font-size: 2em; color: white;';
     document.body.appendChild(span);
     chars.push({ el: span, x: 0, y: 0 });
   });
@@ -108,7 +108,7 @@
     for (var i = 1; i < chars.length; i++) {
       chars[i].x += (chars[i-1].x - chars[i].x) * 0.3;
       chars[i].y += (chars[i-1].y - chars[i].y) * 0.3;
-      chars[i].el.style.left = (chars[i].x + i * 9) + 'px';
+      chars[i].el.style.left = (chars[i].x + i * 15) + 'px';
       chars[i].el.style.top = chars[i].y + 'px';
     }
 
