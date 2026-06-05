@@ -20,9 +20,12 @@
   background-repeat: no-repeat;
   background-position: center;
 ">
+
+<audio id="bg-sound" src="sounds/gravel.mp3" loop></audio>
+
 <a href="scene3.html" style="position: absolute; bottom: 20%; right: 35%;">
   <img src="pics/bird.png" style="
-    width: 55px;
+    width: 90px; !important;
     opacity: 0;
     transition: opacity 1.5s;
   " class="sprite-hint">
@@ -37,6 +40,7 @@
   setTimeout(function() {
   document.querySelector('.sprite-hint').style.opacity = '1';
 }, 5000); // appears after 5 seconds
+  document.getElementById('bg-sound').play();
 </script>
 <script src="popup.js"></script>
 </body>

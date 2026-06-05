@@ -11,8 +11,11 @@
   Click here to start
 </div>
 
+<audio id="bg-sound" src="sounds/drone.mp3" loop></audio>
+
 <script>
 localStorage.removeItem('maze-visited');
+document.getElementById('bg-sound').play();
 
 const lines = [
   "The light disappeared for 24 hours, and when it returned, had put us in between, in the middle.",

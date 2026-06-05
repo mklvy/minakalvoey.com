@@ -26,7 +26,7 @@
 
 <a href="scene1.html" style="position: absolute; bottom: 65%; left: 30%;">
   <img src="pics/bat.png" style="
-    width: 75px;
+    width: 90px; !important;
     opacity: 0;
     transition: opacity 1.5s;
   " class="sprite-hint">
@@ -35,10 +35,13 @@
   <a href="scene12.html" class="hotspot" style="top: 20%; left: 1%; width: 22%; height: 70%;"></a>
   <a href="scene14.html"    class="hotspot" style="top: 20%; left: 77%; width: 22%; height: 70%;"></a>
 
+  <audio id="bg-sound" src="sounds/gravel.mp3" loop></audio>
+
   <script>
   setTimeout(function() {
   document.querySelector('.sprite-hint').style.opacity = '1';
 }, 5000); // appears after 5 seconds
+  document.getElementById('bg-sound').play();
 </script>
 <script src="popup.js"></script>
 </body>

@@ -50,10 +50,10 @@
 
     #goal-rock {
       position: absolute;
-      width: 80px;
-      height: 80px;
-      /* background: red; */
-      top: 10%;
+      width: 150px;
+      height: 100px;
+      /*background: red;*/
+      top: 15%;
       left: 45%;
     }
 
@@ -125,13 +125,15 @@
     <img src="pics/crab.png" class="npc-sprite" style="top:42%; left:43%;" id="npc-not-departed">
     <img src="pics/dolphin.png" class="npc-sprite" style="top:42%; left:54%;" id="npc-not-belonging">
     <img src="pics/bat.png" class="npc-sprite" style="top:38%; left:62%;" id="npc-initiate">
-    <img src="pics/whale.svg" class="npc-sprite" style="top:23%; left:64%;" id="npc-ellipsis">
+    <img src="pics/whale.png" class="npc-sprite" style="top:23%; left:64%;" id="npc-ellipsis">
 
     <img id="you-sprite" src="pics/you.png">
     <div id="goal-rock"></div>
     <div id="dialogue-box"></div>
 
   </div>
+
+<audio id="bg-sound" src="sounds/drone2.mp3" loop></audio>
 
   <script src="popup.js"></script>
   <script>
@@ -147,6 +149,8 @@
     const phase1 = document.getElementById('phase-1');
     const phase2 = document.getElementById('phase-2');
     const fade = document.getElementById('fade');
+
+    document.getElementById('bg-sound').play();
 
     paraBox.textContent = paragraphs[0];
 
@@ -231,8 +235,8 @@
     const dialogue = [
       { speaker: 'Not-Stranger', line: 'There\'s no mercy in disillusionment' },
       { speaker: 'Not-Departed', line: 'There sure isn\'t…' },
-      { speaker: 'Not-Departed', line: 'By leaving we\'re doing something' },
-      { speaker: 'You', line: '> Where are you going?', isChoice: true },
+      { speaker: 'Not-Departed', line: 'We should leave' },
+      { speaker: 'You', line: '> Where?', isChoice: true },
       { speaker: 'Not-Departed', line: 'Nobody knows where they\'re going except you' },
       { speaker: 'Not-Departed', line: 'Are you coming?' },
       { speaker: 'You', line: null, isYesNo: true },
@@ -261,7 +265,8 @@
 
       var rock = document.getElementById('rock-formation');
       if (rock) {
-        if (dialogueIndex === 7) rock.style.opacity = '0.1';
+        if (dialogueIndex === 5) rock.style.opacity = '0.2';
+        if (dialogueIndex === 7) rock.style.opacity = '0.6';
         if (dialogueIndex === 10) rock.style.opacity = '1';
       }
 

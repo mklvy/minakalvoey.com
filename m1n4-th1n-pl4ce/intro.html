@@ -14,9 +14,12 @@
 
   <div id="ring"></div>
 
+<audio id="bg-sound" src="sounds/drone.mp3" loop></audio>
+
   <script>
     const centerBtn = document.getElementById("center-btn");
     const ring = document.getElementById("ring");
+    document.getElementById('bg-sound').play();
 
     let count = 0;
     const max = 12;
@@ -36,25 +39,19 @@
   function spawnAgain(i) {
   const el = document.createElement("div");
   el.classList.add("again");
-
-  // first click = "again", everything after = "and again"
   el.textContent = (i === 0) ? "again" : (i === max - 1) ? "and again..." : "and again";
-
-  const startX = 200;
-  const startY = 190;
-  const spacing = 80;
-
+  
+  const startX = window.innerWidth * 0.15;
+  const spacing = window.innerWidth * 0.06;
   const x = startX + i * spacing;
   const y = 50 + (Math.random() * 120 - 60);
-
+  
   el.style.position = "absolute";
   el.style.left = `${x}px`;
   el.style.top = `calc(50% + ${y}px)`;
-
   el.style.transform = "translateY(-50%)";
   el.style.color = "white";
-  el.style.fontSize = "30px";
-
+  el.style.fontSize = "1.8vw";
   ring.appendChild(el);
 }
   </script>
