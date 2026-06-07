@@ -146,28 +146,28 @@
     document.getElementById('bg-sound').play();
 
     paraBox.addEventListener('click', function(e) {
-      e.stopPropagation();
-      paraIndex++;
-      if (paraIndex < paragraphs.length) {
-        paraBox.textContent = paragraphs[paraIndex];
-      } else {
-        fade.style.opacity = '1';
-        setTimeout(function() {
-          phase1.style.display = 'none';
-          phase2.style.display = 'block';
-          document.documentElement.style.backgroundImage = "url('pics/path.svg')";
-          document.documentElement.style.backgroundSize = 'cover';
-          document.documentElement.style.backgroundRepeat = 'no-repeat';
-          document.documentElement.style.backgroundColor = 'grey';
-          document.body.style.backgroundImage = "url('pics/path.svg')";
-          document.body.style.backgroundSize = 'cover';
-          document.body.style.backgroundRepeat = 'no-repeat';
-          document.body.style.backgroundColor = 'grey';
-          fade.style.opacity = '0';
-          startMovement();
-        }, 1500);
-      }
-    });
+  e.stopPropagation();
+  if (paraIndex < paragraphs.length - 1) {
+    paraIndex++;
+    paraBox.textContent = paragraphs[paraIndex];
+  } else {
+    fade.style.opacity = '1';
+    setTimeout(function() {
+      phase1.style.display = 'none';
+      phase2.style.display = 'block';
+      document.documentElement.style.backgroundImage = "url('pics/path.svg')";
+      document.documentElement.style.backgroundSize = 'cover';
+      document.documentElement.style.backgroundRepeat = 'no-repeat';
+      document.documentElement.style.backgroundColor = 'grey';
+      document.body.style.backgroundImage = "url('pics/path.svg')";
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundRepeat = 'no-repeat';
+      document.body.style.backgroundColor = 'grey';
+      fade.style.opacity = '0';
+      startMovement();
+    }, 1500);
+  }
+});
 
     var youSprite = document.getElementById('you-sprite');
     var goalRock = document.getElementById('goal-rock');
