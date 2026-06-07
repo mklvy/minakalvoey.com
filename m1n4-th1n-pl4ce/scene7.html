@@ -110,34 +110,27 @@
 
   <div id="fade"></div>
 
-  <!-- PHASE 1: paragraph click-through -->
   <div id="phase-1">
-    <div id="para-box"></div>
+    <div id="para-box">The Not-Arrived, Not-Stranger, Not-Departed, Not-Belonging, Initiate, and CM walked away from the crater. The loud voices and clamour surrounding it became fainter each step they took. For far too long they had been in a state of in-between, perpetuated by the self-proclaimed ceremonial master, The Trickster, and his so-called court.</div>
   </div>
 
-  <!-- PHASE 2: sprites + dialogue -->
   <div id="phase-2">
-
     <img id="rock-formation" src="pics/rock-formation.png" style="position:absolute; opacity:0; transition: opacity 3s; pointer-events:none; width:40%; top:-5%; left:30%;">
-
     <img src="pics/bird.png" class="npc-sprite" style="top:23%; left:29%;" id="npc-not-arrived">
     <img src="pics/frog.png" class="npc-sprite" style="top:38%; left:32%;" id="npc-not-stranger">
     <img src="pics/crab.png" class="npc-sprite" style="top:42%; left:43%;" id="npc-not-departed">
     <img src="pics/dolphin.png" class="npc-sprite" style="top:42%; left:54%;" id="npc-not-belonging">
     <img src="pics/bat.png" class="npc-sprite" style="top:38%; left:62%;" id="npc-initiate">
     <img src="pics/whale.png" class="npc-sprite" style="top:23%; left:64%;" id="npc-ellipsis">
-
     <img id="you-sprite" src="pics/you.png">
     <div id="goal-rock"></div>
     <div id="dialogue-box"></div>
-
   </div>
 
-<audio id="bg-sound" src="sounds/drone2.mp3" loop></audio>
+  <audio id="bg-sound" src="sounds/drone2.mp3" loop></audio>
 
   <script src="popup.js"></script>
   <script>
-    // ── PHASE 1: paragraphs ──
     const paragraphs = [
       "The Not-Arrived, Not-Stranger, Not-Departed, Not-Belonging, Initiate, and CM walked away from the crater. The loud voices and clamour surrounding it became fainter each step they took. For far too long they had been in a state of in-between, perpetuated by the self-proclaimed ceremonial master, The Trickster, and his so-called court.",
       "The group had seen it all; everything that had ever happened happened again and again and again. Every sentence spoken, every gesture made, every grain of sand, turn of the earth, it all repeated in an endless cycle. Everything forever too grave, nothing ever grave enough.",
@@ -152,9 +145,8 @@
 
     document.getElementById('bg-sound').play();
 
-    paraBox.textContent = paragraphs[0];
-
-    paraBox.addEventListener('click', function() {
+    paraBox.addEventListener('click', function(e) {
+      e.stopPropagation();
       paraIndex++;
       if (paraIndex < paragraphs.length) {
         paraBox.textContent = paragraphs[paraIndex];
@@ -164,7 +156,7 @@
           phase1.style.display = 'none';
           phase2.style.display = 'block';
           document.documentElement.style.backgroundImage = "url('pics/path.svg')";
-          document.documentElement.style.backgroundSize = '100% 100%';
+          document.documentElement.style.backgroundSize = 'cover';
           document.documentElement.style.backgroundRepeat = 'no-repeat';
           document.documentElement.style.backgroundColor = 'grey';
           document.body.style.backgroundImage = "url('pics/path.svg')";
@@ -177,15 +169,14 @@
       }
     });
 
-    // ── PHASE 2: movement ──
-   var youSprite = document.getElementById('you-sprite');
-  var goalRock = document.getElementById('goal-rock');
-  var speed = 5;
-  var keys = {};
-  var x = window.innerWidth * 0.63;
-  var y = window.innerHeight * 0.85;
-  var moving = false;
-  var dialogueStarted = false;
+    var youSprite = document.getElementById('you-sprite');
+    var goalRock = document.getElementById('goal-rock');
+    var speed = 5;
+    var keys = {};
+    var x = window.innerWidth * 0.63;
+    var y = window.innerHeight * 0.85;
+    var moving = false;
+    var dialogueStarted = false;
 
     function startMovement() {
       youSprite.style.left = x + 'px';
@@ -229,7 +220,6 @@
 
     gameLoop();
 
-    // ── PHASE 3: dialogue ──
     const dialogueBox = document.getElementById('dialogue-box');
 
     const dialogue = [
