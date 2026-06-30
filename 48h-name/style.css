@@ -1,0 +1,75 @@
+img {
+  
+  height: auto;
+  display: block;
+  margin-left: 3vw;
+  margin-right: auto;
+}
+
+body {
+  background-color: #EBEBEB;
+  color: silver;
+  margin: 0px;
+}
+
+a{
+  text-decoration: none;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  color: #525252;
+}
+
+.minatitle {
+    margin: auto;
+    width: 45%;
+    display: block;
+    font-size: 1.1vw;
+    font-family: monospace;
+    white-space: pre;
+    color: silver;
+}
+
+.maintext {
+    text-align: left;
+    margin-top: 2vw;
+    margin-left: 3vw; 
+    width: 70%;
+    display: inherit;
+    font-size: 1.5vw;
+    font-family: Arial Narrow, sans-serif;
+    color: #525252;
+}
+
+.back-home-link {
+  margin-left: 2em;
+  display: inline-block;
+  text-decoration: underline dotted;
+  text-decoration-thickness:  1px;
+  text-underline-offset: 4px;
+  color: #525252;
+}
+
+hr {
+  height: 30px;
+  width: 100%;
+  border: none;
+  margin: auto; 
+  box-shadow: 0 12px 19px -12px inset;
+  color: silver;
+
+}
+video {
+  width: 50%;
+  height: auto;
+  display: block;
+  margin-left: 3vw;
+  margin-right: auto;
+}
+
+a.ex1:hover, a.ex1:active {
+  color: red;
+}
+
+a.ex5:hover, a.ex5:active {
+  text-decoration: underline dotted;
+}
