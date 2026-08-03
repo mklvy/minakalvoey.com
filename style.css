@@ -1,75 +1,187 @@
-img {
-  
-  height: auto;
-  display: block;
-  margin-left: 3vw;
-  margin-right: auto;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background-color: #EBEBEB;
-  color: silver;
-  margin: 0px;
+  font-family: Arial Narrow;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  color: #222222;
 }
 
-a{
+#sidebar {
+  width: 300px;
+  height: 100vh;
+  padding: 2rem;
+  background: #f9f9f9;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+}
+
+#contact a {
+  color: inherit;
   text-decoration: none;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-  color: #525252;
+  border-bottom: 1px solid currentColor;
 }
 
-.minatitle {
-    margin: auto;
-    width: 45%;
-    display: block;
-    font-size: 1.1vw;
-    font-family: monospace;
-    white-space: pre;
-    color: silver;
+#info-toggle {
+  display: none; /* hidden on desktop, shown later on mobile */
 }
 
-.maintext {
-    text-align: left;
-    margin-top: 2vw;
-    margin-left: 3vw; 
-    width: 70%;
-    display: inherit;
-    font-size: 1.5vw;
-    font-family: Arial Narrow, sans-serif;
-    color: #525252;
+#info-close {
+  display: none; /* hidden everywhere by default; shown only when body.info-open on mobile */
 }
 
-.back-home-link {
-  margin-left: 2em;
-  display: inline-block;
-  text-decoration: underline dotted;
-  text-decoration-thickness:  1px;
-  text-underline-offset: 4px;
-  color: #525252;
+#slideshow {
+  position: relative;
+  flex: 1;
+  height: 100vh;
+  overflow: hidden;
+  background: #f9f9f9;
 }
 
-hr {
-  height: 30px;
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.slide img,
+.slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.caption {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  max-width: 60%;
+  text-align: center;
+  background: #f9f9f9;
+  box-shadow: 4px 0 6px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+#prev-arrow,
+#next-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
   border: none;
-  margin: auto; 
-  box-shadow: 0 12px 19px -12px inset;
-  color: silver;
-
-}
-video {
-  width: 50%;
-  height: auto;
-  display: block;
-  margin-left: 3vw;
-  margin-right: auto;
+  font-size: 3.5rem;
+  color: #666;
+  cursor: pointer;
+  z-index: 5;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s ease;
 }
 
-a.ex1:hover, a.ex1:active {
+#prev-arrow:hover,
+#next-arrow:hover {
   color: red;
 }
 
-a.ex5:hover, a.ex5:active {
-  text-decoration: underline dotted;
+#prev-arrow {
+  left: 1rem;
+}
+
+#next-arrow {
+  right: 1rem;
+}
+
+#credit {
+  font-size: 0.85rem;
+  color: red;
+  min-height: 1.2em;
+  margin-top: auto;
+}
+
+#credit a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+
+  body {
+    flex-direction: column;
+  }
+
+  #sidebar {
+    display: none; /* replaced by the full-screen info panel on mobile */
+  }
+
+  #slideshow {
+    width: 100%;
+    height: 100vh;
+  }
+
+  #prev-arrow,
+  #next-arrow {
+    display: none; /* replaced by tap zones */
+  }
+
+  #info-toggle {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 20;
+  }
+
+  body.info-open #sidebar {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 30;
+    overflow-y: auto;
+  }
+
+  body.info-open #info-close {
+    display: block;
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: red;
+    cursor: pointer;
+  }
+
+  body.info-open #info-toggle {
+    display: none;
+  }
+
 }

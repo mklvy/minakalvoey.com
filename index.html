@@ -1,39 +1,152 @@
-<!doctype html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mina Amiri Kalvøy</title>
-    <meta name="description" content="Mina Amiri Kalvøy">
-          <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
-<div class="maintext">
- <span style="margin-left: 2em; display: inline-block;">Mina Amiri Kalvøy &#9732;&#xFE0E; Artist and writer based in Berlin</span>
-<br><br>Currently teaching Visual & Experience Design MA at the University of Europe for Applied Sciences.<br><br>Previously Researcher (Meisterschüler) and alumni of Visual Communication MA at Weißensee Academy of Art Berlin, 2020-23.</p>
-<!---<a href="https://minakalvoey.com/writing/" target="blank">&#10042; Recent writing</a>--->
-<a class="ex1 ex5" href="mailto:m.kalvoey@gmail.com" target="blank">&#9790; E-mail</a>
-<br>
-<a class="ex1 ex5" href="https://www.instagram.com/m.klvy/" target="blank">&#10038; Instagram</a>
-</div>
-<br><br>
-<hr>
-<div class="maintext">
- <span style="margin-left: 2em; display: inline-block;">Works</span><br><br>
-<a class="ex1 ex5" href="https://minakalvoey.com/i-say-your-name/">&#10036; <i>I Say Your Name</i>, 2025</a>
-<br><br>
-<a class="ex1 ex5" href="https://minakalvoey.com/fly-on-the-wall/">&#10036; <i>"Oh...to be a fly on the wall..."</i>, 2025</a>
-<br><br>
-<a class="ex1 ex5" href="https://minakalvoey.com/warp/">&#10036; <i>WARP (Act I)</i>, 2024</a>
-<br><br>
-<a class="ex1 ex5" href="https://minakalvoey.com/waiting-room/">&#10036; <i>The Waiting Room</i>, 2022-23</a>
-<br><br>
-<a class="ex1 ex5" href="https://minakalvoey.com/grand-opening/">&#10036; <i>Grand Opening!</i>, 2021</a>
-<br><br>
-<a class="ex1 ex5" href="https://minakalvoey.com/gan-metal/">&#10036; <i>GAN Metal Logos</i>, 2020</a>
-<br><br>
-<a class="ex1 ex5" href="https://minakalvoey.com/magazine/">&#10036; <i>50<sup>2</sup>20<sup>1</sup> Magazine,</i> 2018–19</a>
-<br><br>
-<a class="ex1 ex5" href="https://minakalvoey.com/irane-maman/">&#10036; <i>Irāne Māmān,</i> 2017</a>
-<br><br><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mina Amiri Kalvøy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sidebar: bio, contact, info -->
+  <aside id="sidebar">
+    <button id="info-close" aria-label="Close info">&times;</button>
+    <p>Mina Amiri Kalvøy</p>
+    <p>Artist and writer based in Berlin.</p>
+    <p>Currently teaching Visual &amp; Experience Design MA at the University of Europe for Applied Sciences.</p>
+    <p>Previously Researcher (Meisterschüler) and alumni of Visual Communication MA at Weißensee Academy of Art Berlin, 2020–23.</p>
+
+    <div id="contact">
+      <a href="mailto:m.kalvoey@gmail.com">E-mail</a><br>
+      <a href="https://www.instagram.com/m.klvy/" target="_blank">Instagram</a>
+    </div>
+    <p id="credit"></p>
+  </aside>
+
+  <!-- Info toggle button, only relevant/visible on mobile -->
+  <button id="info-toggle" aria-label="Toggle info">+</button>
+
+  <!-- Main slideshow area -->
+  <main id="slideshow">
+    <div class="slide active" data-credit="Performed and exhibited as part of 'Fiction makes me nauseous' during 48h Neukölln, curated by Laura Seidel and Kira Dell.">
+      <img src="pics/sinead-7.jpg" alt="I Say Your Name, 2026">
+      <div class="caption">I Say Your Name, Neukölln Speicher, 2026</div>
+    </div>
+
+    <div class="slide" data-credit="Performed at the book launch for 'ART' by Dorian Electra. Documentation photos by Hyesoo Chung.">
+      <img src="pics/sinead-3.jpg" alt="I Say Your Name, 2025">
+      <div class="caption">I Say Your Name, StudioIIII, 2025</div>
+    </div>
+
+    <div class="slide" data-credit="Performed as part of 'In the Vault' by Presentation Club. Documentation photo by Clara Thym.">
+      <img src="pics/sinead-2.jpg" alt="I Say Your Name, 2025">
+      <div class="caption">I Say Your Name, Ballhaus Ost, 2025</div>
+    </div>
+
+    <div class="slide" data-credit="Video and editing work by Clara Thym. Video typeface 'Interlope' by Gabriel Dubourg, distributed by velvetyne.fr">
+      <video src="pics/sinead-vid.mp4" autoplay muted loop playsinline></video>
+      <div class="caption">I Say Your Name, 2025</div>
+  </div>
+
+  <div class="slide" data-credit="Written and performed with Andrea Felizitas Karch, performed as part of 'SYMPOSIUM' by Presentation Club. Documentation photos by Polo Lindström Muller.">
+      <img src="pics/fly-1.jpg" alt="Oh...to be a fly on the wall..., 2025">
+      <div class="caption">"Oh...to be a fly on the wall...", Ballhaus Ost, 2025</div>
+    </div>
+
+  <div class="slide" data-credit="Written and performed with Andrea Felizitas Karch, performed as part of 'SYMPOSIUM' by Presentation Club. Documentation photos by Polo Lindström Muller.">
+      <img src="pics/fly-2.jpg" alt="Oh...to be a fly on the wall..., 2025">
+      <div class="caption">"Oh...to be a fly on the wall...", Ballhaus Ost, 2025</div>
+    </div>
+
+  <div class="slide" data-credit="Written and performed with Andrea Felizitas Karch, performed as part of 'SYMPOSIUM' by Presentation Club. Documentation photos by Polo Lindström Muller.">
+      <img src="pics/fly-3.jpg" alt="Oh...to be a fly on the wall..., 2025" style="object-position: 50% 65%;">
+      <div class="caption">"Oh...to be a fly on the wall...", Ballhaus Ost, 2025</div>
+    </div>
+
+  <div class="slide" data-credit="Written and performed with Andrea Felizitas Karch, performed as part of 'SYMPOSIUM' by Presentation Club. Image visual by Veronika Valtonen.">
+      <img src="pics/fly-5.jpg" alt="Oh...to be a fly on the wall..., 2025">
+      <div class="caption">"Oh...to be a fly on the wall...", Ballhaus Ost, 2025</div>
+    </div>
+
+  <div class="slide" data-credit="Written and performed with Andrea Felizitas Karch. Documentation photos by Zhiyuan Yang.">
+      <img src="pics/warp-4.jpg" alt="WARP (Act I), 2024" style="object-position: 50% 25%;">
+      <div class="caption">WARP (Act I), Pogo Bar, KW Institute for Contemporary Art, 2024</div>
+    </div>
+
+  <div class="slide" data-credit="Written and performed with Andrea Felizitas Karch. Documentation photos by Zhiyuan Yang.">
+      <img src="pics/warp-2.jpg" alt="WARP (Act I), 2024">
+      <div class="caption">WARP (Act I), Pogo Bar, KW Institute for Contemporary Art, 2024</div>
+    </div>
+
+  <div class="slide" data-credit="Written and performed with Andrea Felizitas Karch. Documentation photos by Zhiyuan Yang.">
+      <img src="pics/warp-3.jpg" alt="WARP (Act I), 2024">
+      <div class="caption">WARP (Act I), Pogo Bar, KW Institute for Contemporary Art, 2024</div>
+    </div>
+
+  <div class="slide" data-credit="Web development by David Barriga Ruano, technical support by Nikola Marić and Julian Netzer.">
+      <img src="pics/qr-wr-1.jpg" alt="The Waiting Room, 2022-23" style="object-position: 50% 65%;">
+      <div class="caption">The Waiting Room, feldfünf, 2023</div>
+    </div>
+
+  <div class="slide"
+     data-credit='Web development by David Barriga Ruano, technical support by Julian Netzer.<br><a href="https://minakalvoey.com/wr/" target="_blank">Link to read here – desktop only</a>'>
+      <img src="pics/wr-exhib-1.jpg" alt="The Waiting Room, 2022-23">
+      <div class="caption">The Waiting Room, Kunsthalle am Hamburger Platz, 2022</div>
+    </div>
+
+  <div class="slide" data-credit="Web development by David Barriga Ruano, technical support by Julian Netzer.">
+      <img src="pics/wr-scan.jpg" alt="The Waiting Room, 2022-23">
+      <div class="caption">The Waiting Room, 2022</div>
+    </div>
+
+  <div class="slide"
+     data-credit='Web development by David Barriga Ruano, technical support by Nikola Marić. Published as part of the 12th edition of the online magazine <a href="https://oral.pub/" target="blank">ORAL.pub</a> in winter 2024. <a href="https://minakalvoey.com/qfts/" target="_blank">Link to read here – desktop only</a>'
+     data-credit-link-text="Link to read here – desktop only"
+     data-credit-link="https://minakalvoey.com/qfts/">
+      <img src="pics/qfts-2.jpg" alt="The Waiting Room, 2022-23" style="object-position: 50% 60%;">
+      <div class="caption">Quest for the Self, 2023</div>
+    </div>
+
+  <div class="slide" data-credit="">
+      <img src="pics/GO-2.jpg" alt="Grand Opening!, 2021" style="object-fit: contain;">
+      <div class="caption">Grand Opening!, 2021</div>
+    </div>
+
+  <div class="slide" data-credit="">
+      <img src="pics/GO-3.jpg" alt="Grand Opening!, 2021" style="object-fit: contain;">
+      <div class="caption">Grand Opening!, 2021</div>
+    </div>
+
+  <div class="slide" data-credit="">
+      <img src="pics/GO-4.jpg" alt="Grand Opening!, 2021">
+      <div class="caption">Grand Opening!, 2021</div>
+    </div>
+
+  <div class="slide" data-credit="">
+      <img src="pics/GO-7.jpg" alt="Grand Opening!, 2021" style="object-fit: contain;">
+      <div class="caption">Grand Opening!, 2021</div>
+    </div>
+
+  <div class="slide" data-credit="Metal logos generated by training a GAN model on RunwayML.">
+      <img src="pics/metalgan_1.jpg" alt="GAN Metal Logos, 2020">
+      <div class="caption">GAN Metal Logos, 2020</div>
+    </div>
+
+  <div class="slide" data-credit="">
+      <img src="pics/metalgan_2.jpg" alt="GAN Metal Logos, 2020">
+      <div class="caption">GAN Metal Logos, 2020</div>
+    </div>
+
+  <div class="slide" data-credit="Hand embroidered on clothing. Available upon request and produced on-demand.">
+      <img src="pics/metalgan-10.jpg" alt="GAN Metal Logos, 2020">
+      <div class="caption">GAN Metal Logos, 2020</div>
+    </div>
+
+    <button id="prev-arrow" aria-label="Previous slide">&#x219C;</button>
+    <button id="next-arrow" aria-label="Next slide">&#x219D;</button>
+  </main>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
