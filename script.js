@@ -1,14 +1,12 @@
 const slides = document.querySelectorAll('.slide');
 let currentIndex = 0;
 let autoSlideInterval;
-
 const creditEl = document.getElementById('credit');
 
 function showSlide(index) {
   slides[currentIndex].classList.remove('active');
   currentIndex = (index + slides.length) % slides.length;
   slides[currentIndex].classList.add('active');
-
   creditEl.innerHTML = slides[currentIndex].dataset.credit || '';
 }
 
@@ -38,6 +36,7 @@ document.getElementById('prev-arrow').addEventListener('click', () => {
   prevSlide();
 });
 
+creditEl.innerHTML = slides[currentIndex].dataset.credit || '';
 startAutoSlide();
 
 document.addEventListener('keydown', (e) => {
@@ -67,12 +66,9 @@ const slideshowEl = document.getElementById('slideshow');
 slideshowEl.addEventListener('click', (e) => {
   if (!window.matchMedia('(max-width: 768px)').matches) return;
   if (body.classList.contains('info-open')) return;
-
   const clickX = e.clientX;
   const screenWidth = window.innerWidth;
-
   stopAutoSlide();
-
   if (clickX < screenWidth / 2) {
     prevSlide();
   } else {
