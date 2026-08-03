@@ -2,12 +2,14 @@ const slides = document.querySelectorAll('.slide');
 let currentIndex = 0;
 let autoSlideInterval;
 const creditEl = document.getElementById('credit');
+const mobileCaptionEl = document.getElementById('side-caption');
 
 function showSlide(index) {
   slides[currentIndex].classList.remove('active');
   currentIndex = (index + slides.length) % slides.length;
   slides[currentIndex].classList.add('active');
   creditEl.innerHTML = slides[currentIndex].dataset.credit || '';
+  mobileCaptionEl.textContent = slides[currentIndex].querySelector('.caption').textContent;
 }
 
 function nextSlide() {
@@ -37,6 +39,7 @@ document.getElementById('prev-arrow').addEventListener('click', () => {
 });
 
 creditEl.innerHTML = slides[currentIndex].dataset.credit || '';
+mobileCaptionEl.textContent = slides[currentIndex].querySelector('.caption').textContent;
 startAutoSlide();
 
 document.addEventListener('keydown', (e) => {

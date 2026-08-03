@@ -25,10 +25,21 @@ body {
   overflow-y: auto;
 }
 
+#side-caption {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #222222;
+  margin-top: auto;
+}
+
 #contact a {
   color: inherit;
   text-decoration: none;
   border-bottom: 1px solid currentColor;
+}
+
+#contact a:hover {
+  color: red;
 }
 
 #info-toggle {
@@ -54,13 +65,13 @@ body {
   width: 100%;
   height: 100%;
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
 .slide.active {
   opacity: 1;
-  visibility: visible;
+  pointer-events: auto;
 }
 
 .slide img,
@@ -83,6 +94,7 @@ body {
   background: #f9f9f9;
   box-shadow: 4px 0 6px rgba(0, 0, 0, 0.15);
   z-index: 10;
+  display: none;
 }
 
 #prev-arrow,
@@ -117,7 +129,7 @@ body {
   font-size: 0.85rem;
   color: red;
   min-height: 1.2em;
-  margin-top: auto;
+  margin-top: 0;
 }
 
 #credit a {
