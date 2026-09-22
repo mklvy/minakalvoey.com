@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>again and again and again</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .floating {
+      position: absolute;
+      margin-top: 20px;
+      left: 2%;
+      width: 120px;
+      animation: float 3s ease-in-out infinite, glow 3s ease-in-out 40;
+    }
+    @keyframes float {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+    @keyframes glow {
+      0%   { filter: drop-shadow(0 0 0px orange); }
+      50%  { filter: drop-shadow(0 0 15px orange); }
+      100% { filter: drop-shadow(0 0 0px orange); }
+    }
+    .hint-float {
+      animation: sway 2s ease-in-out infinite;
+    }
+    @keyframes sway {
+      0%   { transform: translateX(0px); }
+      50%  { transform: translateX(-15px); }
+      100% { transform: translateX(0px); }
+    }
+  </style>
+</head>
+<body style="
+  background-color: orange;
+  background-image: url('pics/maze8.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+">
+  <audio id="bg-sound" src="sounds/loop.mp3" loop></audio>
+  <div class="trickster-wrap">
+    <img src="pics/trick2.svg" class="floating">
+    <img src="pics/speech8.svg" class="trickster-bubble" id="speech-bubble" style="opacity: 1; transition: opacity 2s;">
+  </div>
+  <img id="sprite" src="pics/you.png" style="position: absolute; width: 45px;">
+  <img id="hint-char" src="pics/frog.png" class="hint-float" style="
+    position: absolute;
+    width: 90px; !important;
+    top: 15%;
+    right: 2%;
+    opacity: 0;
+    transition: opacity 2s;
+    pointer-events: none;
+  ">
+  <div id="goal" style="
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 25%;
+    right: 1%;
+    /* background: red; */
+  "></div>
+  <script>
+    localStorage.setItem('maze-visited', 'true');
+    document.getElementById('bg-sound').play();
+    var sprite = document.getElementById('sprite');
+    var goal = document.getElementById('goal');
+    var speed = 5;
+    var keys = {};
+    var x = window.innerWidth * 0.43;
+    var y = window.innerHeight * 0.4;
+    sprite.style.left = x + 'px';
+    sprite.style.top = y + 'px';
+
+    document.addEventListener('keydown', function(e) { keys[e.key] = true; });
+    document.addEventListener('keyup', function(e) { keys[e.key] = false; });
+    function checkGoal() {
+      var sr = sprite.getBoundingClientRect();
+      var gr = goal.getBoundingClientRect();
+      if (
+        sr.left < gr.right &&
+        sr.right > gr.left &&
+        sr.top < gr.bottom &&
+        sr.bottom > gr.top
+      ) {
+        window.location.href = 'scene11.html';
+      }
+    }
+    function move() {
+      if (keys['ArrowUp'])    y -= speed;
+      if (keys['ArrowDown'])  y += speed;
+      if (keys['ArrowLeft'])  x -= speed;
+      if (keys['ArrowRight']) x += speed;
+      x = Math.max(0, Math.min(x, window.innerWidth - 30));
+      y = Math.max(0, Math.min(y, window.innerHeight - 30));
+      sprite.style.top = y + 'px';
+      sprite.style.left = x + 'px';
+      checkGoal();
+      requestAnimationFrame(move);
+    }
+    move();
+    setTimeout(function() {
+      document.getElementById('hint-char').style.opacity = '1';
+    }, 30000);
+    setTimeout(function() {
+      document.getElementById('speech-bubble').style.opacity = '0';
+    }, 10000);
+  </script>
+  <script src="popup.js"></script>
+</body>
+</html>

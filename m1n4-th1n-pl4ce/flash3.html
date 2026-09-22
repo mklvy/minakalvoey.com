@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>again and again and again</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .flash-img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30%;
+      animation: flash 0.4s steps(1) 3;
+    }
+
+    @keyframes flash {
+      0%   { opacity: 1; }
+      50%  { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+  <meta http-equiv="refresh" content="2;url=loop8.html">
+</head>
+<body style="background-color: white;">
+  <img src="pics/trick.svg" class="flash-img">
+</body>
+</html>

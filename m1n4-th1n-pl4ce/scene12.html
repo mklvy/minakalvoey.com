@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>again and again and again</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hotspot {
+      position: absolute;
+      cursor: pointer;
+    /* background: rgba(255,0,0,0.3); */
+    }
+  </style>
+</head>
+<body style="
+  background-color: blue;
+  background-image: url('pics/9-6.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+">
+
+<div class="dir-label dir-left">Left?</div>
+<div class="dir-label dir-right">Right?</div>
+
+<audio id="bg-sound" src="sounds/gravel.mp3" loop></audio>
+
+  <a href="scene11.html" class="hotspot" style="top: 20%; left: 1%; width: 22%; height: 70%;"></a>
+  <a href="scene13.html"    class="hotspot" style="top: 20%; left: 77%; width: 22%; height: 70%;"></a>
+  
+  <script>document.getElementById('bg-sound').play();</script>
+<script src="popup.js"></script>
+</body>
+</html>
